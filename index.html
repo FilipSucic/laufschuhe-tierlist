@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laufschuhe Tier List 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --bg:#0a0a0c; --bg2:#111116; --bg3:#18181f;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
+  --text:#f0ede8; --text2:#9e9a95; --text3:#5c5855;
+  --ss:#8b1a1a; --s:#c0392b; --a:#c8991a; --b:#2e7d52; --c:#2a5f8a; --coming:#3a3a4a;
+  --accent:#e8d5a0;
+  --race:#e05c2a; --train:#3a7fc1; --both:#7a5ca8;
+}
+body { background:var(--bg); color:var(--text); font-family:'Barlow',sans-serif; min-height:100vh; }
+
+/* HEADER */
+header {
+  background:var(--bg2); border-bottom:1px solid var(--border2);
+  padding:20px 40px 16px; display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap;
+}
+.header-title { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:36px; letter-spacing:-1px; line-height:1; text-transform:uppercase; }
+.header-title span { color:var(--accent); }
+.header-meta { display:flex; flex-direction:column; gap:3px; padding-bottom:2px; }
+.header-meta p { font-size:11px; color:var(--text3); letter-spacing:0.05em; text-transform:uppercase; }
+.header-meta strong { color:var(--text2); font-weight:500; }
+.header-controls { margin-left:auto; display:flex; flex-direction:column; gap:7px; align-items:flex-end; }
+.tab-row { display:flex; gap:5px; flex-wrap:wrap; justify-content:flex-end; }
+.tab-btn {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px;
+  letter-spacing:0.08em; text-transform:uppercase; padding:5px 12px;
+  border-radius:4px; border:1px solid var(--border2); background:transparent;
+  color:var(--text3); cursor:pointer; transition:all 0.15s;
+}
+.tab-btn.active { background:var(--bg3); color:var(--text); border-color:var(--accent); }
+.tab-btn:hover:not(.active) { color:var(--text2); }
+.toggle-btn {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px;
+  letter-spacing:0.08em; text-transform:uppercase; padding:5px 12px;
+  border-radius:4px; border:1px solid var(--border2); background:transparent;
+  color:var(--text3); cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:5px;
+}
+.toggle-btn.active-value { background:#2e7d5222; color:#52c584; border-color:#2e7d5266; }
+
+/* Brand filter row */
+#brand-row { border-top:1px solid var(--border); padding-top:6px; margin-top:1px; }
+#brand-row .tab-btn { font-size:10px; padding:4px 9px; }
+#brand-row .tab-btn.active { border-color:var(--border2); background:var(--bg3); color:var(--text); }
+
+/* LAYOUT */
+.main { display:grid; grid-template-columns:1fr 378px; min-height:calc(100vh - 96px); }
+.tier-panel { padding:22px 30px; overflow-y:auto; }
+
+.tier-row {
+  display:flex; align-items:stretch; margin-bottom:6px;
+  border-radius:6px; overflow:hidden; border:1px solid var(--border); transition:border-color 0.2s;
+}
+.tier-row:hover { border-color:var(--border2); }
+.tier-label {
+  width:56px; min-width:56px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:23px;
+  letter-spacing:-1px; color:#fff; flex-shrink:0; gap:2px; padding:8px 0; text-transform:uppercase;
+}
+.tier-label small { font-size:8px; font-weight:600; letter-spacing:0.06em; opacity:0.8; text-align:center; padding:0 4px; line-height:1.3; }
+.tier-shoes { display:flex; flex-wrap:wrap; gap:6px; padding:9px 11px; flex:1; background:var(--bg2); align-items:flex-start; align-content:flex-start; }
+
+/* SHOE CARD */
+.shoe-card {
+  background:var(--bg3); border:1px solid var(--border); border-radius:5px;
+  padding:7px 11px 7px 10px; cursor:pointer; transition:all 0.16s; user-select:none;
+}
+.shoe-card:hover { border-color:var(--border2); background:#1e1e28; transform:translateY(-1px); }
+.shoe-card.active { border-color:var(--accent); background:#1e1e28; }
+.shoe-card.coming-soon { opacity:0.45; border-style:dashed; }
+.shoe-card.coming-soon:hover { transform:none; opacity:0.6; }
+.shoe-card.hidden { display:none; }
+.shoe-card.value-dim { opacity:0.25; }
+.shoe-card.value-highlight { border-color:#2e7d5266; box-shadow:0 0 0 1px #2e7d5222 inset; }
+
+/* card top row: name + use-icons */
+.card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+.card-name-block { min-width:0; }
+.shoe-name { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.02em; color:var(--text); text-transform:uppercase; white-space:nowrap; }
+.shoe-brand { font-size:10px; color:var(--text3); margin-top:1px; }
+
+/* use-icons: small pill showing race/train */
+.use-icons { display:flex; flex-direction:column; gap:3px; align-items:flex-end; flex-shrink:0; margin-top:1px; }
+.use-pill {
+  font-size:8px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+  padding:1px 5px; border-radius:2px; white-space:nowrap;
+}
+.use-race  { background:#e05c2a22; color:#e07a50; border:1px solid #e05c2a33; }
+.use-train { background:#3a7fc122; color:#5ba3e0; border:1px solid #3a7fc133; }
+.use-both  { background:#7a5ca822; color:#a57fd4; border:1px solid #7a5ca833; }
+
+/* card bottom row: value dots + badges */
+.card-bottom { margin-top:5px; display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
+.card-value-dots { display:flex; gap:2px; align-items:center; }
+.value-dot { width:5px; height:5px; border-radius:50%; }
+
+.shoe-badges { display:flex; gap:4px; flex-wrap:wrap; }
+.badge { font-size:9px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:2px 5px; border-radius:3px; white-space:nowrap; }
+.badge-record  { background:#c0392b22; color:#e74c3c; border:1px solid #c0392b44; }
+.badge-new     { background:#2e7d5222; color:#52c584; border:1px solid #2e7d5244; }
+.badge-limited { background:#c8991a22; color:#e8b84b; border:1px solid #c8991a44; }
+.badge-soon    { background:#3a3a4a;   color:#888;    border:1px solid #444; }
+.badge-proto   { background:#2a5f8a22; color:#5b9fd4; border:1px solid #2a5f8a44; }
+.badge-half    { background:#6a2e8a22; color:#b07fe0; border:1px solid #6a2e8a44; }
+.badge-value   { background:#2e7d5222; color:#52c584; border:1px solid #2e7d5244; }
+
+/* DETAIL PANEL */
+.detail-panel {
+  background:var(--bg2); border-left:1px solid var(--border2);
+  padding:24px 22px; position:sticky; top:0;
+  height:calc(100vh - 96px); overflow-y:auto;
+}
+.detail-empty { height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:var(--text3); text-align:center; }
+.detail-empty svg { opacity:0.2; }
+.detail-empty p { font-size:13px; line-height:1.6; max-width:190px; }
+.detail-content { display:none; }
+.detail-content.visible { display:block; }
+.detail-tier-bar { height:3px; border-radius:2px; margin-bottom:16px; }
+.detail-shoe-name { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:24px; letter-spacing:-0.5px; text-transform:uppercase; color:var(--text); line-height:1.1; margin-bottom:3px; }
+.detail-brand-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.detail-brand-txt { font-size:11px; color:var(--text3); text-transform:uppercase; letter-spacing:0.1em; }
+.detail-use-pills { display:flex; gap:5px; }
+.detail-badges { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:15px; }
+.detail-section { margin-bottom:17px; }
+.detail-section-title { font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--text3); margin-bottom:8px; padding-bottom:5px; border-bottom:1px solid var(--border); }
+.detail-desc { font-size:13px; color:var(--text2); line-height:1.7; }
+
+/* USE SUMMARY in detail */
+.use-summary {
+  display:flex; gap:8px; flex-wrap:wrap;
+}
+.use-card {
+  flex:1; min-width:80px; background:var(--bg3); border:1px solid var(--border); border-radius:5px;
+  padding:9px 11px;
+}
+.use-card-label { font-size:9px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+.use-card-val { font-size:12px; color:var(--text2); line-height:1.5; }
+.use-card.race-card  { border-color:#e05c2a33; }
+.use-card.train-card { border-color:#3a7fc133; }
+.use-card-label.race-lbl  { color:#e07a50; }
+.use-card-label.train-lbl { color:#5ba3e0; }
+
+/* VALUE METER */
+.value-meter-wrap { background:var(--bg3); border:1px solid var(--border); border-radius:5px; padding:11px 13px; }
+.value-meter-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:9px; }
+.value-label-text { font-size:12px; font-weight:600; }
+.value-score-text { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:17px; letter-spacing:-0.5px; }
+.value-bar-track { height:5px; background:var(--border); border-radius:3px; overflow:hidden; margin-bottom:8px; }
+.value-bar-fill { height:100%; border-radius:3px; transition:width 0.4s ease; }
+.value-verdict { font-size:12px; color:var(--text2); line-height:1.5; }
+.value-breakdown { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:9px; }
+.value-sub { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:6px 8px; }
+.value-sub-label { font-size:9px; color:var(--text3); text-transform:uppercase; letter-spacing:0.07em; }
+.value-sub-val { font-size:12px; font-weight:600; color:var(--text); margin-top:2px; }
+
+/* ATHLETES */
+.athlete-list { display:flex; flex-direction:column; gap:7px; }
+.athlete-card { background:var(--bg3); border:1px solid var(--border); border-radius:5px; padding:8px 10px; }
+.athlete-header { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.athlete-name { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.02em; text-transform:uppercase; color:var(--text); }
+.athlete-flag { font-size:12px; margin-right:4px; }
+.athlete-dist { font-size:10px; color:var(--text3); background:var(--bg); padding:2px 6px; border-radius:3px; white-space:nowrap; }
+.athlete-result { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:18px; color:var(--accent); margin-top:2px; letter-spacing:-0.5px; line-height:1.2; }
+.athlete-result small { font-size:11px; color:var(--text3); font-family:'Barlow',sans-serif; font-weight:400; letter-spacing:0; margin-left:5px; }
+
+/* SPECS */
+.specs-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.spec-item { background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:6px 9px; }
+.spec-label { font-size:9px; color:var(--text3); text-transform:uppercase; letter-spacing:0.08em; }
+.spec-value { font-size:13px; font-weight:600; color:var(--text); margin-top:2px; }
+
+/* LEGEND */
+.legend {
+  display:flex; flex-wrap:wrap; gap:10px; padding:13px 30px;
+  border-top:1px solid var(--border); background:var(--bg2);
+  font-size:11px; color:var(--text3); align-items:center;
+}
+.legend-item { display:flex; align-items:center; gap:5px; }
+.legend-dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+.legend-src { margin-left:auto; font-size:10px; opacity:0.4; }
+.legend-sep { width:1px; height:14px; background:var(--border2); }
+
+@media (max-width:900px) {
+  .main { grid-template-columns:1fr; }
+  .detail-panel { position:static; height:auto; border-left:none; border-top:1px solid var(--border2); }
+  header { padding:14px 16px 12px; }
+  .header-controls { margin-left:0; width:100%; align-items:flex-start; }
+  .tier-panel { padding:14px 10px; }
+  .legend { padding:11px 14px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-title">Laufschuhe<br><span>Tier List</span></div>
+  <div class="header-meta">
+    <p>Stand <strong>Juni 2026</strong></p>
+    <p>Elite-Ergebnisse &amp; Testberichte</p>
+    <p>Schuh anklicken = Details</p>
+  </div>
+  <div class="header-controls">
+    <div class="tab-row">
+      <button class="tab-btn active" id="dist-all" onclick="setDistFilter('all',this)">Alle</button>
+      <button class="tab-btn" onclick="setDistFilter('marathon',this)">Marathon</button>
+      <button class="tab-btn" onclick="setDistFilter('half',this)">Halbmarathon</button>
+      <button class="tab-btn" onclick="setDistFilter('training',this)">Training</button>
+    </div>
+    <div class="tab-row" id="brand-row">
+      <button class="tab-btn brand-btn active" id="brand-all" onclick="setBrandFilter('all',this)">Alle Marken</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Adidas',this)">Adidas</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Nike',this)">Nike</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Asics',this)">Asics</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Puma',this)">Puma</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Saucony',this)">Saucony</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Hoka',this)">Hoka</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('New Balance',this)">New Balance</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('On Running',this)">On</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Brooks',this)">Brooks</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Mizuno',this)">Mizuno</button>
+      <button class="tab-btn brand-btn" onclick="setBrandFilter('Under Armour',this)">Under Armour</button>
+    </div>
+    <div class="tab-row">
+      <button class="toggle-btn" id="val-toggle" onclick="toggleValue()">💰 Preis-Leistung hervorheben</button>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+<div class="tier-panel">
+
+<!-- SS -->
+<div class="tier-row">
+  <div class="tier-label" style="background:var(--ss)">SS<small>Sub-2h</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card" data-shoe="evo3" data-tags="marathon" data-value="1" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adizero Adios Pro Evo 3</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-record">WR Sub-2h</span><span class="badge badge-limited">500€</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="alphafly4-proto" data-tags="marathon half" data-value="0" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Alphafly 4 <small style="font-size:9px;opacity:.55">(Proto)</small></div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-half">HM WR 57:20</span><span class="badge badge-proto">Prototype</span></div>
+      </div>
+    </div>
+      <div class="shoe-card" data-shoe="evo3-w" data-tags="marathon" data-value="1" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adios Pro Evo 3 W</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-record">WR Damen 2:15:41</span><span class="badge badge-limited">Limitiert</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S -->
+<div class="tier-row">
+  <div class="tier-label" style="background:var(--s)">S<small>Absolute Elite</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card" data-shoe="evo2" data-tags="marathon" data-value="2" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adizero Adios Pro Evo 2</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-record">6× Major 2025</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="fast-r3" data-tags="marathon half" data-value="3" data-brand="Puma">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Fast-R Nitro Elite 3</div><div class="shoe-brand">Puma</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-record">Effizientester Schuh</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="sky-tokyo" data-tags="marathon half" data-value="4" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Metaspeed Sky Tokyo</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
+      </div>
+    </div>
+      <div class="shoe-card" data-shoe="deviate-elite4" data-tags="marathon half" data-value="3" data-brand="Puma">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Deviate Nitro Elite 4</div><div class="shoe-brand">Puma</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- A -->
+<div class="tier-row">
+  <div class="tier-label" style="background:var(--a)">A<small>Top Performer</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card" data-shoe="alphafly3" data-tags="marathon" data-value="3" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Alphafly 3</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-record">Kiptum WR 2023</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="vaporfly4" data-tags="marathon half" data-value="4" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Vaporfly Next% 4</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-half">HM-Spezialist</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="edge-tokyo" data-tags="marathon half" data-value="3" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Metaspeed Edge Tokyo</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="adios-pro4" data-tags="marathon half" data-value="4" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adizero Adios Pro 4</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="endorphin-elite2" data-tags="marathon half" data-value="4" data-brand="Saucony">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Endorphin Elite 2</div><div class="shoe-brand">Saucony</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">Meistunterschätzt</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="on-lightspray" data-tags="marathon half" data-value="0" data-brand="On Running">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">LightSpray Prototype</div><div class="shoe-brand">On Running</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-proto">Prototype</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="hyperwarp-pure" data-tags="marathon half" data-value="3" data-brand="Mizuno">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Wave Rebellion Pro 3</div><div class="shoe-brand">Mizuno</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="velociti-elite3" data-tags="marathon half" data-value="3" data-brand="Under Armour">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Velociti Elite 3</div><div class="shoe-brand">Under Armour</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="cielo3" data-tags="marathon half" data-value="4" data-brand="Hoka">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Cielo X1 3.0</div><div class="shoe-brand">Hoka</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="sc-elite-v4" data-tags="marathon half" data-value="3" data-brand="New Balance">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">FuelCell SC Elite v4</div><div class="shoe-brand">New Balance</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="hyperion-elite4" data-tags="marathon half" data-value="3" data-brand="Brooks">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Hyperion Elite 4</div><div class="shoe-brand">Brooks</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="adizero-sl2" data-tags="training half" data-value="5" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adizero Evo SL</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-both">⚡🏃 Beides</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span><span class="badge badge-new">NEU</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- B -->
+<div class="tier-row">
+  <div class="tier-label" style="background:var(--b)">B<small>Sehr stark</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card" data-shoe="superblast3" data-tags="training marathon" data-value="5" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Superblast 3</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-both">⚡🏃 Beides</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="deviate3" data-tags="marathon half" data-value="5" data-brand="Puma">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Deviate Nitro Elite 3</div><div class="shoe-brand">Puma</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="peg-plus" data-tags="training half" data-value="5" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Pegasus Plus</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="endorphin-speed5" data-tags="training half" data-value="5" data-brand="Saucony">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Endorphin Speed 5</div><div class="shoe-brand">Saucony</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="endorphin-pro5" data-tags="marathon half" data-value="4" data-brand="Saucony">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Endorphin Pro 4</div><div class="shoe-brand">Saucony</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="mach-x3" data-tags="training marathon" data-value="4" data-brand="Hoka">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Mach X 2</div><div class="shoe-brand">Hoka</div></div>
+        <div class="use-icons"><span class="use-pill use-both">⚡🏃 Beides</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="cloudboom-strike" data-tags="marathon half" data-value="3" data-brand="On Running">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Cloudboom Strike</div><div class="shoe-brand">On Running</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="endorphin-azura" data-tags="training half" data-value="5" data-brand="Saucony">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Endorphin Azura</div><div class="shoe-brand">Saucony</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span><span class="badge badge-new">NEU</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="boston12" data-tags="training marathon" data-value="5" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adizero Boston 12</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-both">⚡🏃 Beides</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="sc-trainer3" data-tags="training" data-value="4" data-brand="New Balance">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">FuelCell SC Trainer v3</div><div class="shoe-brand">New Balance</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="megablast" data-tags="training" data-value="5" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Gel-Cumulus Infinity</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span><span class="badge badge-new">NEU</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="pw-elite" data-tags="marathon half" data-value="3" data-brand="New Balance">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">FuelCell SuperComp Elite v4</div><div class="shoe-brand">New Balance</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C -->
+<div class="tier-row">
+  <div class="tier-label" style="background:var(--c)">C<small>Allrounder</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card" data-shoe="novablast5" data-tags="training" data-value="5" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Novablast 5</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="bondi9" data-tags="training" data-value="4" data-brand="Hoka">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Bondi 9</div><div class="shoe-brand">Hoka</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="vomero18" data-tags="training" data-value="4" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Vomero 18</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="hyperion-max3" data-tags="training marathon" data-value="4" data-brand="Brooks">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Hyperion Max 3</div><div class="shoe-brand">Brooks</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="mach7" data-tags="training" data-value="5" data-brand="Hoka">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Mach 6</div><div class="shoe-brand">Hoka</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="nb1080v15" data-tags="training" data-value="5" data-brand="New Balance">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">1080 v14</div><div class="shoe-brand">New Balance</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="vomero-plus" data-tags="training" data-value="4" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Vomero Plus</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="glycerin23" data-tags="training" data-value="4" data-brand="Brooks">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Glycerin 22</div><div class="shoe-brand">Brooks</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="kayano32" data-tags="training" data-value="3" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Gel-Kayano 32</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="nimbus28" data-tags="training" data-value="4" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Gel-Nimbus 27</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="deviate-nitro4" data-tags="training marathon" data-value="5" data-brand="Puma">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Deviate Nitro 3</div><div class="shoe-brand">Puma</div></div>
+        <div class="use-icons"><span class="use-pill use-both">⚡🏃 Beides</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="cloudrunner3" data-tags="training" data-value="3" data-brand="On Running">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Cloudrunner 2</div><div class="shoe-brand">On Running</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="hyperboost-edge" data-tags="training" data-value="4" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adizero Ambition</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-new">NEU</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="wave-sky7" data-tags="training" data-value="4" data-brand="Mizuno">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Wave Sky 8</div><div class="shoe-brand">Mizuno</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="adrenaline22" data-tags="training" data-value="4" data-brand="Brooks">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Adrenaline GTS 24</div><div class="shoe-brand">Brooks</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="cloudeclipse2" data-tags="training" data-value="4" data-brand="On Running">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Cloudmonster 2</div><div class="shoe-brand">On Running</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- D -->
+<div class="tier-row">
+  <div class="tier-label" style="background:#4a3a6a">D<small>Einsteiger</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card" data-shoe="glycerin-flex" data-tags="training" data-value="4" data-brand="Brooks">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Glycerin Flex</div><div class="shoe-brand">Brooks</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="pegasus41" data-tags="training" data-value="5" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Pegasus 42</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="supernova3" data-tags="training" data-value="5" data-brand="Adidas">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Supernova Rise 2</div><div class="shoe-brand">Adidas</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="gaviota6" data-tags="training" data-value="3" data-brand="Hoka">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Gaviota 5</div><div class="shoe-brand">Hoka</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="neozen2" data-tags="training" data-value="5" data-brand="Mizuno">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Wave Rider 27</div><div class="shoe-brand">Mizuno</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="clifton10" data-tags="training" data-value="5" data-brand="Hoka">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Clifton 10</div><div class="shoe-brand">Hoka</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+    <div class="shoe-card" data-shoe="react-miler3" data-tags="training" data-value="4" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Infinity Run 5</div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom"><div class="card-value-dots"></div></div>
+    </div>
+    <div class="shoe-card" data-shoe="gel-excite10" data-tags="training" data-value="5" data-brand="Asics">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Gel-Cumulus 27</div><div class="shoe-brand">Asics</div></div>
+        <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Coming -->
+<div class="tier-row">
+  <div class="tier-label" style="background:var(--coming)">?<small>Bald</small></div>
+  <div class="tier-shoes">
+    <div class="shoe-card coming-soon" data-shoe="alphafly4-retail" data-tags="marathon half" data-value="0" data-brand="Nike">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Alphafly 4 <small style="font-size:9px">(Retail)</small></div><div class="shoe-brand">Nike</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-soon">Q3 2026</span></div>
+      </div>
+    </div>
+    <div class="shoe-card coming-soon" data-shoe="elite3" data-tags="marathon half" data-value="0" data-brand="Saucony">
+      <div class="card-top">
+        <div class="card-name-block"><div class="shoe-name">Endorphin Elite 3</div><div class="shoe-brand">Saucony</div></div>
+        <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-value-dots"></div>
+        <div class="shoe-badges"><span class="badge badge-soon">Juni 2026</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end tier-panel -->
+
+<!-- DETAIL PANEL -->
+<div class="detail-panel">
+  <div class="detail-empty" id="detail-empty">
+    <svg width="42" height="42" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+    </svg>
+    <p>Schuh anklicken für Details, Preis-Leistung &amp; Top-Athleten.</p>
+  </div>
+  <div class="detail-content" id="detail-content">
+    <div class="detail-tier-bar" id="d-tierbar"></div>
+    <div class="detail-shoe-name" id="d-name"></div>
+    <div class="detail-brand-row">
+      <span class="detail-brand-txt" id="d-brand"></span>
+      <div class="detail-use-pills" id="d-use-pills"></div>
+    </div>
+    <div class="detail-badges" id="d-badges"></div>
+
+    <!-- USE SECTION -->
+    <div class="detail-section">
+      <div class="detail-section-title">Einsatzbereich</div>
+      <div class="use-summary" id="d-use-summary"></div>
+    </div>
+
+    <!-- VALUE SECTION -->
+    <div class="detail-section">
+      <div class="detail-section-title">💰 Preis-Leistung</div>
+      <div class="value-meter-wrap">
+        <div class="value-meter-header">
+          <span class="value-label-text" id="d-val-label">—</span>
+          <span class="value-score-text" id="d-val-score">–/5</span>
+        </div>
+        <div class="value-bar-track"><div class="value-bar-fill" id="d-val-bar" style="width:0%"></div></div>
+        <div class="value-verdict" id="d-val-verdict"></div>
+        <div class="value-breakdown" id="d-val-breakdown"></div>
+      </div>
+    </div>
+
+    <!-- SPECS -->
+    <div class="detail-section">
+      <div class="detail-section-title">Technische Daten</div>
+      <div class="specs-grid" id="d-specs"></div>
+    </div>
+
+    <!-- ATHLETES -->
+    <div class="detail-section">
+      <div class="detail-section-title">Top Athleten</div>
+      <div class="athlete-list" id="d-athletes"></div>
+    </div>
+
+    <!-- DESC -->
+    <div class="detail-section">
+      <div class="detail-section-title">Fazit</div>
+      <div class="detail-desc" id="d-desc"></div>
+    </div>
+  </div>
+</div>
+</div><!-- end main -->
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--ss)"></div>SS</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--s)"></div>S</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--a)"></div>A</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--b)"></div>B</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c)"></div>C</div>
+  <div class="legend-sep"></div>
+  <div class="legend-item"><span style="font-size:10px;padding:1px 5px;border-radius:2px;background:#e05c2a22;color:#e07a50;border:1px solid #e05c2a33">⚡ Wettkampf</span></div>
+  <div class="legend-item"><span style="font-size:10px;padding:1px 5px;border-radius:2px;background:#3a7fc122;color:#5ba3e0;border:1px solid #3a7fc133">🏃 Training</span></div>
+  <div class="legend-item"><span style="font-size:10px;padding:1px 5px;border-radius:2px;background:#7a5ca822;color:#a57fd4;border:1px solid #7a5ca833">⚡🏃 Beides</span></div>
+  <div class="legend-sep"></div>
+  <div class="legend-item" style="gap:3px">
+    <span style="display:flex;gap:2px">
+      <span style="width:5px;height:5px;border-radius:50%;background:#52c584;display:inline-block"></span>
+      <span style="width:5px;height:5px;border-radius:50%;background:#52c584;display:inline-block"></span>
+      <span style="width:5px;height:5px;border-radius:50%;background:#52c584;display:inline-block"></span>
+      <span style="width:5px;height:5px;border-radius:50%;background:#52c584;display:inline-block"></span>
+      <span style="width:5px;height:5px;border-radius:50%;background:#52c584;display:inline-block"></span>
+    </span>
+    Preis-Leistung
+  </div>
+  <div class="legend-src">Quellen: Marathon Handbook · RunRepeat · World Athletics · The Run Testers · Road Trail Run · Juni 2026</div>
+</div>
+
+<script>
+const VC = {5:'#52c584',4:'#8ec96a',3:'#c8991a',2:'#d4622a',1:'#c0392b',0:'#3a3a4a'};
+const VL = {5:'Ausgezeichnet',4:'Gut',3:'Mittel',2:'Schwach',1:'Sehr schlecht',0:'Nicht bewertet'};
+
+const shoes = {
+  "evo3":{
+    name:"Adizero Adios Pro Evo 3",brand:"Adidas",tier:"SS",tierColor:"#8b1a1a",
+    use:{race:true,train:false},
+    raceNote:"Das schnellste Wettkampfwerkzeug der Welt. Nur für Rennen – zu kurze Lebensdauer und zu teuer fürs Training.",
+    trainNote:"Nicht geeignet. 500€ und ~1 Marathon Haltbarkeit machen ihn als Trainingsschuh unwirtschaftlich.",
+    badges:[{text:"⚡ WR Sub-2h Marathon",cls:"badge-record"},{text:"Limitiert · 500€",cls:"badge-limited"}],
+    value:1, valueVerdict:"500€, direkt ausverkauft, Haltbarkeit von ~1 Marathon. Für Amateure kein sinnvoller Kauf – reine Technologie-Referenz.", valueBreakdown:[{label:"Preis",val:"500 € ❌"},{label:"Haltbarkeit",val:"~1 Marathon"},{label:"Verfügbarkeit",val:"Ausverkauft"},{label:"Performance",val:"Weltrekord"}],
+    specs:[{label:"Gewicht",value:"97 g"},{label:"Preis",value:"500 €"},{label:"Stack Ferse/Vorfuß",value:"39/36 mm"},{label:"System",value:"ENERGYRIM Carbon"},{label:"Foam",value:"Lightstrike Pro Evo"},{label:"Verfügbarkeit",value:"Limitiert"}],
+    athletes:[{flag:"🇰🇪",name:"Sabastian Sawe",dist:"Marathon",result:"1:59:30 WR",note:"London 2026 – 1. Offizieller Sub-2h Marathon"},{flag:"🇪🇹",name:"Yomif Kejelcha",dist:"Marathon",result:"1:59:41",note:"London 2026 – Marathondebüt, 2. Sub-2h"},{flag:"🇪🇹",name:"Tigst Assefa",dist:"Marathon",result:"2:15:41 WR",note:"London 2026 – Frauen-only Weltrekord"}],
+    desc:"Der revolutionärste Laufschuh aller Zeiten. Beim London Marathon 2026 liefen Sawe, Kejelcha und Assefa alle drei zu Weltrekorden. Nur 97g – erster sub-100g Marathon-Superschuh mit neuem ENERGYRIM-Karbonsystem. Für Amateure kaum empfehlenswert."
+  },
+  "alphafly4-proto":{
+    name:"Alphafly 4 (Prototype)",brand:"Nike",tier:"SS",tierColor:"#8b1a1a",
+    use:{race:true,train:false},
+    raceNote:"Bereits für zwei Weltrekorde verantwortlich (HM 57:20 + Marathon 2:00:28). Retail-Release Q3 2026 erwartet.",
+    trainNote:"Als Prototype nicht verfügbar. Nach dem Retail-Release wahrscheinlich zu teuer fürs Training.",
+    badges:[{text:"HM WR 57:20",cls:"badge-half"},{text:"Marathon 2:00:28",cls:"badge-record"},{text:"Prototype",cls:"badge-proto"}],
+    value:0, valueVerdict:"Nicht käuflich – Preis-Leistung nicht bewertbar. Retail-Release Q3 2026 erwartet.", valueBreakdown:[{label:"Status",val:"Prototype"},{label:"Preis",val:"n.v."},{label:"Release",val:"Q3 2026 erw."},{label:"Potenzial",val:"SS-Tier"}],
+    specs:[{label:"Status",value:"Dev 164 Prototype"},{label:"Zugelassen bis",value:"Feb 2027"},{label:"Foam",value:"ZoomX (vermutet)"},{label:"Air Zoom",value:"Entfernt"},{label:"Stack",value:"~40mm"},{label:"Retail-Preis",value:"~300€ erwartet"}],
+    athletes:[{flag:"🇺🇬",name:"Jacob Kiplimo",dist:"Halbmarathon",result:"57:20 WR",note:"Lissabon März 2026 – Halbmarathon-Weltrekord"},{flag:"🇺🇬",name:"Jacob Kiplimo",dist:"Marathon",result:"2:00:28",note:"London April 2026 – 3. Platz, schneller als Kiptums alter WR"},{flag:"🇰🇪",name:"Faith Kipyegon",dist:"Track",result:"Prototype gesichtet",note:"Nike-Athletin mit Alphafly-4-Prototype in Wettkämpfen"}],
+    desc:"Kiplimo schrieb '57:20 WR' auf die Sohlen. Derselbe Schuh (Nike Dev 164) half ihm 7 Wochen später zu 2:00:28 in London – schneller als Kiptums alter Marathon-Weltrekord. Consumer-Release Q3 2026 erwartet."
+  },
+  "evo2":{
+    name:"Adizero Adios Pro Evo 2",brand:"Adidas",tier:"S",tierColor:"#c0392b",
+    use:{race:true,train:false},
+    raceNote:"6 Marathon Major Siege 2025. Für Eliteläufer die erste Wahl – aber nur mit Sponsoring oder sehr gezieltem Wettkampfeinsatz.",
+    trainNote:"Nicht geeignet. ~500€ + Haltbarkeit von 1–2 Marathons machen Training unwirtschaftlich.",
+    badges:[{text:"6× Marathon Major 2025",cls:"badge-record"}],
+    value:2, valueVerdict:"Top-Technologie, aber ~500€ + sehr kurze Haltbarkeit. Nur rentabel für sehr häufige Wettkämpfe oder mit Sponsoring.", valueBreakdown:[{label:"Preis",val:"~500 €"},{label:"Haltbarkeit",val:"1–2 Marathons"},{label:"Majors 2025",val:"6× Sieg"},{label:"Für Amateure",val:"Kaum rentabel"}],
+    specs:[{label:"Gewicht",value:"~125 g"},{label:"Preis",value:"~500 €"},{label:"Foam",value:"Lightstrike Pro Evo"},{label:"System",value:"Energy Rods Evo"},{label:"Haltbarkeit",value:"~1–2 Marathons"},{label:"Verfügbarkeit",value:"Begrenzt"}],
+    athletes:[{flag:"🇰🇪",name:"Sabastian Sawe",dist:"Marathon",result:"2:02:27",note:"1. Platz London 2025"},{flag:"🇰🇪",name:"Benson Kipruto",dist:"Marathon",result:"~2:08",note:"1. Platz NYC Marathon 2025"},{flag:"🇪🇹",name:"Hawi Feysa",dist:"Marathon",result:"2:14:56",note:"1. Platz Berlin Marathon 2025"}],
+    desc:"Podiumsdominator der Marathon Majors 2025. Adidas gewann mit Pro Evo 1 & 2 mehr Major-Podien als jede andere Marke. Wer ihn bekommt, bekommt eines der schnellsten je legal verkauften Schuhe – aber für Amateure kaum zu empfehlen."
+  },
+  "fast-r3":{
+    name:"Fast-R Nitro Elite 3",brand:"Puma",tier:"S",tierColor:"#c0392b",
+    use:{race:true,train:false},
+    raceNote:"Laut Studie 3,15–3,62% effizienter als der Alphafly 3. Klare Empfehlung für Vorfuß-/Mittelfußläufer im Wettkampf.",
+    trainNote:"Nicht empfohlen. Die protruding Carbon-Platte und kurze Outsole-Haltbarkeit (~130km) machen ihn als Trainingsschuh teuer.",
+    badges:[{text:"Effizientester Schuh lt. Studie",cls:"badge-record"}],
+    value:3, valueVerdict:"~300€ für S-Tier-Performance ist fair, aber die Outsole verschleißt schnell (~130km). Guter Deal für Vorfußläufer im Wettkampf.", valueBreakdown:[{label:"Preis",val:"~300 €"},{label:"Outsole",val:"~130 km ⚠️"},{label:"Effizienz",val:"+3.6% vs. AF3"},{label:"Zielgruppe",val:"Nur Vorfußläufer"}],
+    specs:[{label:"Gewicht",value:"~195 g"},{label:"Preis",value:"~300 €"},{label:"Foam",value:"Nitro Elite"},{label:"Platte",value:"Carbon PWRPLATE ext."},{label:"Effizienz",value:"+3.6% vs. Alphafly 3"},{label:"Läuferstil",value:"Vorfuß / Mittelfuß"}],
+    athletes:[{flag:"🌍",name:"Kieran (The Run Testers)",dist:"Marathon",result:"London Marathon 2026",note:"Persönlicher Wettkampfschuh, Top-Empfehlung"},{flag:"🌍",name:"Super Shoe Showdown 2025",dist:"HM + Marathon",result:"1. Wahl 5K–HM",note:"Outside Magazine: 'Unmatched propulsive push-off'"}],
+    desc:"Laut unabhängigen Labortests 3,15–3,62% effizienter als der Alphafly 3. Absolute Empfehlung für starke Vorfußläufer im Wettkampf. Fersenläufer sind hier falsch. Outsole verschleißt schneller als bei der Konkurrenz."
+  },
+  "sky-tokyo":{
+    name:"Metaspeed Sky Tokyo",brand:"Asics",tier:"S",tierColor:"#c0392b",
+    use:{race:true,train:false},
+    raceNote:"S-Tier Performance für ~270€ – bestes Preis-Wettkampf-Verhältnis in der Elite-Klasse. Beste Outsole-Traktion der Kategorie verlängert die Lebensdauer.",
+    trainNote:"Möglich, aber zu schade und zu teuer für reguläres Training. Für Schlüssel-Einheiten nutzbar.",
+    badges:[{text:"2025",cls:"badge-new"},{text:"Upgrade über Sky Paris",cls:"badge-new"}],
+    value:4, valueVerdict:"S-Tier Performance für ~270€ – das ist der entscheidende Unterschied zum Edge Tokyo gleichen Preises: mehr Tier für gleiches Geld. Beste Outsole in der Klasse schützt die Investition.", valueBreakdown:[{label:"Preis",val:"~270 € (=Edge)"},{label:"Tier",val:"S vs. A beim Edge"},{label:"Energie-Return",val:"78.5% (Top-Wert)"},{label:"Outsole",val:"Beste in der Klasse"}],
+    specs:[{label:"Gewicht",value:"170 g"},{label:"Preis",value:"~270 €"},{label:"Stack Ferse",value:"38.7 mm"},{label:"Foam",value:"FF Leap + FF Turbo+"},{label:"Energie-Return",value:"78.5% Ferse"},{label:"Läuferstil",value:"Schrittverlängerung"}],
+    athletes:[{flag:"🇦🇺",name:"Hailemaryam Kiros",dist:"Marathon",result:"2:06:06",note:"Australischer Rekord – Melbourne 2025 (Asics-Athlet)"},{flag:"🌍",name:"Nick & Tom (Run Testers)",dist:"Marathon",result:"London 2026",note:"Getragen am Wettkampftag, Top-Empfehlung"},{flag:"🇪🇹",name:"Joyciline Jepkosgei",dist:"Marathon",result:"2:15:55",note:"3. Platz London 2026 im Asics ME5 TYPE-P Prototype"}],
+    desc:"Massiv verbessert gegenüber Sky Paris: Energierückgabe 73,2% → 78,5%. Neue FF Leap + FF Turbo+ Dual-Foam-Kombination, 13g leichter. Beste Outsole-Traktion in der Klasse. Gleiches Geld wie der Edge Tokyo, aber eine Tier-Stufe höher – klarer Preis-Leistungs-Gewinner zwischen den beiden."
+  },
+  "alphafly3":{
+    name:"Alphafly 3",brand:"Nike",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Exzellenter Marathon-Wettkampfschuh. Seit dem Alphafly-4-Teaser im Handel günstiger – gutes Zeitfenster für einen Kauf.",
+    trainNote:"Theoretisch für Schlüssel-Trainingseinheiten nutzbar, aber bei ~295€ und kürzerer Lebensdauer als Trainingsschuhe nicht empfohlen.",
+    badges:[{text:"Kiptum WR 2023",cls:"badge-record"},{text:"→ AF4 kommt",cls:"badge-soon"}],
+    value:3, valueVerdict:"Aktuell im Handel günstiger durch den AF4-Teaser (UK ab ~175€). Bei Vollpreis ~295€ Mittelfeld. Jetzt ein guter Zeitpunkt zum Kauf.", valueBreakdown:[{label:"Preis",val:"~295€ (fallend)"},{label:"Haltbarkeit",val:"Gut für Superschuh"},{label:"Komfort",val:"Bester im Segment"},{label:"Tipp",val:"Jetzt günstiger kaufen!"}],
+    specs:[{label:"Gewicht",value:"~218 g"},{label:"Preis",value:"~295 € (fallend)"},{label:"Foam",value:"ZoomX + 2× Air Zoom"},{label:"Platte",value:"Carbon FlyPlate"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"Marathon-Komfort"}],
+    athletes:[{flag:"🇰🇪",name:"Kelvin Kiptum",dist:"Marathon",result:"2:00:35 WR†",note:"Chicago 2023 – ehem. Weltrekord (Alphafly 3 Prototype)"},{flag:"🇺🇬",name:"Jacob Kiplimo",dist:"Marathon",result:"2:00:28",note:"London 2026 – 3. Platz, schneller als Kiptums alter WR"},{flag:"🇰🇪",name:"Eliud Kipchoge",dist:"Marathon",result:"1:59:40*",note:"INEOS 2019 (inoffiziell) – mit Alphafly Prototype"}],
+    desc:"Der Schuh, der die Sub-2h-Ära einläutete. Weich, komfortabel, doppeltes Air-Zoom-System. Seit Evo-3 und AF4-Teaser im Handel günstiger – aktuell oft für ~200€ erhältlich. Immer noch eine der besten Marathon-Optionen."
+  },
+  "vaporfly4":{
+    name:"Vaporfly Next% 4",brand:"Nike",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Bester Nike-Racer für 5K bis Halbmarathon. RunRepeat kürte ihn zum besten Overall-Racer 2026. Doctors of Running: Top-Empfehlung für HM.",
+    trainNote:"Für schnelle Trainingseinheiten nutzbar, aber die Lebensdauer ist begrenzt. Besser für Wettkampf aufsparen.",
+    badges:[{text:"HM-Spezialist",cls:"badge-half"},{text:"2025",cls:"badge-new"}],
+    value:4, valueVerdict:"~270€ für den besten Nike-HM-Racer mit sehr guter Haltbarkeit. RunRepeat: Bester Overall-Racer 2026. Sehr gutes Preis-Leistungs-Paket.", valueBreakdown:[{label:"Preis",val:"~270 €"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"Distanz",val:"5K–HM ideal"},{label:"Bewertung",val:"Bester Overall 2026"}],
+    specs:[{label:"Gewicht",value:"~198 g"},{label:"Preis",value:"~270 €"},{label:"Foam",value:"ZoomX"},{label:"Platte",value:"Carbon FlyPlate"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"5K – Halbmarathon"}],
+    athletes:[{flag:"🇰🇪",name:"Eliud Kipchoge",dist:"HM + Marathon",result:"Kipchoge Edition Okt. 2025",note:"Signature Colorway, genutzt im Training und HM-Rennen"},{flag:"🌍",name:"RunRepeat",dist:"5K – HM",result:"Bester Overall-Racer 2026",note:"Empfohlen für alle Distanzen 5K bis Halbmarathon"},{flag:"🌍",name:"Doctors of Running",dist:"Halbmarathon",result:"Top HM-Empfehlung",note:"'Versatility helps it dial in for a variety of races'"}],
+    desc:"Leichtester Vaporfly je. Fester und direkter als der Alphafly 3 – für 5K bis Halbmarathon ideal. RunRepeat wählt ihn als besten Overall-Racer 2026. Doctors of Running empfehlen ihn explizit für den Halbmarathon."
+  },
+  "edge-tokyo":{
+    name:"Metaspeed Edge Tokyo",brand:"Asics",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Exzellenter Wettkampfschuh für Kadenzläufer. Leichtester Asics-Racer – ideal für HM und Marathon wenn du Kadenz statt Schrittlänge erhöhst.",
+    trainNote:"Für Schlüssel-Einheiten nutzbar, aber bei ~270€ besser für Wettkämpfe aufsparen.",
+    badges:[{text:"2025",cls:"badge-new"},{text:"Kadenz-Läufer",cls:"badge-new"}],
+    value:3, valueVerdict:"Gleicher Preis wie der Sky Tokyo (~270€), aber eine Tier-Stufe tiefer (A statt S). Für Kadenzläufer dennoch die richtige Wahl – die Performance ist auf ihre Biomechanik optimiert. Kein schlechter Kauf, aber der Sky Tokyo bietet allgemein mehr für das Geld.", valueBreakdown:[{label:"Preis",val:"~270 € (=Sky)"},{label:"Tier",val:"A (Sky: S)"},{label:"Stärke",val:"Nur Kadenzläufer"},{label:"Vergleich",val:"Sky besser allgemein"}],
+    specs:[{label:"Gewicht",value:"~168 g"},{label:"Preis",value:"~270 €"},{label:"Foam",value:"FF Leap + FF Turbo+"},{label:"Platte",value:"Carbon (tiefer sitzend)"},{label:"Läuferstil",value:"Kadenzerhöhung"},{label:"Stärke",value:"HM + Marathon"}],
+    athletes:[{flag:"🌍",name:"Doctors of Running",dist:"Marathon",result:"Top-Pick Marathon 2026",note:"Neuer Favorit von David (Doctors of Running)"},{flag:"🌍",name:"The Run Testers",dist:"HM + Marathon",result:"Besser als Edge Paris",note:"Stark verbessert, direktere und schnellere Ride"}],
+    desc:"Für Kadenzläufer, die mehr Schritte pro Minute statt längerer Schritte laufen. Leichtester Asics-Racer. Tiefer sitzende Platte als Sky Tokyo, direkteres Feedback. Gleicher Preis wie der Sky Tokyo – der Sky Tokyo bietet für die meisten Läufer jedoch mehr Performance fürs Geld."
+  },
+  "adios-pro4":{
+    name:"Adizero Adios Pro 4",brand:"Adidas",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Zugänglichster Adidas-Wettkampfracer. Continental-Outsole macht ihn zum haltbarsten Top-Wettkampfschuh – bestes Kosten-pro-Rennen-Verhältnis.",
+    trainNote:"Dank Continental-Outsole auch für schnelle Trainingseinheiten geeignet, ohne die Haltbarkeit übermäßig zu opfern.",
+    badges:[],
+    value:4, valueVerdict:"~250€ mit Continental-Gummi: deutlich haltbarer als die meisten Konkurrenten. Bestes Kosten-pro-Rennen-Verhältnis im echten Wettkampfsegment.", valueBreakdown:[{label:"Preis",val:"~250 €"},{label:"Haltbarkeit",val:"Sehr gut (Continental)"},{label:"Kosten/Rennen",val:"Bester Wert"},{label:"Performance",val:"A-Tier"}],
+    specs:[{label:"Gewicht",value:"~220 g"},{label:"Preis",value:"~250 €"},{label:"Platte",value:"Energy Rods 2.0"},{label:"Outsole",value:"Continental Gummi"},{label:"Haltbarkeit",value:"Sehr gut"},{label:"Stärke",value:"HM + Marathon"}],
+    athletes:[{flag:"🇰🇪",name:"Sabastian Sawe",dist:"Marathon",result:"Berlin 2024",note:"Mehrere Saisontitel vor dem Evo-Upgrade"},{flag:"🇰🇪",name:"Alexander Mutiso",dist:"Marathon + HM",result:"~2:04 Marathon",note:"NYC 2025 Podium, auch stark über Halbmarathon"}],
+    desc:"Zugänglichster Adidas-Racer. Energy Rods 2.0 statt klassischer Platte. Continental-Gummi macht ihn zum haltbarsten Top-Wettkampfschuh. Bestes Kosten-pro-Rennen-Verhältnis. Sowohl für Marathon als auch Halbmarathon sehr gut."
+  },
+  "endorphin-elite2":{
+    name:"Endorphin Elite 2",brand:"Saucony",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Marathon Handbook: 'Meistunterschätzter Wettkampfschuh 2025'. Sehr gute Dämpfung für HM und Marathon. Oft besser als teurere Alternativen.",
+    trainNote:"Für Schlüssel-Trainings nutzbar, aber die Glasfaser-Karbonplatte ist für reines Training überdimensioniert.",
+    badges:[{text:"Meistunterschätzt 2025",cls:"badge-new"}],
+    value:4, valueVerdict:"~250€ für A-Tier-Wettkampfperformance mit exzellenter Dämpfung. Oft besser als viel teurere Alternativen – klares Preis-Leistungs-Statement.", valueBreakdown:[{label:"Preis",val:"~250 €"},{label:"Dämpfung",val:"Beste Klasse"},{label:"Haltbarkeit",val:"Gut"},{label:"Bewertung",val:"A-Tier bei A-Preis"}],
+    specs:[{label:"Gewicht",value:"~215 g"},{label:"Preis",value:"~250 €"},{label:"Platte",value:"Glasfaser + Carbon"},{label:"Foam",value:"PWRRUN HG"},{label:"Stärke",value:"Dämpfung + Komfort"},{label:"Distanz",value:"HM + Marathon"}],
+    athletes:[{flag:"🌍",name:"Marathon Handbook",dist:"Marathon",result:"Top 5 Super Shoes 2025",note:"'Der meistunterschätzte Schuh 2025'"},{flag:"🌍",name:"RunRepeat",dist:"HM + Marathon",result:"Best Shock Absorption 2026",note:"Bester Schockabsorptions-Wert aller Wettkampfschuhe"}],
+    desc:"Marathon Handbook: meistunterschätzter Wettkampfschuh 2025. PWRRUN HG Foam + Glasfaser-Karbonplatte. Sehr gute Dämpfung für HM und Marathon. Bestes Preis-Leistungs-Verhältnis im echten Elite-Wettkampfsegment."
+  },
+  "on-lightspray":{
+    name:"LightSpray Prototype",brand:"On Running",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Hellen Obiri lief damit ihre Karrierebestzeit 2:15:53. Consumer-Modell mit LightSpray-Technologie in Entwicklung.",
+    trainNote:"Nicht käuflich. On-Robot-Farm in Busan produziert 30× mehr – Retail-Release rückt näher.",
+    badges:[{text:"Prototype",cls:"badge-proto"},{text:"Roboter-Oberteil",cls:"badge-proto"}],
+    value:0, valueVerdict:"Nicht käuflich – Preis-Leistung nicht bewertbar. On entwickelt Consumer-Modell mit LightSpray-Technologie.", valueBreakdown:[{label:"Status",val:"Prototype"},{label:"Preis",val:"n.v."},{label:"Robot Farm",val:"×30 Produktion"},{label:"Retail",val:"Bald geplant"}],
+    specs:[{label:"Oberteil",value:"Roboter-gespritzt (3 Min)"},{label:"Schnürung",value:"Keine (Socken-Fit)"},{label:"Technologie",value:"LightSpray"},{label:"Produktion",value:"Busan Robot Farm (32)"},{label:"Status",value:"Prototype"},{label:"Preis",value:"n.v."}],
+    athletes:[{flag:"🇰🇪",name:"Hellen Obiri",dist:"Marathon",result:"2:15:53",note:"2. Platz London 2026 – persönliche Karrierebestzeit!"},{flag:"🇰🇪",name:"Hellen Obiri",dist:"Marathon",result:"2:19:51",note:"NYC Marathon Course Record 2025 – ebenfalls LightSpray"}],
+    desc:"Roboter spritzt das Oberteil in 3 Minuten ohne Nähte auf den Leisten – keine Schnürung. Hellen Obiri lief damit in London ihre Karrierebestzeit. On hat eine Robot Farm mit 32 Maschinen eröffnet, die 30× mehr produziert – Consumer-Release rückt näher."
+  },
+  "superblast3":{
+    name:"Superblast 3",brand:"Asics",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:true},
+    raceNote:"Ohne Karbonplatte trotzdem sehr schnell durch FF Blast Turbo+. Für Halbmarathon gut geeignet, etwas eingeschränkt im Marathon-Wettkampf.",
+    trainNote:"Outside Magazine: Bester Allround-Laufschuh 2026. Ideal für Tempo-Einheiten, Longrun und als täglicher Trainingsschuh.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"},{text:"Allrounder 2026",cls:"badge-new"}],
+    value:5, valueVerdict:"~200€ für den Testsieger Allrounder 2026 ohne Karbonplatte. Explosives Foam, exzellente Haltbarkeit, universell einsetzbar – absolut bestes Training/Alltagsverhältnis.", valueBreakdown:[{label:"Preis",val:"~200 €"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"Einsatz",val:"Training + Wettkampf"},{label:"Bewertung",val:"8.7/10 M.Handbook"}],
+    specs:[{label:"Gewicht",value:"~250 g"},{label:"Preis",value:"~200 €"},{label:"Platte",value:"Keine (Super Trainer)"},{label:"Foam",value:"FF Blast Turbo+"},{label:"Wertung",value:"8.7/10 Marathon Hdb."},{label:"Stärke",value:"Allround + Daily"}],
+    athletes:[{flag:"🌍",name:"Outside Magazine",dist:"Allround",result:"Best All-Around Shoe 2026",note:"März 2026 – neuer Testsieger"},{flag:"🌍",name:"Marathon Handbook",dist:"Allround",result:"8.7/10",note:"'Buy if you want one shoe for everything'"}],
+    desc:"Outside Magazine kürte ihn im März 2026 zum besten Allround-Laufschuh. Ohne Karbonplatte, aber explosiv durch FF Blast Turbo+. Ideal für Training und lockere Wettkämpfe. Exzellente Preis-Leistung."
+  },
+  "deviate3":{
+    name:"Deviate Nitro Elite 3",brand:"Puma",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:false},
+    raceNote:"Günstigster Karbonschuh auf echtem Top-Niveau. RunRepeat: 'Best Value Carbon Racer'. Für HM und Marathon gleichermaßen geeignet.",
+    trainNote:"Für Schlüssel-Einheiten nutzbar, aber die Outsole verschleißt für reines Training zu schnell. Besser für Wettkampf reservieren.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"},{text:"Best Value Carbon",cls:"badge-new"}],
+    value:5, valueVerdict:"~230€ für einen echten Karbonschuh auf B-Tier-Niveau. 70–80€ günstiger als vergleichbare Konkurrenz bei kaum spürbarem Leistungsunterschied.", valueBreakdown:[{label:"Preis",val:"~230 €"},{label:"Ersparnis",val:"~70€ vs. Konkurrenz"},{label:"Performance",val:"B-Tier Carbon"},{label:"Bewertung",val:"RunRepeat Best Value"}],
+    specs:[{label:"Gewicht",value:"~215 g"},{label:"Preis",value:"~230 €"},{label:"Platte",value:"Carbon PWRPLATE"},{label:"Foam",value:"Nitro Elite"},{label:"Steifigkeit",value:"+78.5% vs. Ø"},{label:"Distanz",value:"HM + Marathon"}],
+    athletes:[{flag:"🌍",name:"RunRepeat",dist:"HM + Marathon",result:"Best Value 2026",note:"'Explosiv, race-ready' bei 230€"},{flag:"🌍",name:"Running Warehouse",dist:"HM + Marathon",result:"Top Carbon Pick",note:"Stiff plate, rocker structure, explosive nature"}],
+    desc:"Günstigster Karbonschuh auf echtem Top-Niveau. 230€ statt 300€+. Nitro Elite Foam, steife Carbon-Platte, Rocker-Struktur. RunRepeat: 'Best Value'. Wer einen echten Wettkampfschuh für HM oder Marathon ohne Höchstpreis will, kommt hier nicht vorbei."
+  },
+  "sc-elite-v4":{
+    name:"FuelCell SC Elite v4",brand:"New Balance",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:false},
+    raceNote:"Ideal für Läufer mit breiterem Fuß. FuelCell Foam für konstante Energie über HM und Marathon. Gut für Komfort-priorisierende Läufer.",
+    trainNote:"Für schnelle Trainings nutzbar, aber bei ~250€ besser für Wettkämpfe aufsparen.",
+    badges:[],
+    value:3, valueVerdict:"~250€ für solide B-Tier-Performance. Im Vergleich zu Deviate Nitro Elite 3 oder Endorphin Elite 2 teurer bei ähnlicher Leistung – außer du brauchst die breite Passform.", valueBreakdown:[{label:"Preis",val:"~250 €"},{label:"Stärke",val:"Breite Passform"},{label:"Performance",val:"B-Tier"},{label:"Vergleich",val:"Teurer als Deviate3"}],
+    specs:[{label:"Gewicht",value:"~200 g"},{label:"Preis",value:"~250 €"},{label:"Foam",value:"FuelCell"},{label:"Platte",value:"Carbon"},{label:"Passform",value:"Breiter Zehenbereich"},{label:"Distanz",value:"HM + Marathon"}],
+    athletes:[{flag:"🌍",name:"Super Shoe Showdown 2025",dist:"Marathon",result:"Top Pick Marathon",note:"Empfohlen für Komfort-priorisierende Marathonläufer"}],
+    desc:"Ideal für Läufer mit breiterem Fuß – einer der wenigen Wettkampfschuhe mit komfortabler Zehenbox. FuelCell Foam für konstante Energie. Besonders empfohlen für Läufer, die Komfort über höchste Performance stellen."
+  },
+  "peg-plus":{
+    name:"Pegasus Plus",brand:"Nike",tier:"B",tierColor:"#2e7d52",
+    use:{race:false,train:true},
+    raceNote:"Für leichtere Wettkämpfe und Halbmarathon ohne Wettkampfanspruch nutzbar – kein echter Wettkampfschuh.",
+    trainNote:"Marathon Handbook Liebling 2026. Leicht, flink, nah am Boden. Ideal für Speedwork, Tempoläufe und Halbmarathon-Training.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"},{text:"2025",cls:"badge-new"}],
+    value:5, valueVerdict:"~160€ für einen der besten Temposchuhe im Training. Günstigster Nike-Speedschuh mit echtem ZoomX-Feeling. Bestes Preis-Leistungs-Verhältnis in der Trainingsliga.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"Segment",val:"Günstigster Speedschuh"},{label:"Einsatz",val:"Tempo + HM Training"},{label:"Bewertung",val:"Pers. Favorit M.Hdb."}],
+    specs:[{label:"Gewicht",value:"~220 g"},{label:"Preis",value:"~160 €"},{label:"Platte",value:"Keine"},{label:"Foam",value:"ZoomX Light"},{label:"Stärke",value:"Speedwork / Tempo HM"},{label:"Typ",value:"Super Trainer"}],
+    athletes:[{flag:"🌍",name:"Marathon Handbook Editor",dist:"Training + HM",result:"Persönlicher Favorit 2026",note:"'Leicht, flink, nah am Boden – ideal für Tempoläufe'"}],
+    desc:"Leichter und direkter als der Pegasus Premium. Marathon Handbook bezeichnet ihn als aktuell persönlichen Favoriten. Ideal für Speedwork, Tempoläufe und Halbmarathon-Training. Kein Karbonschuh, aber schnelles ZoomX-Feeling für nur ~160€."
+  },
+  "endorphin-speed5":{
+    name:"Endorphin Speed 5",brand:"Saucony",tier:"B",tierColor:"#2e7d52",
+    use:{race:false,train:true},
+    raceNote:"Für Halbmarathon als günstige Wettkampfoption nutzbar – kein echter Carbon-Wettkampfschuh, aber sehr schnell.",
+    trainNote:"Marathon Handbook: 'Bester Workout-Schuh den Saucony je gebaut hat.' Nylon-Platte + Powerrun PB Foam = explosive Trainingseinheiten.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"},{text:"2026",cls:"badge-new"}],
+    value:5, valueVerdict:"~180€ für den besten Saucony-Workout-Schuh aller Zeiten. ~70€ günstiger als der Elite 2, trotzdem explosiv. Ideale Trainingsergänzung zum Wettkampfschuh.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Ersparnis",val:"~70€ vs. Elite 2"},{label:"Einsatz",val:"Tempo + HM Training"},{label:"Bewertung",val:"Bester Saucony Workout"}],
+    specs:[{label:"Gewicht",value:"~200 g"},{label:"Preis",value:"~180 €"},{label:"Platte",value:"Nylon (kein Karbon)"},{label:"Foam",value:"Powerrun PB"},{label:"Stärke",value:"Tempo / HM Training"},{label:"Typ",value:"Super Trainer"}],
+    athletes:[{flag:"🌍",name:"Marathon Handbook",dist:"Training + HM",result:"Bester Saucony Workout je",note:"'Light and agile, but it also packs a punch'"}],
+    desc:"Marathon Handbook: 'Der beste Workout-Schuh, den Saucony je gebaut hat.' Nylon- statt Karbonplatte macht ihn günstiger. Powerrun PB Foam bleibt explosiv. Ideal für Tempo-Einheiten, HM-Training und als günstige Wettkampfoption."
+  },
+  "cielo2":{
+    name:"Cielo X1 2.0",brand:"Hoka",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:false},
+    raceNote:"Hokas schnellster Wettkampfschuh. Doctors of Running empfehlen ihn für HM und Marathon – besonders für Läufer, die Dämpfung und Carbon kombinieren wollen.",
+    trainNote:"Durch die hohe Stapelhöhe für Trainings nutzbar, aber bei ~270€ besser für Wettkämpfe reservieren.",
+    badges:[{text:"2026",cls:"badge-new"}],
+    value:3, valueVerdict:"~270€ für einen schweren (240g) Wettkampfschuh ist mittelwertig. Wenn Hoka-Dämpfung + Carbon Priorität ist, fair – aber Konkurrenz ist leichter und teils günstiger.", valueBreakdown:[{label:"Preis",val:"~270 €"},{label:"Gewicht",val:"240g (schwerer)"},{label:"Dämpfung",val:"Beste (Hoka-typisch)"},{label:"Vergleich",val:"Teurer als Deviate3"}],
+    specs:[{label:"Gewicht",value:"~240 g"},{label:"Preis",value:"~270 €"},{label:"Platte",value:"Carbon"},{label:"Stack",value:"Maximal (Hoka-typisch)"},{label:"Stärke",value:"Dämpfung + Speed"},{label:"Distanz",value:"HM + Marathon"}],
+    athletes:[{flag:"🌍",name:"Doctors of Running",dist:"Halbmarathon",result:"Top HM Option 2026",note:"Empfohlen für Karbonplatte + maximale Dämpfung"}],
+    desc:"Hokas schnellster Wettkampfschuh Version 2. Doctors of Running empfehlen ihn für den Halbmarathon. Etwas schwerer als Konkurrenten, aber mit Hoka-typischem Dämpfungskomfort."
+  },
+  "novablast5":{
+    name:"Novablast 5",brand:"Asics",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Kein echter Wettkampfschuh. Für lockere Wettkämpfe oder Fun-Runs nutzbar.",
+    trainNote:"Bester Alltagstrainer 2026 laut mehreren Tests. Vielseitig, komfortabel, sehr langlebig. Ideal für daily miles und Aufbautraining.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"},{text:"2026",cls:"badge-new"}],
+    value:5, valueVerdict:"~150€ für den besten Alltagstrainer 2026. Sehr gute Haltbarkeit, vielseitig – top Preis-Leistungs-Paket für alle, die keinen Wettkampfschuh brauchen.", valueBreakdown:[{label:"Preis",val:"~150 €"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"Einsatz",val:"Daily Training"},{label:"Bewertung",val:"Top Alltagsschuh 2026"}],
+    specs:[{label:"Gewicht",value:"~270 g"},{label:"Preis",value:"~150 €"},{label:"Platte",value:"Keine"},{label:"Foam",value:"FF Blast+"},{label:"Stack",value:"Hoch"},{label:"Typ",value:"Daily Trainer"}],
+    athletes:[{flag:"🌍",name:"RTINGS.com / OutdoorGearLab",dist:"Daily Training",result:"Top Daily Trainer 2026",note:"Auf mehreren 2026-Listen als bester Everyday-Trainer"}],
+    desc:"Vielseitiger Allrounder für daily miles. Keine Wettkampf-Ambitionen, aber solide Dämpfung und gute Haltbarkeit. Für 150€ eines der besten Preis-Leistungs-Pakete im gesamten High-End-Segment."
+  },
+  "bondi9":{
+    name:"Bondi 9",brand:"Hoka",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Nicht für Wettkampf geeignet – zu schwer (310g) und kein Speed-Tool.",
+    trainNote:"Maximum Cushion für Recovery und Easy Runs. Ideal für Regenerationstage, Läufer mit Gelenkproblemen und sehr lange, langsame Einheiten.",
+    badges:[{text:"Maximum Cushion",cls:"badge-new"}],
+    value:4, valueVerdict:"~180€ für das Maximum an Dämpfung im Markt. In seiner Recovery-Nische unschlagbar. Für Läufer, die primär Komfort und Schutz suchen, ein hervorragender Deal.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Dämpfung",val:"Maximum (39.5mm)"},{label:"Haltbarkeit",val:"Gut"},{label:"Nische",val:"Recovery-König"}],
+    specs:[{label:"Gewicht",value:"~310 g"},{label:"Preis",value:"~180 €"},{label:"Platte",value:"Keine"},{label:"Stack",value:"39.5mm Ferse (Max)"},{label:"Typ",value:"Recovery / Easy Runs"},{label:"Stärke",value:"Reiner Komfort"}],
+    athletes:[{flag:"🌍",name:"Runners Gear Guide 2026",dist:"Recovery",result:"Ultimate Max-Cushion",note:"'Built for runners who prioritize comfort and protection'"}],
+    desc:"Die maximale Dämpfung. Perfekt für Regenerationstage, Läufer mit Gelenkproblemen und sehr lange Easy Runs. In seiner Recovery-Nische unschlagbar und für ~180€ fair bepreist."
+  },
+  "vomero18":{
+    name:"Vomero 18",brand:"Nike",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Kein Wettkampfschuh. Für lockere Runs mit Wettkampfcharakter nutzbar.",
+    trainNote:"Runners Gear Guide: 'Perfect balance between cushioning and responsiveness.' Für High-Mileage Trainingswochen ideal – komfortabel, aber nicht träge.",
+    badges:[],
+    value:4, valueVerdict:"~170€ für einen komfortablen High-Mileage-Trainer mit überraschendem Energierückgabegefühl. Gute Wahl für Nike-Fans im Alltagstraining.", valueBreakdown:[{label:"Preis",val:"~170 €"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"Komfort",val:"Sehr hoch"},{label:"Einsatz",val:"High-Mileage ideal"}],
+    specs:[{label:"Gewicht",value:"~300 g"},{label:"Preis",value:"~170 €"},{label:"Foam",value:"ZoomX + SR-02"},{label:"Drop",value:"10 mm"},{label:"Typ",value:"High-Mileage Trainer"},{label:"Stärke",value:"Komfort + Energie"}],
+    athletes:[{flag:"🌍",name:"Runners Gear Guide 2026",dist:"Daily Training",result:"Top Cushioned Trainer",note:"'Perfect balance between cushioning and responsiveness'"}],
+    desc:"Komfortabler Alltagstrainer mit überraschend lebendigem Gefühl. Runners Gear Guide: 'Perfect balance'. Für High-Mileage Trainingswochen die erste Wahl bei Nike."
+  },
+  "hyperion-max3":{
+    name:"Hyperion Max 3",brand:"Brooks",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Als Trainingsschuh für leichte Wettkämpfe und Halbmarathon-Trainings nutzbar. Kein echter Wettkampfschuh.",
+    trainNote:"Brooks' Kunststück: maximale Dämpfung mit reaktivem DNA Flash Foam. Ideal für Long Runs und High-Mileage-Wochen.",
+    badges:[],
+    value:4, valueVerdict:"~175€ für Max-Cushion mit lebendigem Charakter. DNA Flash macht den Unterschied zu herkömmlichen Max-Cushion-Schuhen. Faire Bewertung.", valueBreakdown:[{label:"Preis",val:"~175 €"},{label:"Foam",val:"DNA Flash (reaktiv)"},{label:"Stärke",val:"Max Cushion + Reaktiv"},{label:"Einsatz",val:"Long Runs + HM Training"}],
+    specs:[{label:"Gewicht",value:"~270 g"},{label:"Preis",value:"~175 €"},{label:"Foam",value:"DNA Flash"},{label:"Stack",value:"Maximal"},{label:"Typ",value:"Max Cushion + Responsive"},{label:"Stärke",value:"Long Runs"}],
+    athletes:[{flag:"🌍",name:"Runners Gear Guide 2026",dist:"Training + Marathon",result:"Top-Tier Option 2026",note:"'Blend maximal cushioning with responsive performance'"}],
+    desc:"Brooks' Kunststück: maximale Dämpfung, die sich lebendig anfühlt. DNA Flash ist reaktiver als herkömmliche Max-Cushion-Schäume. Für High-Mileage Training und lange Läufe gut geeignet."
+  },
+  
+  "evo3-w":{
+    name:"Adizero Adios Pro Evo 3 (Damen)",brand:"Adidas",tier:"SS",tierColor:"#8b1a1a",
+    use:{race:true,train:false},
+    raceNote:"Dasselbe revolutionäre System wie beim Herren-Evo3. Tigst Assefa lief in London 2026 den Damen-Weltrekord von 2:15:41.",
+    trainNote:"Absolut nicht für Training geeignet. Haltbarkeit ~1 Marathon, Preis ~500€ limitiert.",
+    badges:[{text:"WR Damen 2:15:41",cls:"badge-record"},{text:"Limitiert",cls:"badge-limited"}],
+    value:1, valueVerdict:"~500€ limitiert für 1–2 Marathons. Nur sinnvoll mit Sponsoring oder als Sammlerstück.", valueBreakdown:[{label:"Preis",val:"~500 € limitiert"},{label:"Haltbarkeit",val:"1–2 Marathons"},{label:"WR",val:"Damen 2:15:41"},{label:"Für Amateure",val:"Nicht empfohlen"}],
+    specs:[{label:"Gewicht",value:"~120 g"},{label:"Preis",value:"~500 € limitiert"},{label:"Foam",value:"Lightstrike Pro Evo"},{label:"System",value:"Energy Rods Evo"},{label:"Haltbarkeit",value:"~1–2 Marathons"},{label:"Verfügbarkeit",value:"Sehr begrenzt"}],
+    athletes:[{flag:"🇪🇹",name:"Tigst Assefa",dist:"Marathon",result:"2:15:41 WR",note:"Damen-Weltrekord London 2026"},{flag:"🇰🇪",name:"Peres Jepchirchir",dist:"Marathon",result:"2:16:54",note:"2. Platz London 2026, Olympiasiegerin"}],
+    desc:"Dasselbe Wunderwerk wie der Herren-Evo3 – aber in der Damenvariante. Tigst Assefa zertrümmerte in London 2026 den Damen-Weltrekord mit 2:15:41. Limitiert und fast nur mit Sponsoring erhältlich."
+  },
+  "deviate-elite4":{
+    name:"Deviate Nitro Elite 4",brand:"Puma",tier:"S",tierColor:"#c0392b",
+    use:{race:true,train:false},
+    raceNote:"Neueste Generation des effizientesten Puma-Racers. ULTRAWEAVE-Obermaterial, 173g – verbesserter Nachfolger des Elite 3.",
+    trainNote:"Nicht empfohlen. Zu teuer und zu empfindlich für reguläres Training.",
+    badges:[{text:"NEU 2026",cls:"badge-new"}],
+    value:3, valueVerdict:"~300€ für echte S-Tier-Performance. Leichter und reaktiver als der Elite 3. Outsole wie beim Elite 3 auf ~130km begrenzt.", valueBreakdown:[{label:"Preis",val:"~300 €"},{label:"Gewicht",val:"173 g"},{label:"Obermaterial",val:"ULTRAWEAVE"},{label:"Outsole",val:"~130 km ⚠️"}],
+    specs:[{label:"Gewicht",value:"173 g"},{label:"Preis",value:"~300 €"},{label:"Foam",value:"Nitro Elite Evo"},{label:"Platte",value:"Carbon PWRPLATE"},{label:"Obermaterial",value:"ULTRAWEAVE"},{label:"Drop",value:"6 mm"}],
+    athletes:[{flag:"🌍",name:"Elite Puma-Athleten",dist:"Marathon",result:"Weltklasserennen 2026",note:"Debüt auf Major-Wettkämpfen Q1–Q2 2026"}],
+    desc:"Pumas nächste Evolutionsstufe nach dem Elite 3. ULTRAWEAVE-Mesh, verbesserte PWRPLATE-Carbon-Geometrie, 173g. Für Vorfußläufer auf kürzeren Distanzen weiterhin eine der effizientesten Optionen auf dem Markt."
+  },
+  "hyperwarp-pure":{
+    name:"Wave Rebellion Pro 3",brand:"Mizuno",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Mizunos direktester und schnellster Wettkampfracer. Keine konventionelle Mittelsohle – stattdessen Mizunos CMEVA-Schaum mit einzigartiger Forward-Propulsion-Geometrie.",
+    trainNote:"Sehr steif und direkt – für erfahrene Läufer als Tempoeinheit nutzbar, aber nicht ideal für lange lockere Läufe.",
+    badges:[{text:"2025",cls:"badge-new"},{text:"Mizuno-Flaggschiff",cls:"badge-new"}],
+    value:3, valueVerdict:"~250€ für Weltklasse-Propulsion. Einzigartiges Gefühl – nicht für jeden Läufer, aber wer es mag, liebt es.", valueBreakdown:[{label:"Preis",val:"~250 €"},{label:"System",val:"Unique Wave Plate"},{label:"Propulsion",val:"Sehr direkt"},{label:"Zielgruppe",val:"Erfahrene Läufer"}],
+    specs:[{label:"Gewicht",value:"~185 g"},{label:"Preis",value:"~250 €"},{label:"Foam",value:"CMEVA + Enerzy"},{label:"Platte",value:"Wave Carbon Propulsion"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"5K–Marathon"}],
+    athletes:[{flag:"🇯🇵",name:"Japanische Nationalläufer",dist:"Marathon",result:"Bestleistungen 2025",note:"Sehr beliebt im japanischen Elite-Kader"},{flag:"🌍",name:"Run Testers Review",dist:"Marathon",result:"'Best Mizuno ever'",note:"Hochgelobt für direktes, schnelles Gefühl"}],
+    desc:"Mizunos schnellstes je gebautes Modell. Die Wave-Plate-Technologie erzeugt einzigartigen Propulsionseffekt. Direkt, schnell, keine Kompromisse. Besonders im japanischen Elite-Laufsport sehr beliebt."
+  },
+  "velociti-elite3":{
+    name:"Velociti Elite 3",brand:"Under Armour",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"UA's bisher bester Wettkampfschuh. FLOW SYNCHRONICITY-Mittelsohle mit Carbon-Platte – überraschend konkurrenzfähig in A-Tier.",
+    trainNote:"Nicht ideal für Training. Für Wettkämpfe reservieren.",
+    badges:[{text:"NEU 2026",cls:"badge-new"}],
+    value:3, valueVerdict:"~280€ für ehrliche A-Tier-Performance. Unterschätzter Außenseiter – UA hat sich deutlich verbessert.", valueBreakdown:[{label:"Preis",val:"~280 €"},{label:"Tier",val:"A – unterschätzt"},{label:"System",val:"FLOW Carbon"},{label:"Brand",val:"Underdog 2026"}],
+    specs:[{label:"Gewicht",value:"~185 g"},{label:"Preis",value:"~280 €"},{label:"Foam",value:"FLOW SYNCHRONICITY"},{label:"Platte",value:"Carbon"},{label:"Drop",value:"8 mm"},{label:"Release",value:"2026"}],
+    athletes:[{flag:"🌍",name:"UA-Athleten 2026",dist:"Marathon + HM",result:"Mehrere PR-Läufe",note:"Under Armour investiert stark in Elite-Laufsport"}],
+    desc:"Under Armour meldet sich ernsthaft im Superschuh-Markt zurück. Der Velociti Elite 3 überrascht mit ehrlicher A-Tier-Performance zu fairem Preis. Für alle, die nicht den üblichen Verdächtigen vertrauen."
+  },
+  "cielo3":{
+    name:"Cielo X1 3.0",brand:"Hoka",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Hokas konkurrenzfähigster Wettkampfracer. PEBA-Schaum + Carbon-Platte, überarbeitet für 2026 mit besserem Fit und mehr Reaktivität.",
+    trainNote:"Nicht empfohlen für Training.",
+    badges:[{text:"NEU 2026",cls:"badge-new"}],
+    value:4, valueVerdict:"~260€ für A-Tier-Wettkampfperformance. Besseres Preis-Leistungs-Verhältnis als Alphafly/Evo, wenn du den Hoka-Stack magst.", valueBreakdown:[{label:"Preis",val:"~260 €"},{label:"Tier",val:"A"},{label:"Stack",val:"Sehr hoch"},{label:"Komfort",val:"Exzellent"}],
+    specs:[{label:"Gewicht",value:"~195 g"},{label:"Preis",value:"~260 €"},{label:"Foam",value:"PEBA Supercritical"},{label:"Platte",value:"Carbon"},{label:"Stack",value:"Sehr hoch"},{label:"Drop",value:"5 mm"}],
+    athletes:[{flag:"🇫🇷",name:"Yann Schrub",dist:"Marathon",result:"2:04:38",note:"Französischer Rekord Paris 2026 im Hoka-Prototype"},{flag:"🌍",name:"Hoka Elite Team",dist:"Marathon",result:"Multiple WMM-Rennen",note:"Hoka dominiert mit Cielo-Linie die A-Tier-Wettkämpfe"}],
+    desc:"Hoka hat mit dem Cielo X1 eine echte Wettkampfoption entwickelt. Version 3.0 überarbeitet Fit und Reaktivität – für Läufer die hohen Stack mögen und trotzdem schnell sein wollen."
+  },
+  "sc-elite-v4":{
+    name:"FuelCell SC Elite v4",brand:"New Balance",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"New Balances schnellster Wettkampfracer. FuelCell-PEBA-Schaum mit doppelter Carbon-Platte – Weltklasse-Performance auf allen Distanzen.",
+    trainNote:"Für Schlüsseleinheiten nutzbar dank guter Outsole, aber besser für Wettkämpfe aufsparen.",
+    badges:[{text:"Doppel-Carbon",cls:"badge-new"}],
+    value:3, valueVerdict:"~280€ für zwei Carbon-Platten und echte A-Tier-Performance. Etwas teurer aber die Doppelplatten-Technologie ist einzigartig.", valueBreakdown:[{label:"Preis",val:"~280 €"},{label:"Platten",val:"2× Carbon"},{label:"Foam",val:"FuelCell PEBA"},{label:"Stärke",val:"5K–Marathon"}],
+    specs:[{label:"Gewicht",value:"~188 g"},{label:"Preis",value:"~280 €"},{label:"Foam",value:"FuelCell PEBA"},{label:"Platte",value:"2× Carbon"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"5K–Marathon"}],
+    athletes:[{flag:"🇪🇹",name:"Dawit Seyaum",dist:"Halbmarathon",result:"1:05:42",note:"NB-Athletin, mehrere Top-Ergebnisse 2025"},{flag:"🇺🇸",name:"Molly Seidel",dist:"Marathon",result:"2:24:42",note:"Olympiabronze, NB-Athletin"}],
+    desc:"New Balances Antwort auf Alphafly und Evo. Die doppelte Carbon-Platte erzeugt einzigartigen Propulsionseffekt. FuelCell PEBA-Schaum auf höchstem Niveau. Unterschätzter Underdog in der A-Tier-Kategorie."
+  },
+  "hyperion-elite4":{
+    name:"Hyperion Elite 4",brand:"Brooks",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:false},
+    raceNote:"Brooks schnellstes und bestes Wettkampfmodell. DNA ZERO-Schaum mit Carbon-Platte – für Brooks-Loyalisten ein Pflicht-Kauf.",
+    trainNote:"Für schnelle Tempoeinheiten nutzbar, aber als Wettkampfschuh aufsparen.",
+    badges:[{text:"2025",cls:"badge-new"},{text:"Brooks-Flaggschiff",cls:"badge-new"}],
+    value:3, valueVerdict:"~280€ für Brooks-Flaggschiff. Nicht ganz auf Nike/Adidas-Niveau, aber bester Brooks-Racer je gebaut.", valueBreakdown:[{label:"Preis",val:"~280 €"},{label:"Schaum",val:"DNA ZERO"},{label:"Platte",val:"Carbon"},{label:"Bewertung",val:"Bester Brooks je"}],
+    specs:[{label:"Gewicht",value:"~181 g"},{label:"Preis",value:"~280 €"},{label:"Foam",value:"DNA ZERO"},{label:"Platte",value:"Carbon FlyPlate"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"5K–Marathon"}],
+    athletes:[{flag:"🇺🇸",name:"Desiree Linden",dist:"Marathon",result:"2:22:38",note:"Boston-Siegerin, Brooks-Athletin über viele Jahre"},{flag:"🇺🇸",name:"Keira D'Amato",dist:"Marathon",result:"2:19:12",note:"Amerikanischer Rekord-Anwärterin, Brooks-Athletin"}],
+    desc:"Brooks baut seit Jahren solide Wettkampfschuhe – der Hyperion Elite 4 ist ihr bisher bestes. DNA ZERO-Schaum und Carbon-Platte bringen echte A-Tier-Performance. Für Brooks-Fans ein absoluter Must-Have."
+  },
+  "adizero-sl2":{
+    name:"Adizero Evo SL",brand:"Adidas",tier:"A",tierColor:"#c8991a",
+    use:{race:true,train:true},
+    raceNote:"Carbon-freier Allrounder der schnellste tägliche Trainingsbegleiter mit Renntauglichkeit. Ideal für 5K bis Halbmarathon.",
+    trainNote:"Perfekter Daily Trainer mit Superschuh-DNA. Lightstrike Pro ohne Carbon – federnd, reaktiv, langlebiger als Wettkampfmodelle.",
+    badges:[{text:"NEU",cls:"badge-new"},{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~160€ für einen täglichen Trainingsschuh mit Superschuh-Federung. Eines der besten Preis-Leistungs-Pakete 2025/26.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"Einsatz",val:"Train + Race"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"Foam",val:"Lightstrike Pro (kein Carbon)"}],
+    specs:[{label:"Gewicht",value:"~225 g"},{label:"Preis",value:"~160 €"},{label:"Foam",value:"Lightstrike Pro"},{label:"Platte",value:"Keine"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"Daily Trainer"}],
+    athletes:[{flag:"🌍",name:"RunRepeat 2025",dist:"Daily Training",result:"Top Daily Trainer 2025",note:"Meistempfohlener Adidas-Trainingsschuh der Redaktion"}],
+    desc:"Adidas bringt Lightstrike Pro-Technologie ohne Carbon in einen erschwinglichen Daily Trainer. Federnd, reaktiv, deutlich langlebiger als die Wettkampfmodelle. Perfekter Partner für alle Trainingseinheiten."
+  },
+  "endorphin-pro5":{
+    name:"Endorphin Pro 4",brand:"Saucony",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:false},
+    raceNote:"Sauconys direktes Wettkampfmodell unter dem Elite. PWRRUN PB-Schaum mit Carbon-Platte – sehr gute Performance für den Preis.",
+    trainNote:"Für Tempoläufe nutzbar, aber besser für Wettkämpfe reservieren.",
+    badges:[{text:"2025",cls:"badge-new"}],
+    value:4, valueVerdict:"~220€ für B-Tier-Wettkampfperformance ist sehr fair. Bestes Preis-Leistungs-Verhältnis bei Carbon-Racern unterhalb der A-Tier-Preisklasse.", valueBreakdown:[{label:"Preis",val:"~220 €"},{label:"Tier",val:"B – top für den Preis"},{label:"Foam",val:"PWRRUN PB"},{label:"Platte",val:"Carbon"}],
+    specs:[{label:"Gewicht",value:"~202 g"},{label:"Preis",value:"~220 €"},{label:"Foam",value:"PWRRUN PB"},{label:"Platte",value:"Carbon Speed Roll"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"HM–Marathon"}],
+    athletes:[{flag:"🇺🇸",name:"Molly Huddle",dist:"Halbmarathon",result:"Saucony-Athletin",note:"Empfiehlt Pro 4 als besten Wettkampfschuh unter A-Tier-Preis"},{flag:"🌍",name:"Saucony-Elite",dist:"Marathon",result:"Multiple Podien 2025",note:"Bewährt auf allen Wettbewerbs-Distanzen"}],
+    desc:"Der Endorphin Pro 4 ist Sauconys meistempfohlener Allround-Racer. PWRRUN PB + Carbon zu ~220€ – unter A-Tier-Preis, aber solide B-Tier-Performance. Perfekt für Läufer, die keinen Elite-Preis zahlen möchten."
+  },
+  "mach-x3":{
+    name:"Mach X 2",brand:"Hoka",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:true},
+    raceNote:"Hokas vielseitigster Racer. Geschäumte Platte statt Carbon – weiches, federndes Gefühl mit echter Propulsion. Ideal für HM und leichtere Marathons.",
+    trainNote:"Einer der besten 'Carbon-Trainer' des Markts. Lang haltbar, komfortabel, trotzdem schnell.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:4, valueVerdict:"~220€ für einen Schuh der wirklich beides kann – Training und Wettkampf. Sehr langlebig für einen Superschuh-ähnlichen Racer.", valueBreakdown:[{label:"Preis",val:"~220 €"},{label:"Einsatz",val:"Train + Race"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"Platte",val:"Geschäumt (kein Carbon)"}],
+    specs:[{label:"Gewicht",value:"~226 g"},{label:"Preis",value:"~220 €"},{label:"Foam",value:"PEBA + EVA Hybrid"},{label:"Platte",value:"Foam Plate"},{label:"Drop",value:"5 mm"},{label:"Stärke",value:"Training + HM"}],
+    athletes:[{flag:"🌍",name:"The Run Testers",dist:"HM + Training",result:"Empfohlen 2025",note:"'Bester Hoka für Training und leichte Wettkämpfe'"},{flag:"🌍",name:"Doctors of Running",dist:"Training",result:"Top Training Racer",note:"Empfohlen als 'Carbon Trainer' Alternative"}],
+    desc:"Hoka Mach X 2 vereint Training und Wettkampf besser als fast jeder andere Schuh. Die geschäumte Platte gibt Propulsion ohne Carbon-Starrheit. Einer der langlebigsten Schuhe in dieser Kategorie – und dabei immer noch schnell."
+  },
+  "cloudboom-strike":{
+    name:"Cloudboom Strike",brand:"On Running",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:false},
+    raceNote:"Ons bisher konkurrenzfähigster Retail-Racer. CloudTec Phase-System mit Carbon-Platte – erster On-Schuh der wirklich in der B-Tier-Liga mitspielt.",
+    trainNote:"Nicht ideal. Die CloudTec-Pods verschleißen im Training schneller.",
+    badges:[{text:"2025",cls:"badge-new"}],
+    value:3, valueVerdict:"~280€ für B-Tier ist fair. On hat mit dem Strike endlich einen ernsthaften Wettkampfschuh – aber noch nicht auf A-Tier-Niveau.", valueBreakdown:[{label:"Preis",val:"~280 €"},{label:"System",val:"CloudTec Phase + Carbon"},{label:"Tier",val:"B"},{label:"Improvement",val:"Bester On-Racer je"}],
+    specs:[{label:"Gewicht",value:"~192 g"},{label:"Preis",value:"~280 €"},{label:"Foam",value:"Helion + CloudTec"},{label:"Platte",value:"Carbon Speedboard"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"HM–Marathon"}],
+    athletes:[{flag:"🇰🇪",name:"Hellen Obiri",dist:"Marathon",result:"2:15:53",note:"London 2026 – On LightSpray Prototype, nicht Retail"},{flag:"🌍",name:"On Running Elite",dist:"HM + Marathon",result:"B-Tier-Ergebnisse 2025",note:"Cloudboom Strike debütiert in Major-Wettkämpfen"}],
+    desc:"On Running nimmt den Wettkampfmarkt ernst. Der Cloudboom Strike ist ihr bisher bester Retail-Racer. CloudTec Phase + Carbon erzeugt echte Propulsion – ein großer Schritt nach vorne für die Marke."
+  },
+  "endorphin-azura":{
+    name:"Endorphin Azura",brand:"Saucony",tier:"B",tierColor:"#2e7d52",
+    use:{race:false,train:true},
+    raceNote:"Für leichtere Rennen nutzbar, aber primär als Premium-Trainingsschuh konzipiert.",
+    trainNote:"Sauconys neues Premium-Daily-Training-Modell. PWRRUN PB ohne Carbon – das weichste und federndste Saucony-Trainingsmodell.",
+    badges:[{text:"NEU",cls:"badge-new"},{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~160€ für PWRRUN PB-Schaum ohne Carbon ist exzellenter Wert. Einer der komfortabelsten Daily Trainer 2025/26.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"Foam",val:"PWRRUN PB"},{label:"Einsatz",val:"Daily Training"},{label:"Komfort",val:"Top-Klasse"}],
+    specs:[{label:"Gewicht",value:"~240 g"},{label:"Preis",value:"~160 €"},{label:"Foam",value:"PWRRUN PB"},{label:"Platte",value:"Keine"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"Long Runs + Easy Days"}],
+    athletes:[{flag:"🌍",name:"Saucony-Tester",dist:"Daily Training",result:"Top Daily Trainer 2025",note:"Meistgelobter neuer Saucony-Trainingsschuh"}],
+    desc:"Saucony bringt den PWRRUN PB-Schaum aus dem Elite in einen erschwinglichen Daily Trainer. Das Ergebnis ist der komfortabelste Saucony je gebaut. Für alle Trainingsläufe – von Easy bis Tempo – die ideale Wahl."
+  },
+  "boston12":{
+    name:"Adizero Boston 12",brand:"Adidas",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:true},
+    raceNote:"Adidas vielseitigster Racer. Carbon-freies Lightstrike Pro für HM und 10K-Wettkämpfe – günstiger und haltbarer als die Pro-Modelle.",
+    trainNote:"Exzellenter Carbon-Trainer. Leicht, federnd, langlebig. Einer der besten Preis-Leistungs-Trainingsschuhe von Adidas.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~180€ für Lightstrike Pro und echte Race-Tauglichkeit. Einer der besten Allround-Werte im gesamten Superschuh-Segment.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Foam",val:"Lightstrike Pro"},{label:"Einsatz",val:"Train + Race"},{label:"Haltbarkeit",val:"Sehr gut"}],
+    specs:[{label:"Gewicht",value:"~210 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"Lightstrike Pro"},{label:"Platte",value:"Keine"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"5K–HM + Training"}],
+    athletes:[{flag:"🌍",name:"Adidas-Community",dist:"5K–HM",result:"Meistverkaufter Adidas Racer",note:"Empfohlen von RunRepeat als bestes Allround-Preis-Leistungs-Paket"}],
+    desc:"Der Boston 12 ist Adidas' meistgelobter Schuh für den Alltag und leichtere Wettkämpfe. Lightstrike Pro ohne Carbon – federnd, reaktiv, deutlich günstiger und langlebiger als die Pro-Modelle. Einer der besten Allrounder überhaupt."
+  },
+  "sc-trainer3":{
+    name:"FuelCell SC Trainer v3",brand:"New Balance",tier:"B",tierColor:"#2e7d52",
+    use:{race:false,train:true},
+    raceNote:"Für leichte Rennen nutzbar, aber primär als Trainingsschuh konzipiert.",
+    trainNote:"New Balances bester Carbon-Trainer. FuelCell-Schaum in langlebiger Trainer-Konstruktion – schnelle Einheiten ohne Wettkampfschuh zu opfern.",
+    badges:[],
+    value:4, valueVerdict:"~200€ für Premium-Carbon-Trainer mit sehr guter Haltbarkeit. Ideal für Läufer die Wettkampfschuhe für den Wettkampf aufsparen.", valueBreakdown:[{label:"Preis",val:"~200 €"},{label:"Einsatz",val:"Training"},{label:"Haltbarkeit",val:"Sehr gut"},{label:"System",val:"FuelCell + TPU-Platte"}],
+    specs:[{label:"Gewicht",value:"~235 g"},{label:"Preis",value:"~200 €"},{label:"Foam",value:"FuelCell PEBA"},{label:"Platte",value:"TPU Guidance"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"Tempo-Training"}],
+    athletes:[{flag:"🌍",name:"NB Elite Trainingsprogramme",dist:"Tempo Training",result:"Eingesetzt im Vorbereitung",note:"Standard-Trainingsschuh im NB-Elite-Kader"}],
+    desc:"New Balances Antwort auf den Puma Deviate Trainer – FuelCell-Schaum in einer langlebigen Trainer-Konstruktion. Ideal für alle schnellen Trainingseinheiten, während der SC Elite v4 für Wettkämpfe aufgespart wird."
+  },
+  "megablast":{
+    name:"Gel-Cumulus Infinity",brand:"Asics",tier:"B",tierColor:"#2e7d52",
+    use:{race:false,train:true},
+    raceNote:"Nicht als Wettkampfschuh gedacht, aber für lockere Rennen bis HM nutzbar.",
+    trainNote:"Asics neues Premium-Trainingsmodell. FF Blast MAX+-Schaum – das weichste und federndste Asics-Trainingsmodell neben dem Novablast.",
+    badges:[{text:"NEU",cls:"badge-new"},{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~180€ für FF Blast MAX+ und maximalen Komfort. Einer der günstigsten Premium-Trainingsschuhe 2025/26.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Foam",val:"FF Blast MAX+"},{label:"Einsatz",val:"Daily Training"},{label:"Komfort",val:"Sehr hoch"}],
+    specs:[{label:"Gewicht",value:"~290 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"FF Blast MAX+"},{label:"Platte",value:"Keine"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Easy + Long Runs"}],
+    athletes:[{flag:"🌍",name:"ASICS Testläufer",dist:"Daily Training",result:"Bestseller 2025",note:"Meistgekaufte Asics-Trainingsschuhe der Saison"}],
+    desc:"Asics bringt maximale Polsterung in einen erschwinglichen Daily Trainer. FF Blast MAX+ sorgt für weiches, federndes Laufgefühl – perfekt für lange Easy Runs und Regenerationsläufe."
+  },
+  "pw-elite":{
+    name:"FuelCell SuperComp Elite v4",brand:"New Balance",tier:"B",tierColor:"#2e7d52",
+    use:{race:true,train:false},
+    raceNote:"NB's Top-Wettkampfracer für 5K bis Marathon. Doppellagige Carbon-Konstruktion – legitimer Konkurrent für A-Tier.",
+    trainNote:"Nicht empfohlen. Als Wettkampfschuh aufsparen.",
+    badges:[],
+    value:3, valueVerdict:"~280€ ist fair für einen Schuh der an der A-Tier-Grenze rangiert. Doppel-Carbon macht ihn einzigartig.", valueBreakdown:[{label:"Preis",val:"~280 €"},{label:"Platten",val:"2× Carbon"},{label:"Foam",val:"FuelCell PEBA"},{label:"Position",val:"B/A-Grenze"}],
+    specs:[{label:"Gewicht",value:"~185 g"},{label:"Preis",value:"~280 €"},{label:"Foam",value:"FuelCell PEBA"},{label:"Platte",value:"2× Carbon"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"5K–Marathon"}],
+    athletes:[{flag:"🇳🇱",name:"Abdi Nageeye",dist:"Marathon",result:"2:03:36",note:"Amsterdam 2022, NB-Athlet"},{flag:"🌍",name:"NB Elite",dist:"Marathon",result:"Multiple Top-10 WMM",note:"Solide Wettkampfergebnisse 2024/25"}],
+    desc:"New Balances FuelCell SuperComp Elite v4 ist technisch beeindruckend – doppelte Carbon-Platte ist einzigartig auf dem Markt. Rangiert an der B/A-Tier-Grenze. Für NB-Fans ein überzeugender Wettkampfschuh."
+  },
+  "mach7":{
+    name:"Mach 6",brand:"Hoka",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Für leichte Rennen bis 10K nutzbar, aber primär Daily Trainer.",
+    trainNote:"Hokas meistgelobter Daily Trainer. Leicht, reaktiv, schnell. Deutlich sportlicher als Clifton oder Bondi – für alle mittleren Trainingsintensitäten ideal.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~160€ für einen der besten Daily Trainer des Markts. Reaktiver als Bondi, leichter als Clifton – das perfekte Mittelstück.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"Einsatz",val:"Daily Training"},{label:"Feeling",val:"Reaktiv + leicht"},{label:"Vergleich",val:"Besser als Bondi/Clifton"}],
+    specs:[{label:"Gewicht",value:"~225 g"},{label:"Preis",value:"~160 €"},{label:"Foam",value:"CMEVA"},{label:"Platte",value:"Keine"},{label:"Drop",value:"5 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"Hoka Everyday Runners",dist:"Daily Training",result:"Meistverkaufter Hoka 2025",note:"Bestseller bei allen Leistungsniveaus"}],
+    desc:"Hoka Mach 6 ist der vielseitigste Hoka für den Alltag. Reaktiver als Bondi und Clifton, leichter als Mach X – der ideale Schuh für 80% aller Trainingsläufe. Zu ~160€ ein ausgezeichnetes Preis-Leistungs-Verhältnis."
+  },
+  "nb1080v15":{
+    name:"1080 v14",brand:"New Balance",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Für sehr lockere Rennen nutzbar, aber zu weich und schwer für echte Wettkämpfe.",
+    trainNote:"New Balances Premium-Langstreckentrainer. Fresh Foam X 1080 – ultra-weich, ultra-komfortabel, ideal für lange Easy Runs und Regeneration.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~165€ für das weichste und komfortabelste NB-Trainingsmodell. Exzellenter Wert für Long-Run-Spezialisten.", valueBreakdown:[{label:"Preis",val:"~165 €"},{label:"Foam",val:"Fresh Foam X"},{label:"Einsatz",val:"Long Runs + Easy"},{label:"Komfort",val:"Bester NB-Trainer"}],
+    specs:[{label:"Gewicht",value:"~295 g"},{label:"Preis",value:"~165 €"},{label:"Foam",value:"Fresh Foam X"},{label:"Platte",value:"Keine"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"Easy + Long Run"}],
+    athletes:[{flag:"🌍",name:"NB Athletes",dist:"Long Run Training",result:"Standard-Trainingsschuh",note:"Eingesetzt als Easy-Day-Schuh im Elite-Training"}],
+    desc:"Der 1080 v14 ist New Balances bester Easy-Day-Begleiter. Fresh Foam X liefert ultra-weiche Polsterung für lange Läufe. Nicht schnell, aber unglaublich komfortabel – perfekt für Regenerationsläufe und lange Einheiten."
+  },
+  "vomero-plus":{
+    name:"Vomero Plus",brand:"Nike",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Nicht für Wettkämpfe geeignet – zu weich und zu schwer.",
+    trainNote:"Nikes neues maximales Polsterungs-Trainingsmodell. ZoomX-Schaum in maximaler Menge – noch weicher als der reguläre Vomero 18.",
+    badges:[{text:"NEU 2026",cls:"badge-new"}],
+    value:4, valueVerdict:"~180€ für maximale ZoomX-Polsterung – teurer als Bondi aber ZoomX ist reaktiver als Hokas EVA. Guter Deal für Nike-Fans.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Foam",val:"ZoomX (viel!)"},{label:"Einsatz",val:"Easy + Long Run"},{label:"Vergleich",val:"Reaktiver als Bondi"}],
+    specs:[{label:"Gewicht",value:"~315 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"ZoomX"},{label:"Platte",value:"Keine"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"Easy + Long Run"}],
+    athletes:[{flag:"🌍",name:"Nike Athletes",dist:"Easy Training",result:"Nike Long-Run Standard",note:"Neues Nike-Modell für Recovery Runs und lange Einheiten"}],
+    desc:"Nike bringt ZoomX-Schaum in maximaler Menge in einen erschwinglichen Daily Trainer. Der Vomero Plus ist deutlich weicher als der Vomero 18 – Nike's Antwort auf Bondi und Nimbus."
+  },
+  "glycerin23":{
+    name:"Glycerin 22",brand:"Brooks",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Zu weich und schwer für ernsthafte Wettkämpfe.",
+    trainNote:"Brooks Premium-Trainingsmodell. DNA LOFT v3-Schaum bietet maximale Polsterung und Komfort für lange Trainingsläufe.",
+    badges:[],
+    value:4, valueVerdict:"~180€ für Brooks bestes Trainingsmodell. Komfortabel, langlebig, gut für alle Easy und Long Runs.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Foam",val:"DNA LOFT v3"},{label:"Einsatz",val:"Easy + Long Run"},{label:"Haltbarkeit",val:"Sehr gut"}],
+    specs:[{label:"Gewicht",value:"~285 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"DNA LOFT v3"},{label:"Platte",value:"Keine"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Easy + Long Run"}],
+    athletes:[{flag:"🌍",name:"Brooks Community",dist:"Daily Training",result:"Meistverkaufter Brooks",note:"Langjahriger Bestseller für komfortables Training"}],
+    desc:"Der Glycerin ist Brooks' Flaggschiff für den Alltag. DNA LOFT v3-Schaum liefert üppige Polsterung ohne Schwerfälligkeit. Ideal für alle Long Runs und Easy Days – bewährt und verlässlich."
+  },
+  "kayano32":{
+    name:"Gel-Kayano 32",brand:"Asics",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Stability-Schuh – nicht für Wettkämpfe gedacht.",
+    trainNote:"Asics Premium-Stability-Modell. PureGEL-Technologie + FF Blast PLUS – perfekt für Überpronatierer die Komfort und Stabilität brauchen.",
+    badges:[],
+    value:3, valueVerdict:"~210€ für einen Stability-Schuh ist am oberen Ende, aber für Überpronatierer eine der besten Optionen. Spezialfall – Preis-Leistung nur für Zielgruppe relevant.", valueBreakdown:[{label:"Preis",val:"~210 €"},{label:"System",val:"PureGEL + Stability"},{label:"Zielgruppe",val:"Überpronatierer"},{label:"Komfort",val:"Exzellent"}],
+    specs:[{label:"Gewicht",value:"~310 g"},{label:"Preis",value:"~210 €"},{label:"Foam",value:"FF BLAST PLUS"},{label:"Gel",value:"PureGEL"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Stability + Komfort"}],
+    athletes:[{flag:"🌍",name:"Stability-Läufer",dist:"Daily Training",result:"Meistempfohlen von Orthopäden",note:"Jahrelanger Bestseller für Stabilitätsläufer"}],
+    desc:"Der Kayano ist der König der Stability-Schuhe. PureGEL-Technologie und FF Blast PLUS bieten maximalen Komfort und Kontrolle für Überpronatierer. Keine Kompromisse bei Stabilität oder Komfort."
+  },
+  "nimbus28":{
+    name:"Gel-Nimbus 27",brand:"Asics",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Zu schwer und weich für Wettkämpfe.",
+    trainNote:"Asics bestes neutrales Trainingsmodell. FF BLAST PLUS ECO + GEL-Technologie – maximale Polsterung für lange Trainingsläufe.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:4, valueVerdict:"~180€ für Asics' Premium-Trainer. Leichter als Kayano, ähnlich komfortabel – sehr gutes Preis-Leistungs-Paket für neutrales Training.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Foam",val:"FF BLAST PLUS ECO"},{label:"Einsatz",val:"Long Run + Easy"},{label:"Gewicht",val:"Leichter als Kayano"}],
+    specs:[{label:"Gewicht",value:"~295 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"FF BLAST PLUS ECO"},{label:"Gel",value:"Rearfoot GEL"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Long Runs"}],
+    athletes:[{flag:"🌍",name:"ASICS Community",dist:"Long Run Training",result:"Top-Rated Trainer",note:"Konsistent meistbewertet bei Hobby-Marathonläufern"}],
+    desc:"Der Nimbus ist Asics' neutraler Premium-Trainer für lange Distanzen. Leichter als der Kayano, ähnlich komfortabel. GEL-Technologie + FF BLAST PLUS ECO machen ihn zu einem der zuverlässigsten Long-Run-Schuhe."
+  },
+  "deviate-nitro4":{
+    name:"Deviate Nitro 3",brand:"Puma",tier:"C",tierColor:"#2a5f8a",
+    use:{race:true,train:true},
+    raceNote:"Pumas erschwinglicher Wettkampfracer. NITRO Elite-Schaum mit Carbon-Platte zu deutlich günstigerem Preis als Elite-Modelle.",
+    trainNote:"Sehr guter 'Carbon-Trainer' – reaktiv, langlebig, für schnelle Tempoeinheiten ideal.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~180€ für Carbon-Platte + NITRO Elite-Schaum ist ausgezeichneter Wert. Bester Carbon-Racer unter 200€.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"Platte",val:"Carbon"},{label:"Foam",val:"NITRO Elite"},{label:"Einsatz",val:"Train + Race"}],
+    specs:[{label:"Gewicht",value:"~222 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"NITRO Elite"},{label:"Platte",value:"Carbon"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"Daily + Rennen"}],
+    athletes:[{flag:"🌍",name:"Running Community",dist:"5K–HM",result:"Top Budget-Racer 2025",note:"Meist empfohlen als günstigste Carbon-Racer-Option"}],
+    desc:"Pumas Deviate Nitro 3 ist das beste Carbon-Racer-Angebot unter 200€. NITRO Elite-Schaum und Carbon-Platte zu demokratischem Preis – ideal für alle die Carbon-Feeling wollen ohne Elite-Preise zu zahlen."
+  },
+  "cloudrunner3":{
+    name:"Cloudrunner 2",brand:"On Running",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Zu weich für ernsthafte Wettkämpfe – reiner Trainingsschuh.",
+    trainNote:"Ons vielseitigster und meistverkaufter Alltagsschuh. CloudTec-System bietet einzigartiges gedämpftes Laufgefühl.",
+    badges:[],
+    value:3, valueVerdict:"~160€ für On-Technologie im Alltag. Das typische On-Gefühl – etwas teurer als Konkurrenz aber einzigartig.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"System",val:"CloudTec"},{label:"Einsatz",val:"Daily Training"},{label:"Feeling",val:"Einzigartig"}],
+    specs:[{label:"Gewicht",value:"~265 g"},{label:"Preis",value:"~160 €"},{label:"Foam",value:"Helion"},{label:"System",value:"CloudTec"},{label:"Drop",value:"9 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"On Community",dist:"Daily Running",result:"Meistverkaufter On-Schuh",note:"Bestseller für alle Leistungsniveaus"}],
+    desc:"Der Cloudrunner 2 ist das Einsteiger-Tor in die On-Welt. CloudTec-System mit verbesserter Helion-Dämpfung. Ideal für alle täglichen Läufe von Easy bis moderat – das einzigartige On-Feeling zu fairem Preis."
+  },
+  "hyperboost-edge":{
+    name:"Adizero Ambition",brand:"Adidas",tier:"C",tierColor:"#2a5f8a",
+    use:{race:true,train:true},
+    raceNote:"Adidas' Speed-Trainer für Track und Tempoläufe. Leicht, reaktiv, Carbon-frei – ideal für 5K und 10K.",
+    trainNote:"Exzellenter Speed-Trainer für schnelle Einheiten. Leichter als Boston, reaktiver als SL.",
+    badges:[{text:"NEU",cls:"badge-new"}],
+    value:4, valueVerdict:"~150€ für einen reaktiven Speed-Trainer. Ideal für Track-Einheiten und kurze Tempoläufe zu fairem Preis.", valueBreakdown:[{label:"Preis",val:"~150 €"},{label:"Typ",val:"Speed Trainer"},{label:"Platte",val:"Keine Carbon"},{label:"Ideal für",val:"Track + Tempo"}],
+    specs:[{label:"Gewicht",value:"~195 g"},{label:"Preis",value:"~150 €"},{label:"Foam",value:"Lightstrike 2.0"},{label:"Platte",value:"Keine"},{label:"Drop",value:"8 mm"},{label:"Stärke",value:"Track + 5K–10K"}],
+    athletes:[{flag:"🌍",name:"Adidas Track Athletes",dist:"5K + Track",result:"Speed Training Standard",note:"Eingesetzt für Track-Einheiten im Adidas-Elite-Kader"}],
+    desc:"Adidas Ambition ist der neue Speed-Trainer für alle Track- und Tempo-Einheiten. Leichter als der Boston, reaktiver als die SL-Linie – perfekt für 5K-Rennen und schnelle Tempoläufe zu ~150€."
+  },
+  "wave-sky7":{
+    name:"Wave Sky 8",brand:"Mizuno",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Zu schwer und stabilisierend für Wettkämpfe.",
+    trainNote:"Mizunos Premium-Trainingsmodell für maximale Polsterung. ENERZY NXT-Schaum und WAVE-Technologie – komfortabel für lange Trainingsläufe.",
+    badges:[],
+    value:4, valueVerdict:"~170€ für Mizunos besten Daily Trainer. Einzigartiges WAVE-Gefühl zu gutem Preis.", valueBreakdown:[{label:"Preis",val:"~170 €"},{label:"System",val:"WAVE + ENERZY"},{label:"Einsatz",val:"Long Run + Easy"},{label:"Feeling",val:"Einzigartig"}],
+    specs:[{label:"Gewicht",value:"~290 g"},{label:"Preis",value:"~170 €"},{label:"Foam",value:"ENERZY NXT"},{label:"System",value:"WAVE Plate"},{label:"Drop",value:"12 mm"},{label:"Stärke",value:"Long Run + Easy"}],
+    athletes:[{flag:"🌍",name:"Mizuno Loyalisten",dist:"Daily Training",result:"Jahrzehnte bewährt",note:"Das bewährteste Mizuno-Trainingsmodell"}],
+    desc:"Wave Sky 8 – das komfortabelste Mizuno für lange Trainingsläufe. WAVE-Technologie + ENERZY NXT bieten einzigartiges federndes Gefühl. Für alle Mizuno-Fans und Läufer die das WAVE-System lieben."
+  },
+  "adrenaline22":{
+    name:"Adrenaline GTS 24",brand:"Brooks",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Stability-Schuh – nicht für Wettkämpfe.",
+    trainNote:"Brooks meistverkaufter Stability-Trainer. GuideRails-System + DNA LOFT-Schaum – idealer Alltagsschuh für Läufer die leichte Führung brauchen.",
+    badges:[],
+    value:4, valueVerdict:"~160€ für Brooks besten Stability-Alltagstrainer. GuideRails ist einzigartig und sehr effektiv.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"System",val:"GuideRails"},{label:"Einsatz",val:"Daily Stability"},{label:"Haltbarkeit",val:"Sehr gut"}],
+    specs:[{label:"Gewicht",value:"~295 g"},{label:"Preis",value:"~160 €"},{label:"Foam",value:"DNA LOFT"},{label:"System",value:"GuideRails"},{label:"Drop",value:"12 mm"},{label:"Stärke",value:"Stability Training"}],
+    athletes:[{flag:"🌍",name:"Brooks Community",dist:"Daily Training",result:"Meistverkaufter Stability-Schuh",note:"Jahrelanger Bestseller der Kategorie"}],
+    desc:"Das Adrenaline GTS 24 ist Brooks' meistverkaufter Schuh. Das GuideRails-System stabilisiert ohne einzuengen – einzigartiger Ansatz für Stability-Training. Ideal für alle Läufer die etwas Führung brauchen."
+  },
+  "cloudeclipse2":{
+    name:"Cloudmonster 2",brand:"On Running",tier:"C",tierColor:"#2a5f8a",
+    use:{race:false,train:true},
+    raceNote:"Zu weich und zu schwer für ernsthafte Wettkämpfe.",
+    trainNote:"Ons maximales Polsterungsmodell. Große CloudTec Phase-Pods und Helion Superfoam – das weichste On-Erlebnis.",
+    badges:[],
+    value:3, valueVerdict:"~180€ für maximale On-Polsterung. Einzigartiges Feeling aber teurer als vergleichbare Konkurrenz.", valueBreakdown:[{label:"Preis",val:"~180 €"},{label:"System",val:"CloudTec Phase XXL"},{label:"Einsatz",val:"Easy + Long Run"},{label:"Feeling",val:"Maximal weich"}],
+    specs:[{label:"Gewicht",value:"~310 g"},{label:"Preis",value:"~180 €"},{label:"Foam",value:"Helion Superfoam"},{label:"System",value:"CloudTec Phase"},{label:"Drop",value:"6 mm"},{label:"Stärke",value:"Easy + Long Run"}],
+    athletes:[{flag:"🌍",name:"On Community",dist:"Easy Running",result:"Top Long-Run On-Schuh",note:"Meistgelobtes On-Modell für Recovery Runs"}],
+    desc:"Cloudmonster 2 – Ons größte und weichste Polsterung. Riesige CloudTec Phase-Pods mit Helion Superfoam. Das ultimative On-Erlebnis für lange Easy Runs und Regenerationstage."
+  },
+  "glycerin-flex":{
+    name:"Glycerin Flex",brand:"Brooks",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Einsteigerschuh – nicht für Wettkämpfe geeignet.",
+    trainNote:"Brooks günstigstes Premium-Modell. DNA LOFT Lite-Schaum – leichter und flexibler als der reguläre Glycerin. Ideal für Einsteiger.",
+    badges:[],
+    value:4, valueVerdict:"~130€ für einen soliden Einsteiger-Trainingsschuh von Brooks. Gutes Preis-Leistungs-Paket für Anfänger.", valueBreakdown:[{label:"Preis",val:"~130 €"},{label:"Foam",val:"DNA LOFT Lite"},{label:"Zielgruppe",val:"Einsteiger"},{label:"Flex",val:"Sehr gut"}],
+    specs:[{label:"Gewicht",value:"~265 g"},{label:"Preis",value:"~130 €"},{label:"Foam",value:"DNA LOFT Lite"},{label:"Platte",value:"Keine"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"Einsteiger-Läufer",dist:"First Runs",result:"Top-Einstiegsempfehlung",note:"Meistempfohlen für Laufeinsteiger bei Brooks"}],
+    desc:"Der Glycerin Flex ist Brooks' Einsteiger-Option für den Alltag. Leichter und flexibler als der reguläre Glycerin, günstiger und zugänglicher. Perfekter erster Brooks für alle die gerade mit dem Laufen anfangen."
+  },
+  "pegasus41":{
+    name:"Pegasus 42",brand:"Nike",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Kann für sehr lockere 5K-Rennen genutzt werden, aber kein echter Wettkampfschuh.",
+    trainNote:"Nikes beliebtester Daily Trainer. React-Schaum + Air-Einheit – das zuverlässigste und vielseitigste Nike-Trainingsmodell.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~110€ für einen sehr soliden Nike-Daily-Trainer. Einer der günstigsten Pro-Marken-Schuhe mit echter Qualität.", valueBreakdown:[{label:"Preis",val:"~110 €"},{label:"Foam",val:"React + Air"},{label:"Einsatz",val:"Alltags-Training"},{label:"Haltbarkeit",val:"Sehr gut"}],
+    specs:[{label:"Gewicht",value:"~270 g"},{label:"Preis",value:"~110 €"},{label:"Foam",value:"React Foam + Air"},{label:"Platte",value:"Keine"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"Millionen Läufer weltweit",dist:"Daily Training",result:"Meistverkaufter Laufschuh",note:"Nikes meistverkaufter Trainingsschuh seit 40 Jahren"}],
+    desc:"Der Pegasus ist das Urgestein unter den Laufschuhen. Seit 40 Jahren verlässlich, vielseitig und erschwinglich. React-Schaum + Air-Einheit – das perfekte Einstiegsmodell für alle die Nike-Qualität wollen."
+  },
+  "supernova3":{
+    name:"Supernova Rise 2",brand:"Adidas",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Kein Wettkampfschuh – reiner Trainingsbegleiter.",
+    trainNote:"Adidas' günstigstes Trainingsmodell mit LEP-Schaum. Leicht, reaktiv, für alle täglichen Läufe geeignet.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~100€ für reaktiven Adidas-Alltagstrainer. Bestes Preis-Leistungs-Verhältnis im Adidas-Lineup.", valueBreakdown:[{label:"Preis",val:"~100 €"},{label:"Foam",val:"LEP"},{label:"Einsatz",val:"Daily Training"},{label:"Vergleich",val:"Günstigstes Adidas mit Qualität"}],
+    specs:[{label:"Gewicht",value:"~250 g"},{label:"Preis",value:"~100 €"},{label:"Foam",value:"LEP"},{label:"Platte",value:"Keine"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"Breite Laufcommunity",dist:"Daily Training",result:"Meistverkaufter Einstiegs-Adidas",note:"Empfohlen für alle Laufeinsteiger die günstigen Einstieg suchen"}],
+    desc:"Adidas Supernova Rise 2 ist der demokratischste Einstieg in reaktives Laufen. LEP-Schaum zu ~100€ – reaktiver als reine EVA-Schuhe ohne den Premium-Preis. Perfekter Alltagsbegleiter für Einsteiger und Freizeitläufer."
+  },
+  "gaviota6":{
+    name:"Gaviota 5",brand:"Hoka",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Stability-Schuh – kein Wettkampfmodell.",
+    trainNote:"Hokas bestes Stability-Modell. J-Frame-Technologie für sanfte Führung + viel Polsterung – ideal für Überpronatierer die Hokas DNA lieben.",
+    badges:[],
+    value:3, valueVerdict:"~170€ für Stability-Hoka mit Premium-Polsterung. Spezialisiert – nur sinnvoll für Überpronatierer die Hoka mögen.", valueBreakdown:[{label:"Preis",val:"~170 €"},{label:"System",val:"J-Frame Stability"},{label:"Zielgruppe",val:"Überpronatierer"},{label:"Komfort",val:"Sehr hoch"}],
+    specs:[{label:"Gewicht",value:"~300 g"},{label:"Preis",value:"~170 €"},{label:"Foam",value:"CMEVA"},{label:"System",value:"J-Frame"},{label:"Drop",value:"5 mm"},{label:"Stärke",value:"Stability + Komfort"}],
+    athletes:[{flag:"🌍",name:"Stability-Läufer",dist:"Daily Training",result:"Top-Stability-Hoka",note:"Meistempfohlen für Überpronatierer die Hoka bevorzugen"}],
+    desc:"Hoka Gaviota 5 ist die stabilste Hoka für Überpronatierer die trotzdem Hokas Polsterung wollen. J-Frame-Technologie bietet sanfte Führung ohne einzuengen. Spezialisiert aber für die Zielgruppe unübertroffen."
+  },
+  "neozen2":{
+    name:"Wave Rider 27",brand:"Mizuno",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Für leichte 5K-Rennen nutzbar, aber kein Wettkampfschuh.",
+    trainNote:"Mizunos beliebtester und meistverkaufter Alltagsschuh. Leichter als Wave Sky – reaktiver und flexibler für tägliches Laufen.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~130€ für Mizunos vielseitigsten Alltagstrainer. Bestes Preis-Leistungs-Verhältnis im Mizuno-Lineup.", valueBreakdown:[{label:"Preis",val:"~130 €"},{label:"System",val:"WAVE"},{label:"Einsatz",val:"Daily Training"},{label:"Vergleich",val:"Günstigster Mizuno mit WAVE"}],
+    specs:[{label:"Gewicht",value:"~250 g"},{label:"Preis",value:"~130 €"},{label:"Foam",value:"ENERZY"},{label:"System",value:"WAVE Plate"},{label:"Drop",value:"12 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"Mizuno Community",dist:"Daily Training",result:"Meistverkaufter Mizuno",note:"Jahrelang meistverkauftes Mizuno-Modell"}],
+    desc:"Wave Rider 27 – Mizunos bekanntester und beliebtester Alltagsschuh. WAVE-Platte + ENERZY-Schaum zu sehr fairem Preis. Reaktiver und leichter als der Wave Sky – perfekter Einstieg in die Mizuno-Welt."
+  },
+  "clifton10":{
+    name:"Clifton 10",brand:"Hoka",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Kein Wettkampfschuh – zu weich und schwer.",
+    trainNote:"Hokas meistverkauftes und bekanntestes Modell. Maximale Polsterung bei relativ geringem Gewicht – perfekt für Easy Runs und Regenerationstage.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~150€ für maximale Hoka-Polsterung. Einer der beliebtesten Laufschuhe der Welt zu fairem Preis.", valueBreakdown:[{label:"Preis",val:"~150 €"},{label:"Foam",val:"CMEVA (viel!)"},{label:"Einsatz",val:"Easy + Long Run"},{label:"Beliebtheit",val:"Global Top 10"}],
+    specs:[{label:"Gewicht",value:"~255 g"},{label:"Preis",value:"~150 €"},{label:"Foam",value:"CMEVA"},{label:"Platte",value:"Keine"},{label:"Drop",value:"5 mm"},{label:"Stärke",value:"Easy + Long Run"}],
+    athletes:[{flag:"🌍",name:"Millionen Läufer",dist:"Daily Training",result:"Top 10 meistverkaufte Laufschuhe",note:"Hoka's bekanntester Schuh, global beliebt"}],
+    desc:"Der Clifton 10 ist das Gesicht von Hoka. Maximale Polsterung, überraschend leicht, unglaublicher Komfort. Weltweit einer der meistgekauften Laufschuhe – und das aus gutem Grund."
+  },
+  "react-miler3":{
+    name:"Infinity Run 5",brand:"Nike",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Injury-Prevention-Schuh – kein Wettkampfmodell.",
+    trainNote:"Nikes Injury-Prevention-Schuh. Rocker-Sohle + React-Schaum reduziert Aufprallkräfte – ideal für verletzungsanfällige Läufer.",
+    badges:[],
+    value:4, valueVerdict:"~160€ für einen spezialisierten Injury-Prevention-Schuh. Nicht für jeden – aber für verletzungsanfällige Läufer sehr wertvoll.", valueBreakdown:[{label:"Preis",val:"~160 €"},{label:"System",val:"Rocker + Infinity Plate"},{label:"Zweck",val:"Injury Prevention"},{label:"Zielgruppe",val:"Verletzungsanfällige"}],
+    specs:[{label:"Gewicht",value:"~280 g"},{label:"Preis",value:"~160 €"},{label:"Foam",value:"React"},{label:"System",value:"Rocker + Infinity Plate"},{label:"Drop",value:"9 mm"},{label:"Stärke",value:"Injury Prevention"}],
+    athletes:[{flag:"🌍",name:"Physios & Sporttherapeuten",dist:"Rehabilitation",result:"Meistempfohlen nach Verletzungen",note:"Von Sporttherapeuten für verletzungsanfällige Läufer empfohlen"}],
+    desc:"Nikes Infinity Run 5 ist der meistempfohlene Schuh für verletzungsanfällige Läufer. Rocker-Sohle + Infinity-Plate reduziert Aufprallkräfte beim Aufkommen. Nicht der schnellste – aber einer der sichersten."
+  },
+  "gel-excite10":{
+    name:"Gel-Cumulus 27",brand:"Asics",tier:"D",tierColor:"#4a3a6a",
+    use:{race:false,train:true},
+    raceNote:"Kein Wettkampfschuh – reiner Trainingsbegleiter.",
+    trainNote:"Asics meistverkaufter neutraler Alltagstrainer. Günstiger als Nimbus, ähnlich komfortabel – idealer Einstieg in die Asics-Welt.",
+    badges:[{text:"💰 Top Value",cls:"badge-value"}],
+    value:5, valueVerdict:"~140€ für Asics' beliebtesten Trainingsschuh. Excellent Preis-Leistungs-Verhältnis für neutrales Training.", valueBreakdown:[{label:"Preis",val:"~140 €"},{label:"Foam",val:"FF BLAST+"},{label:"Einsatz",val:"Daily Training"},{label:"Vergleich",val:"Günstiger als Nimbus"}],
+    specs:[{label:"Gewicht",value:"~275 g"},{label:"Preis",value:"~140 €"},{label:"Foam",value:"FF BLAST+"},{label:"Gel",value:"Rearfoot GEL"},{label:"Drop",value:"10 mm"},{label:"Stärke",value:"Alltags-Training"}],
+    athletes:[{flag:"🌍",name:"ASICS Community",dist:"Daily Training",result:"Beliebtester Asics Trainer",note:"Meistgekaufter Asics-Trainingsschuh weltweit"}],
+    desc:"Der Gel-Cumulus 27 ist Asics' meistverkaufter Alltagstrainer. FF BLAST+ und GEL-Technologie zu ~140€ – günstiger als der Nimbus, ähnlich komfortabel. Idealer Einstieg für alle die Asics kennenlernen wollen."
+  },
+  "alphafly4-retail":{
+    name:"Alphafly 4 (Retail)",brand:"Nike",tier:"?",tierColor:"#3a3a4a",
+    use:{race:true,train:false},
+    raceNote:"Erwartet als SS-/S-Tier-Wettkampfschuh basierend auf dem Prototype. Consumer-Release Q3 2026.",
+    trainNote:"Voraussichtlich zu teuer und empfindlich für Training.",
+    badges:[{text:"Q3 2026",cls:"badge-soon"}],
+    value:0, valueVerdict:"Noch nicht verfügbar. Basierend auf dem Prototype wird er voraussichtlich S-Tier-Performance zu ~300€ bieten.", valueBreakdown:[{label:"Status",val:"Nicht verfügbar"},{label:"Release",val:"Q3 2026 erwartet"},{label:"Preis",val:"~300 € erwartet"},{label:"Potenzial",val:"S-/SS-Tier"}],
+    specs:[{label:"Status",value:"Retail-Release ausstehend"},{label:"Erwartet",value:"Q3 2026"},{label:"Preis",value:"~300 € erwartet"},{label:"Foam",value:"ZoomX (vermutet)"},{label:"Platte",value:"FlyPlate (vermutet)"},{label:"Referenz",value:"Nike Dev 164 Prototype"}],
+    athletes:[{flag:"🇺🇬",name:"Jacob Kiplimo",dist:"HM + Marathon",result:"57:20 WR + 2:00:28",note:"Mit dem Prototype, nicht Retail-Version"}],
+    desc:"Der meisterwartete Retail-Release 2026. Basierend auf dem Prototype der Kiplimo zu 57:20 WR und 2:00:28 führte. Consumer-Version Q3 2026 erwartet – wahrscheinlich mit angepasster, haltbarerer Konfiguration."
+  },
+  "elite3":{
+    name:"Endorphin Elite 3",brand:"Saucony",tier:"?",tierColor:"#3a3a4a",
+    use:{race:true,train:false},
+    raceNote:"Nachfolger des Elite 2 – erwartet als A-/S-Tier-Wettkampfschuh. Release Juni 2026.",
+    trainNote:"Nicht für Training erwartet.",
+    badges:[{text:"Juni 2026",cls:"badge-soon"}],
+    value:0, valueVerdict:"Noch nicht verfügbar. Basierend auf Elite 2 wird A-/S-Tier-Performance erwartet.", valueBreakdown:[{label:"Status",val:"Nicht verfügbar"},{label:"Release",val:"Juni 2026"},{label:"Preis",val:"~280 € erwartet"},{label:"Potenzial",val:"A-/S-Tier"}],
+    specs:[{label:"Status",value:"Angekündigt"},{label:"Release",value:"Juni 2026"},{label:"Preis",value:"~280 € erwartet"},{label:"Vorgänger",value:"Endorphin Elite 2"},{label:"Foam",value:"PWRRUN PB+ (vermutet)"},{label:"Platte",value:"Carbon (vermutet)"}],
+    athletes:[{flag:"🌍",name:"Saucony Elite Team",dist:"Marathon + HM",result:"Erwartet für Major-Rennen H2 2026",note:"Geplanter Debüt auf WMM-Wettkämpfen ab Juli 2026"}],
+    desc:"Sauconys meisterwarteter Release des Jahres. Der Elite 3 soll auf dem meistunterschätzten A-Tier-Schuh aufbauen und ihn in Richtung S-Tier katapultieren. Release Juni 2026."
+  },
+"alphafly4-retail":{
+    name:"Alphafly 4 (Retail)",brand:"Nike",tier:"?",tierColor:"#3a3a4a",
+    use:{race:true,train:false},
+    raceNote:"Als Prototype bereits für HM-Weltrekord (57:20) und 2:00:28 im Marathon verantwortlich. Retail-Release Q3 2026 erwartet.",
+    trainNote:"Wird voraussichtlich zu teuer für reguläres Training sein – als Wettkampfschuh konzipiert.",
+    badges:[{text:"Q3 2026 erwartet",cls:"badge-soon"},{text:"WR-Prototype",cls:"badge-proto"}],
+    value:0, valueVerdict:"Noch nicht verfügbar. Preis-Leistung erst nach Release bewertbar. Erwarteter Preis ~300€.", valueBreakdown:[{label:"Status",val:"Nicht käuflich"},{label:"Preis erw.",val:"~300 €"},{label:"Performance",val:"SS-Tier erwartet"},{label:"Release",val:"Q3 2026"}],
+    specs:[{label:"Status",value:"Prototype / bald retail"},{label:"Erwarteter Release",value:"Q3 2026"},{label:"Foam",value:"ZoomX (vermutet)"},{label:"Air Zoom",value:"Entfernt"},{label:"Geometrie",value:"Aggressiver"},{label:"Preis",value:"~300 € erwartet"}],
+    athletes:[{flag:"🇺🇬",name:"Jacob Kiplimo",dist:"Halbmarathon",result:"57:20 WR",note:"Lissabon März 2026 – HM Weltrekord mit Nike Dev 164"},{flag:"🇺🇬",name:"Jacob Kiplimo",dist:"Marathon",result:"2:00:28",note:"London April 2026 – 3. Platz, schneller als Kiptums alter WR"},{flag:"🇰🇪",name:"Faith Kipyegon",dist:"Track",result:"Prototype gesichtet",note:"Nike-Top-Athletin mit Prototype in Wettkämpfen"}],
+    desc:"Retail-Release ausstehend. Als Prototype für zwei Weltrekorde verantwortlich. Aggressivere Geometrie, kein sichtbares Air Zoom mehr. Nike teaserte ihn April 2026 als Antwort auf den Adidas Evo 3. Release Q3 2026 erwartet."
+  },
+  "elite3":{
+    name:"Endorphin Elite 3",brand:"Saucony",tier:"?",tierColor:"#3a3a4a",
+    use:{race:true,train:false},
+    raceNote:"Gerade erschienen. Wenn der Elite-2-Standard gehalten wird, ein starker Wettkampfschuh für HM und Marathon.",
+    trainNote:"Voraussichtlich zu teuer für reguläres Training – wie der Elite 2 als Wettkampfschuh gedacht.",
+    badges:[{text:"Juni 2026",cls:"badge-soon"}],
+    value:0, valueVerdict:"Gerade erschienen – zu früh für eine Bewertung. Wenn der Elite 2-Standard gehalten wird, wäre ~250€ ein sehr guter Wert.", valueBreakdown:[{label:"Status",val:"Gerade erschienen"},{label:"Preis erw.",val:"~250 €"},{label:"Vorgänger",val:"Elite 2: A-Tier Wert"},{label:"Reviews",val:"Ausstehend"}],
+    specs:[{label:"Status",value:"Gerade erschienen"},{label:"Release",value:"1. Juni 2026"},{label:"Vorgänger",value:"Endorphin Elite 2"},{label:"Details",value:"Reviews ausstehend"}],
+    athletes:[{flag:"🌍",name:"Noch keine Testberichte",dist:"HM + Marathon",result:"Erschienen 1. Juni 2026",note:"Nachfolger des sehr stark bewerteten Elite 2"}],
+    desc:"Am 1. Juni 2026 erschienen – gerade frisch auf dem Markt. Wenn Saucony die Elite-2-Qualität hält oder verbessert, könnte er in A-Tier klettern. Preis-Leistungs-Bewertung folgt mit ersten Reviews."
+  }
+};
+
+/* INIT VALUE DOTS */
+const VCm = {5:'#52c584',4:'#8ec96a',3:'#c8991a',2:'#d4622a',1:'#c0392b',0:'#555'};
+document.querySelectorAll('.shoe-card').forEach(card => {
+  const v = parseInt(card.dataset.value)||0;
+  const el = card.querySelector('.card-value-dots');
+  if (!el) return;
+  if (v === 0) { el.innerHTML='<span style="font-size:9px;color:var(--text3)">n.b.</span>'; return; }
+  for (let i=1;i<=5;i++) {
+    const d=document.createElement('div');
+    d.className='value-dot';
+    d.style.background = i<=v ? VCm[v] : 'var(--border2)';
+    el.appendChild(d);
+  }
+});
+
+/* FILTER */
+let activeCard=null, valueMode=false;
+let activeDistFilter='all', activeBrandFilter='all';
+
+function applyFilters(){
+  document.querySelectorAll('.shoe-card').forEach(card=>{
+    const tags=card.dataset.tags||'';
+    const brand=card.dataset.brand||'';
+    const distOk = activeDistFilter==='all' || tags.includes(activeDistFilter);
+    const brandOk = activeBrandFilter==='all' || brand===activeBrandFilter;
+    if(distOk && brandOk){
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+      if(card===activeCard){card.classList.remove('active');activeCard=null;closeDetail();}
+    }
+  });
+}
+
+function setDistFilter(f,btn){
+  activeDistFilter=f;
+  document.querySelectorAll('.tab-btn:not(.brand-btn)').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function setBrandFilter(b,btn){
+  activeBrandFilter=b;
+  document.querySelectorAll('.brand-btn').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+/* VALUE TOGGLE */
+function toggleValue(){
+  valueMode=!valueMode;
+  const btn=document.getElementById('val-toggle');
+  btn.classList.toggle('active-value',valueMode);
+  document.querySelectorAll('.shoe-card').forEach(card=>{
+    const v=parseInt(card.dataset.value)||0;
+    card.classList.remove('value-dim','value-highlight');
+    if(valueMode){
+      if(v>=4) card.classList.add('value-highlight');
+      else if(v>0) card.classList.add('value-dim');
+    }
+  });
+}
+
+/* DETAIL */
+const TC={SS:'#8b1a1a',S:'#c0392b',A:'#c8991a',B:'#2e7d52',C:'#2a5f8a','?':'#3a3a4a'};
+function closeDetail(){
+  document.getElementById('detail-content').classList.remove('visible');
+  document.getElementById('detail-empty').style.display='';
+}
+function showDetail(card,data){
+  if(activeCard) activeCard.classList.remove('active');
+  card.classList.add('active'); activeCard=card;
+  document.getElementById('detail-empty').style.display='none';
+  document.getElementById('detail-content').classList.add('visible');
+
+  document.getElementById('d-tierbar').style.background=TC[data.tier]||'#444';
+  document.getElementById('d-name').textContent=data.name;
+  document.getElementById('d-brand').textContent=data.brand+' · '+data.tier+'-Tier';
+
+  /* use pills in header */
+  const up=document.getElementById('d-use-pills');
+  up.innerHTML='';
+  if(data.use.race&&data.use.train){
+    up.innerHTML='<span class="use-pill use-both">⚡🏃 Wettkampf &amp; Training</span>';
+  } else if(data.use.race){
+    up.innerHTML='<span class="use-pill use-race">⚡ Wettkampf</span>';
+  } else if(data.use.train){
+    up.innerHTML='<span class="use-pill use-train">🏃 Training</span>';
+  }
+
+  document.getElementById('d-badges').innerHTML=(data.badges||[]).map(b=>`<span class="badge ${b.cls}">${b.text}</span>`).join('');
+
+  /* use summary cards */
+  const us=document.getElementById('d-use-summary');
+  us.innerHTML='';
+  if(data.use.race||data.use.train){
+    if(data.use.race){
+      us.innerHTML+=`<div class="use-card race-card"><div class="use-card-label race-lbl">⚡ Wettkampf</div><div class="use-card-val">${data.raceNote||'—'}</div></div>`;
+    }
+    if(data.use.train){
+      us.innerHTML+=`<div class="use-card train-card"><div class="use-card-label train-lbl">🏃 Training</div><div class="use-card-val">${data.trainNote||'—'}</div></div>`;
+    }
+    if(data.use.race&&!data.use.train){
+      us.innerHTML+=`<div class="use-card train-card"><div class="use-card-label train-lbl">🏃 Training</div><div class="use-card-val">${data.trainNote||'Nicht empfohlen für reguläres Training.'}</div></div>`;
+    }
+  }
+
+  /* value meter */
+  const v=data.value||0;
+  const vc=VCm[v]||'#555';
+  document.getElementById('d-val-label').textContent=VL[v]||'—';
+  document.getElementById('d-val-label').style.color=v>0?vc:'var(--text3)';
+  document.getElementById('d-val-score').textContent=v>0?v+'/5':'n.b.';
+  document.getElementById('d-val-score').style.color=v>0?vc:'var(--text3)';
+  document.getElementById('d-val-bar').style.width=v>0?(v/5*100)+'%':'0%';
+  document.getElementById('d-val-bar').style.background=v>0?vc:'#444';
+  document.getElementById('d-val-verdict').textContent=data.valueVerdict||'';
+  document.getElementById('d-val-breakdown').innerHTML=(data.valueBreakdown||[]).map(b=>`<div class="value-sub"><div class="value-sub-label">${b.label}</div><div class="value-sub-val">${b.val}</div></div>`).join('');
+
+  document.getElementById('d-specs').innerHTML=(data.specs||[]).map(s=>`<div class="spec-item"><div class="spec-label">${s.label}</div><div class="spec-value">${s.value}</div></div>`).join('');
+  document.getElementById('d-athletes').innerHTML=(data.athletes||[]).map(a=>`
+    <div class="athlete-card">
+      <div class="athlete-header">
+        <div class="athlete-name"><span class="athlete-flag">${a.flag}</span>${a.name}</div>
+        <span class="athlete-dist">${a.dist}</span>
+      </div>
+      <div class="athlete-result">${a.result}<small>${a.note}</small></div>
+    </div>`).join('');
+  document.getElementById('d-desc').textContent=data.desc;
+  document.querySelector('.detail-panel').scrollTop=0;
+}
+
+document.querySelectorAll('.shoe-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const data=shoes[card.dataset.shoe];
+    if(!data) return;
+    if(card===activeCard&&document.getElementById('detail-content').classList.contains('visible')){
+      card.classList.remove('active'); activeCard=null; closeDetail(); return;
+    }
+    showDetail(card,data);
+  });
+});
+</script>
+</body>
+</html>
