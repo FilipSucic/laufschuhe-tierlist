@@ -425,6 +425,23 @@ header {
   border:1px solid var(--border); display:block; margin:0 auto 8px;
 }
 
+
+/* Buy button on shoe card */
+.shoe-card { position:relative; }
+.card-buy-btn {
+  display:none; position:absolute; inset:0; align-items:center; justify-content:center;
+  background:rgba(10,10,12,0.82); border-radius:5px; backdrop-filter:blur(2px);
+  text-decoration:none; font-family:'Barlow Condensed',sans-serif; font-weight:800;
+  font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+  color:#0a0a0c; gap:5px; z-index:2; transition:opacity 0.15s;
+}
+.card-buy-btn span {
+  background:linear-gradient(135deg,#c8991a,#a07a10);
+  padding:6px 14px; border-radius:4px; display:flex; align-items:center; gap:5px;
+}
+.shoe-card:hover .card-buy-btn { display:flex; }
+.shoe-card.active .card-buy-btn { display:none; }
+
 </style>
 </head>
 <body>
@@ -486,6 +503,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-record">WR Sub-2h</span><span class="badge badge-limited">500€</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/adizero-adios-pro-evo-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="alphafly4-proto" data-tags="marathon half" data-value="0" data-brand="Nike">
       <div class="card-top">
@@ -506,6 +525,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-record">WR Damen 2:15:41</span><span class="badge badge-limited">Limitiert</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/alphafly-4" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
   </div>
 </div>
@@ -523,6 +544,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-record">6× Major 2025</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/adizero-adios-pro-evo-2" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="fast-r3" data-tags="marathon half" data-value="3" data-brand="Puma">
       <div class="card-top">
@@ -533,6 +556,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-record">Effizientester Schuh</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://de.puma.com/de/de/pd/fast-r-nitro-elite-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="sky-tokyo" data-tags="marathon half" data-value="4" data-brand="Asics">
       <div class="card-top">
@@ -553,6 +578,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/metaspeed-sky-tokyo" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
   </div>
 </div>
@@ -570,6 +597,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-record">Kiptum WR 2023</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/alphafly-3-road-racing-shoes" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="vaporfly4" data-tags="marathon half" data-value="4" data-brand="Nike">
       <div class="card-top">
@@ -580,6 +609,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-half">HM-Spezialist</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/vaporfly-next-4-road-racing-shoes" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="edge-tokyo" data-tags="marathon half" data-value="3" data-brand="Asics">
       <div class="card-top">
@@ -590,6 +621,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/metaspeed-edge-tokyo" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="adios-pro4" data-tags="marathon half" data-value="4" data-brand="Adidas">
       <div class="card-top">
@@ -599,6 +632,8 @@ header {
       <div class="card-bottom">
         <div class="card-value-dots"></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/adizero-adios-pro-4-laufschuhe" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="endorphin-elite2" data-tags="marathon half" data-value="4" data-brand="Saucony">
       <div class="card-top">
@@ -609,6 +644,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">Meistunterschätzt</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.saucony.com/de/endorphin-elite-2" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="on-lightspray" data-tags="marathon half" data-value="0" data-brand="On Running">
       <div class="card-top">
@@ -619,6 +656,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-proto">Prototype</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.on-running.com/de-de/products/cloudboom-strike-ls" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="hyperwarp-pure" data-tags="marathon half" data-value="3" data-brand="Mizuno">
       <div class="card-top">
@@ -629,6 +668,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.mizuno.de/laufschuhe/wave-rebellion-pro" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="velociti-elite3" data-tags="marathon half" data-value="3" data-brand="Under Armour">
       <div class="card-top">
@@ -639,6 +680,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.underarmour.de/de-de/velociti-elite-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="cielo3" data-tags="marathon half" data-value="4" data-brand="Hoka">
       <div class="card-top">
@@ -649,6 +692,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.hoka.com/de/cielo-x1-3.0.html" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="sc-elite-v4" data-tags="marathon half" data-value="3" data-brand="New Balance">
       <div class="card-top">
@@ -656,6 +701,8 @@ header {
         <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.newbalance.de/fuelcell-sc-elite-v4" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="hyperion-elite4" data-tags="marathon half" data-value="3" data-brand="Brooks">
       <div class="card-top">
@@ -666,6 +713,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.brooksrunning.com/de_de/hyperion-elite-4" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="adizero-sl2" data-tags="training half" data-value="5" data-brand="Adidas">
       <div class="card-top">
@@ -676,6 +725,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span><span class="badge badge-new">NEU</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/adizero-evo-sl-laufschuhe" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="feidian6-elite" data-tags="marathon half" data-value="5" data-brand="Li Ning">
       <div class="card-top">
@@ -686,6 +737,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.shopnings.com/li-ning-feidian-6-elite/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="feidian5-ultra" data-tags="marathon half" data-value="5" data-brand="Li Ning">
       <div class="card-top">
@@ -696,6 +749,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.shopnings.com/li-ning-feidian-5-ultra/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="anta-c202-7" data-tags="marathon half training" data-value="5" data-brand="Anta">
       <div class="card-top">
@@ -706,6 +761,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://anta.com/products/mens-anta-c202-7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="xtep-160x-6pro" data-tags="marathon half" data-value="5" data-brand="Xtep">
       <div class="card-top">
@@ -716,6 +773,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2024/25</span><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.shopnings.com/xtep-160x-6-0-pro/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
   </div>
 </div>
@@ -733,6 +792,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/superblast-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="deviate3" data-tags="marathon half" data-value="5" data-brand="Puma">
       <div class="card-top">
@@ -743,6 +804,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://de.puma.com/de/de/pd/deviate-nitro-elite-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="peg-plus" data-tags="training half" data-value="5" data-brand="Nike">
       <div class="card-top">
@@ -753,6 +816,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/pegasus-plus-road-running-shoes" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="endorphin-speed5" data-tags="training half" data-value="5" data-brand="Saucony">
       <div class="card-top">
@@ -763,6 +828,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.saucony.com/de/endorphin-speed-5" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="endorphin-pro5" data-tags="marathon half" data-value="4" data-brand="Saucony">
       <div class="card-top">
@@ -773,6 +840,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.saucony.com/de/endorphin-pro-5" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="mach-x3" data-tags="training marathon" data-value="4" data-brand="Hoka">
       <div class="card-top">
@@ -783,6 +852,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.hoka.com/de/mach-x-2.html" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="cloudboom-strike" data-tags="marathon half" data-value="3" data-brand="On Running">
       <div class="card-top">
@@ -793,6 +864,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">2025</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.on-running.com/de-de/products/cloudboom-strike" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="endorphin-azura" data-tags="training half" data-value="5" data-brand="Saucony">
       <div class="card-top">
@@ -803,6 +876,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span><span class="badge badge-new">NEU</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.saucony.com/de/endorphin-azura" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="boston12" data-tags="training marathon" data-value="5" data-brand="Adidas">
       <div class="card-top">
@@ -813,6 +888,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/adizero-boston-12-laufschuhe" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="sc-trainer3" data-tags="training" data-value="4" data-brand="New Balance">
       <div class="card-top">
@@ -820,6 +897,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.newbalance.de/fuelcell-sc-trainer-v3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="megablast" data-tags="training" data-value="5" data-brand="Asics">
       <div class="card-top">
@@ -830,6 +909,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span><span class="badge badge-new">NEU</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/megablast" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="pw-elite" data-tags="marathon half" data-value="3" data-brand="New Balance">
       <div class="card-top">
@@ -837,6 +918,8 @@ header {
         <div class="use-icons"><span class="use-pill use-race">⚡ Wettkampf</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.newbalance.de/fuelcell-sc-elite-v4" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="feidian5-elite" data-tags="marathon half training" data-value="5" data-brand="Li Ning">
       <div class="card-top">
@@ -847,6 +930,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.shopnings.com/li-ning-feidian-5-elite-racing-running-shoes/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="anta-c202-6" data-tags="marathon half training" data-value="5" data-brand="Anta">
       <div class="card-top">
@@ -857,6 +942,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://anta.com/products/mens-anta-c202-6" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="361-flames4" data-tags="marathon half" data-value="5" data-brand="361">
       <div class="card-top">
@@ -867,6 +954,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.shopnings.com/361-flame-4/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="xtep-260x" data-tags="training marathon" data-value="5" data-brand="Xtep">
       <div class="card-top">
@@ -877,6 +966,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.shopnings.com/xtep-260x/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
   </div>
 </div>
@@ -894,6 +985,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/novablast-5" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="bondi9" data-tags="training" data-value="4" data-brand="Hoka">
       <div class="card-top">
@@ -901,6 +994,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.hoka.com/de/bondi-9.html" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="vomero18" data-tags="training" data-value="4" data-brand="Nike">
       <div class="card-top">
@@ -908,6 +1003,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/vomero-18" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="hyperion-max3" data-tags="training marathon" data-value="4" data-brand="Brooks">
       <div class="card-top">
@@ -915,6 +1012,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.brooksrunning.com/de_de/hyperion-max-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="mach7" data-tags="training" data-value="5" data-brand="Hoka">
       <div class="card-top">
@@ -925,6 +1024,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.hoka.com/de/mach-7.html" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="nb1080v15" data-tags="training" data-value="5" data-brand="New Balance">
       <div class="card-top">
@@ -935,6 +1036,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.newbalance.de/fresh-foam-x-1080v15" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="vomero-plus" data-tags="training" data-value="4" data-brand="Nike">
       <div class="card-top">
@@ -945,6 +1048,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">NEU 2026</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/vomero-plus" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="glycerin23" data-tags="training" data-value="4" data-brand="Brooks">
       <div class="card-top">
@@ -952,6 +1057,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.brooksrunning.com/de_de/glycerin-23" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="kayano32" data-tags="training" data-value="3" data-brand="Asics">
       <div class="card-top">
@@ -959,6 +1066,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/gel-kayano-32" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="nimbus28" data-tags="training" data-value="4" data-brand="Asics">
       <div class="card-top">
@@ -966,6 +1075,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/gel-nimbus-28" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="deviate-nitro4" data-tags="training marathon" data-value="5" data-brand="Puma">
       <div class="card-top">
@@ -976,6 +1087,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://de.puma.com/de/de/pd/deviate-nitro-4" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="cloudrunner3" data-tags="training" data-value="3" data-brand="On Running">
       <div class="card-top">
@@ -983,6 +1096,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.on-running.com/de-de/products/cloudrunner-3" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="hyperboost-edge" data-tags="training" data-value="4" data-brand="Adidas">
       <div class="card-top">
@@ -993,6 +1108,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-new">NEU</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/hyperboost-edge-laufschuhe" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="wave-sky7" data-tags="training" data-value="4" data-brand="Mizuno">
       <div class="card-top">
@@ -1000,6 +1117,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.mizuno.de/laufschuhe/wave-sky-8" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="adrenaline22" data-tags="training" data-value="4" data-brand="Brooks">
       <div class="card-top">
@@ -1007,6 +1126,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.brooksrunning.com/de_de/adrenaline-gts-24" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="cloudeclipse2" data-tags="training" data-value="4" data-brand="On Running">
       <div class="card-top">
@@ -1014,6 +1135,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.on-running.com/de-de/products/cloudmonster-2" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
   </div>
 </div>
@@ -1028,6 +1151,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.brooksrunning.com/de_de/glycerin-flex" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="pegasus41" data-tags="training" data-value="5" data-brand="Nike">
       <div class="card-top">
@@ -1038,6 +1163,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/pegasus-42" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="supernova3" data-tags="training" data-value="5" data-brand="Adidas">
       <div class="card-top">
@@ -1048,6 +1175,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.adidas.de/supernova-rise-2-laufschuhe" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="gaviota6" data-tags="training" data-value="3" data-brand="Hoka">
       <div class="card-top">
@@ -1055,6 +1184,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.hoka.com/de/gaviota-6.html" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="neozen2" data-tags="training" data-value="5" data-brand="Mizuno">
       <div class="card-top">
@@ -1065,6 +1196,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.mizuno.de/laufschuhe/wave-rider-27" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="clifton10" data-tags="training" data-value="5" data-brand="Hoka">
       <div class="card-top">
@@ -1075,6 +1208,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.hoka.com/de/clifton-10.html" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="react-miler3" data-tags="training" data-value="4" data-brand="Nike">
       <div class="card-top">
@@ -1082,6 +1217,8 @@ header {
         <div class="use-icons"><span class="use-pill use-train">🏃 Training</span></div>
       </div>
       <div class="card-bottom"><div class="card-value-dots"></div></div>
+    
+      <a class="card-buy-btn" href="https://www.nike.com/de/t/infinity-run-5" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
     <div class="shoe-card" data-shoe="gel-excite10" data-tags="training" data-value="5" data-brand="Asics">
       <div class="card-top">
@@ -1092,6 +1229,8 @@ header {
         <div class="card-value-dots"></div>
         <div class="shoe-badges"><span class="badge badge-value">💰 Top Value</span></div>
       </div>
+    
+      <a class="card-buy-btn" href="https://www.asics.com/de/de-de/gel-cumulus-27" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span>🛒 Kaufen</span></a>
     </div>
   </div>
 </div>
