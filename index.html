@@ -198,6 +198,195 @@ header {
   .tier-panel { padding:14px 10px; }
   .legend { padding:11px 14px; }
 }
+
+/* ═══ SCHUHFINDER ═══════════════════════════════════════════════════════════ */
+.finder-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity 0.3s;
+  backdrop-filter:blur(6px);
+}
+.finder-overlay.open { opacity:1; pointer-events:all; }
+
+.finder-modal {
+  background:var(--bg2); border:1px solid var(--border2);
+  border-radius:12px; width:680px; max-width:95vw; max-height:90vh;
+  overflow:hidden; display:flex; flex-direction:column;
+  transform:translateY(24px) scale(0.97); transition:transform 0.3s;
+  box-shadow:0 32px 80px rgba(0,0,0,0.7);
+}
+.finder-overlay.open .finder-modal { transform:translateY(0) scale(1); }
+
+.finder-header {
+  padding:22px 28px 16px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.finder-header h2 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:22px;
+  text-transform:uppercase; letter-spacing:0.04em; color:var(--accent);
+}
+.finder-close {
+  background:none; border:1px solid var(--border2); color:var(--text2);
+  border-radius:4px; width:30px; height:30px; cursor:pointer; font-size:16px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.15s;
+}
+.finder-close:hover { border-color:var(--border2); color:var(--text); background:var(--bg3); }
+
+.finder-progress {
+  padding:14px 28px 0; display:flex; gap:5px; align-items:center;
+}
+.prog-step {
+  flex:1; height:3px; border-radius:2px; background:var(--border2); transition:background 0.3s;
+}
+.prog-step.done { background:var(--accent); }
+.prog-step.active { background:#c8991a88; }
+.prog-label { font-size:10px; color:var(--text3); letter-spacing:0.08em; text-transform:uppercase; margin-left:10px; white-space:nowrap; }
+
+.finder-body { padding:28px; flex:1; overflow-y:auto; }
+.finder-question {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:24px;
+  text-transform:uppercase; letter-spacing:0.02em; margin-bottom:7px; line-height:1.2;
+}
+.finder-sub { font-size:13px; color:var(--text2); margin-bottom:22px; }
+
+.finder-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.finder-options.single { grid-template-columns:1fr; }
+.finder-opt {
+  background:var(--bg3); border:1px solid var(--border2); border-radius:8px;
+  padding:14px 16px; cursor:pointer; transition:all 0.15s; display:flex; align-items:flex-start; gap:12px;
+}
+.finder-opt:hover { border-color:#c8991a66; background:#1e1e28; }
+.finder-opt.selected { border-color:var(--accent); background:#c8991a15; }
+.finder-opt-icon { font-size:22px; line-height:1; flex-shrink:0; margin-top:1px; }
+.finder-opt-text strong { display:block; font-size:14px; font-weight:600; margin-bottom:2px; }
+.finder-opt-text small { font-size:12px; color:var(--text2); line-height:1.4; }
+
+.finder-footer {
+  padding:16px 28px 22px; border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.finder-nav-btn {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12px;
+  letter-spacing:0.1em; text-transform:uppercase; padding:9px 22px;
+  border-radius:6px; border:1px solid var(--border2); background:transparent;
+  color:var(--text2); cursor:pointer; transition:all 0.15s;
+}
+.finder-nav-btn:hover { color:var(--text); border-color:var(--border2); }
+.finder-nav-btn.primary {
+  background:var(--accent); color:#0a0a0c; border-color:var(--accent); font-size:13px;
+}
+.finder-nav-btn.primary:hover { background:#f0e4b0; }
+.finder-nav-btn:disabled { opacity:0.3; pointer-events:none; }
+
+/* ─── RESULT SCREEN ─────────────────────────────────────── */
+.finder-result { display:none; flex-direction:column; gap:0; }
+.finder-result.show { display:flex; }
+
+.result-hero {
+  background:linear-gradient(135deg, #0f0f14 0%, #1a1208 50%, #0f0f14 100%);
+  border-bottom:1px solid var(--border); padding:28px 28px 24px;
+  position:relative; overflow:hidden;
+}
+.result-hero::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 80% at 70% 50%, #c8991a18, transparent);
+  pointer-events:none;
+}
+.result-hero-label {
+  font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text3);
+  margin-bottom:8px; display:flex; align-items:center; gap:8px;
+}
+.result-hero-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.result-main { display:flex; gap:24px; align-items:flex-start; position:relative; }
+.result-shoe-visual {
+  flex-shrink:0; width:160px; display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.result-tier-badge {
+  width:54px; height:54px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:26px;
+  border:2px solid; position:relative; overflow:hidden;
+}
+.result-tier-badge::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
+}
+.result-shoe-name {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px;
+  text-align:center; line-height:1.1; text-transform:uppercase;
+}
+.result-shoe-brand { font-size:12px; color:var(--text2); text-align:center; margin-top:2px; }
+
+.result-match-ring {
+  width:90px; height:90px; position:relative; flex-shrink:0;
+}
+.result-match-ring svg { width:90px; height:90px; transform:rotate(-90deg); }
+.result-match-ring .ring-bg { fill:none; stroke:var(--border2); stroke-width:7; }
+.result-match-ring .ring-fill { fill:none; stroke-width:7; stroke-linecap:round; transition:stroke-dashoffset 1s cubic-bezier(0.22,1,0.36,1); }
+.result-match-pct {
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:0;
+}
+.result-match-pct span { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:22px; line-height:1; }
+.result-match-pct small { font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text2); }
+
+.result-info { flex:1; }
+.result-info h3 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:28px;
+  text-transform:uppercase; letter-spacing:-0.5px; line-height:1; margin-bottom:4px;
+}
+.result-info .result-subtitle { font-size:12px; color:var(--text2); margin-bottom:14px; }
+.result-verdict {
+  background:var(--bg3); border-left:3px solid var(--accent);
+  border-radius:0 6px 6px 0; padding:10px 14px; font-size:13px;
+  color:var(--text); line-height:1.55; margin-bottom:14px;
+}
+.result-tags { display:flex; gap:6px; flex-wrap:wrap; }
+.result-tag {
+  font-size:10px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+  padding:3px 9px; border-radius:20px; border:1px solid;
+}
+
+.result-bars { padding:20px 28px; border-bottom:1px solid var(--border); }
+.result-bars h4 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px;
+  letter-spacing:0.1em; text-transform:uppercase; color:var(--text3); margin-bottom:14px;
+}
+.match-bar-row { display:flex; align-items:center; gap:12px; margin-bottom:9px; }
+.match-bar-label { font-size:12px; color:var(--text2); width:120px; flex-shrink:0; }
+.match-bar-track { flex:1; height:6px; background:var(--border2); border-radius:3px; overflow:hidden; }
+.match-bar-fill { height:100%; border-radius:3px; transition:width 0.9s cubic-bezier(0.22,1,0.36,1); width:0%; }
+.match-bar-val { font-size:11px; font-family:'Barlow Condensed',sans-serif; font-weight:700; width:32px; text-align:right; }
+
+.result-alts { padding:20px 28px 24px; }
+.result-alts h4 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px;
+  letter-spacing:0.1em; text-transform:uppercase; color:var(--text3); margin-bottom:14px;
+}
+.alt-shoes { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.alt-shoe {
+  background:var(--bg3); border:1px solid var(--border); border-radius:8px;
+  padding:12px; cursor:pointer; transition:all 0.15s; position:relative; overflow:hidden;
+}
+.alt-shoe:hover { border-color:var(--border2); transform:translateY(-2px); }
+.alt-shoe::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+.alt-shoe-tier {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:11px;
+  letter-spacing:0.08em; margin-bottom:5px;
+}
+.alt-shoe-name { font-size:13px; font-weight:600; line-height:1.2; margin-bottom:2px; }
+.alt-shoe-brand { font-size:11px; color:var(--text2); margin-bottom:8px; }
+.alt-shoe-reason { font-size:11px; color:var(--text2); line-height:1.4; }
+.alt-shoe-match {
+  position:absolute; top:10px; right:10px;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:13px;
+}
+
+.result-footer-btns {
+  padding:16px 28px 22px; display:flex; gap:10px; border-top:1px solid var(--border);
+}
+
 </style>
 </head>
 <body>
@@ -235,7 +424,10 @@ header {
       <button class="tab-btn brand-btn" onclick="setBrandFilter('361',this)">361° 🇨🇳</button>
     </div>
     <div class="tab-row">
-      <button class="toggle-btn" id="val-toggle" onclick="toggleValue()">💰 Preis-Leistung hervorheben</button>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="toggle-btn" id="val-toggle" onclick="toggleValue()">💰 Preis-Leistung hervorheben</button>
+        <button class="toggle-btn" id="finder-btn" onclick="openFinder()" style="background:linear-gradient(135deg,#c8991a22,#8b1a1a22);border-color:#c8991a55;color:var(--accent);">🔍 Schuhfinder</button>
+      </div>
     </div>
   </div>
 </header>
@@ -1903,6 +2095,511 @@ document.querySelectorAll('.shoe-card').forEach(card=>{
     showDetail(card,data);
   });
 });
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SCHUHFINDER
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const QUESTIONS = [
+  {
+    id:'goal',
+    q:'Was ist dein primäres Ziel?',
+    sub:'Das bestimmt alles – von der Schaumhärte bis zur Carbon-Platte.',
+    opts:[
+      {id:'pb', icon:'🏆', label:'Neue Bestzeit', desc:'Ich will so schnell wie möglich werden'},
+      {id:'finish', icon:'🎯', label:'Finish & Fun', desc:'Ankommen und genießen'},
+      {id:'train', icon:'🔄', label:'Besser trainieren', desc:'Ich will meine Einheiten optimieren'},
+      {id:'daily', icon:'🌅', label:'Alltagsläufer', desc:'3–4x pro Woche, kein Druck'},
+    ]
+  },
+  {
+    id:'dist',
+    q:'Welche Distanz läufst du hauptsächlich?',
+    sub:'Die Distanz beeinflusst Gewicht, Dämpfung und Plattentechnologie.',
+    opts:[
+      {id:'5k10k', icon:'⚡', label:'5K – 10K', desc:'Schnell, kurz, intensiv'},
+      {id:'half', icon:'🏃', label:'Halbmarathon', desc:'Die perfekte Distanz'},
+      {id:'marathon', icon:'🌍', label:'Marathon', desc:'42.195 km Ausdauer'},
+      {id:'ultra', icon:'🗻', label:'Ultra / Trail', desc:'Jenseits des Marathons'},
+    ]
+  },
+  {
+    id:'level',
+    q:'Wie würdest du dein Niveau einschätzen?',
+    sub:'Ehrliche Antwort – für jeden gibt es den richtigen Schuh.',
+    opts:[
+      {id:'beginner', icon:'🌱', label:'Einsteiger', desc:'Ich laufe seit unter 1 Jahr'},
+      {id:'hobby', icon:'😊', label:'Hobbyläufer', desc:'Regelmäßig, aber kein Wettkampf'},
+      {id:'competitive', icon:'🔥', label:'Kompetitiv', desc:'Wettkämpfe, Sub-4h Marathon'},
+      {id:'elite', icon:'⚡', label:'Sub-Elite/Elite', desc:'Sub-3h Marathon, ernsthafte Ambitionen'},
+    ]
+  },
+  {
+    id:'budget',
+    q:'Wie viel willst du ausgeben?',
+    sub:'Kein falsches Budget – es gibt überall gute Optionen.',
+    opts:[
+      {id:'low', icon:'💚', label:'Bis 130 €', desc:'Smart sparen, trotzdem gut'},
+      {id:'mid', icon:'💛', label:'130 – 200 €', desc:'Der Sweet Spot'},
+      {id:'high', icon:'🟠', label:'200 – 280 €', desc:'Premium-Bereich'},
+      {id:'ultra_price', icon:'🔴', label:'Über 280 €', desc:'Das Beste vom Besten'},
+    ]
+  },
+  {
+    id:'feel',
+    q:'Welches Laufgefühl magst du?',
+    sub:'Purist vs. Komfort-Junkie – beides ist völlig legitim.',
+    opts:[
+      {id:'firm', icon:'🪨', label:'Direkt & reaktiv', desc:'Ich will den Boden spüren'},
+      {id:'plush', icon:'☁️', label:'Weich & komfortabel', desc:'Maximale Dämpfung'},
+      {id:'propulsive', icon:'🚀', label:'Propulsiv & bouncig', desc:'Das Gefühl beim Abdrücken'},
+      {id:'balanced', icon:'⚖️', label:'Ausgewogen', desc:'Weder zu weich noch zu hart'},
+    ]
+  },
+  {
+    id:'injury',
+    q:'Hast du spezifische Verletzungshistorie?',
+    sub:'Präventiv denken hilft beim Schuhkauf.',
+    opts:[
+      {id:'none', icon:'💪', label:'Keine Probleme', desc:'Füße und Beine sind top'},
+      {id:'knee', icon:'🦵', label:'Knieprobleme', desc:'Schmerzen beim oder nach dem Lauf'},
+      {id:'plantar', icon:'🦶', label:'Plantarfasziitis', desc:'Schmerzen an der Fußsohle'},
+      {id:'overpron', icon:'↩️', label:'Überpronation', desc:'Fuß dreht nach innen'},
+    ]
+  },
+  {
+    id:'brand',
+    q:'Hast du eine Markenpräferenz?',
+    sub:'Ehrliche Antwort – manchmal ist Loyalität gerechtfertigt.',
+    opts:[
+      {id:'no_pref', icon:'🌐', label:'Egal – das Beste', desc:'Marke ist mir unwichtig'},
+      {id:'west', icon:'🇪🇺', label:'Westliche Marken', desc:'Nike, Adidas, Asics, Hoka...'},
+      {id:'china', icon:'🇨🇳', label:'China-Marken OK', desc:'Li Ning, Anta, Xtep, 361°'},
+      {id:'specific', icon:'❤️', label:'Ich hab eine', desc:'Ich bleibe meiner Marke treu'},
+    ]
+  },
+  {
+    id:'usage',
+    q:'Wie viele Kilometer läufst du pro Woche?',
+    sub:'Volumen bestimmt wie wichtig Haltbarkeit ist.',
+    opts:[
+      {id:'low_vol', icon:'🐢', label:'Bis 30 km/Woche', desc:'2–3 Läufe, entspannt'},
+      {id:'mid_vol', icon:'🏃', label:'30–60 km/Woche', desc:'Solides Training'},
+      {id:'high_vol', icon:'⚡', label:'60–100 km/Woche', desc:'Hohes Volumen'},
+      {id:'very_high', icon:'🔥', label:'Über 100 km/Woche', desc:'Du bist ein Tier'},
+    ]
+  },
+];
+
+// ── Scoring weights per answer ────────────────────────────────────────────────
+// Each shoe gets scored across 8 dimensions (0–10):
+// speed, comfort, value, durability, propulsion, stability, versatility, china_bonus
+const SHOE_PROFILES = {
+  // id: [speed, comfort, value, durability, propulsion, stability, versatility, china]
+  'evo3':          [10,5,1,1,10,5,1,0],
+  'alphafly4-proto':[10,5,1,1,10,5,1,0],
+  'evo2':          [9,5,2,2,9,5,2,0],
+  'fast-r3':       [9,5,3,2,9,4,2,0],
+  'sky-tokyo':     [9,6,4,2,9,5,2,0],
+  'deviate-elite4':[9,5,3,2,9,5,2,0],
+  'alphafly3':     [9,6,3,2,9,5,2,0],
+  'vaporfly4':     [8,6,3,3,8,5,3,0],
+  'edge-tokyo':    [8,6,3,3,8,5,3,0],
+  'adios-pro4':    [8,6,3,3,8,5,3,0],
+  'endorphin-elite2':[8,6,3,3,8,5,3,0],
+  'on-lightspray': [8,6,3,2,8,5,2,0],
+  'feidian6-elite':[8,6,9,4,8,5,3,10],
+  'feidian5-ultra':[8,6,9,4,8,5,3,10],
+  'anta-c202-7':   [7,7,9,7,7,6,8,10],
+  'xtep-160x-6pro':[8,6,9,4,8,5,3,10],
+  'velociti-elite3':[7,6,3,3,7,5,3,0],
+  'cielo3':        [7,7,4,3,7,6,3,0],
+  'sc-elite-v4':   [8,6,3,3,8,5,3,0],
+  'hyperion-elite4':[7,6,3,3,7,5,3,0],
+  'adizero-sl2':   [7,7,9,8,6,6,9,0],
+  'hyperwarp-pure':[8,5,3,3,8,4,2,0],
+  'superblast3':   [6,8,9,7,7,6,7,0],
+  'deviate3':      [7,7,9,7,7,6,8,0],
+  'peg-plus':      [6,8,8,8,6,6,8,0],
+  'endorphin-speed5':[7,7,9,7,7,6,8,0],
+  'endorphin-pro5':[7,7,7,5,7,5,5,0],
+  'mach-x3':       [6,8,7,8,6,6,9,0],
+  'cloudboom-strike':[7,6,4,5,7,5,5,0],
+  'endorphin-azura':[4,9,9,9,4,7,8,0],
+  'boston12':      [6,7,9,9,6,6,9,0],
+  'sc-trainer3':   [6,7,6,8,6,6,7,0],
+  'megablast':     [3,9,9,9,3,7,7,0],
+  'pw-elite':      [7,6,4,5,7,5,5,0],
+  'feidian5-elite':[7,6,9,6,7,5,6,10],
+  'anta-c202-6':   [6,7,10,7,6,6,7,10],
+  '361-flames4':   [7,6,10,6,7,5,5,10],
+  'xtep-260x':     [6,7,10,7,6,6,7,10],
+  'novablast5':    [4,9,9,9,4,7,8,0],
+  'bondi9':        [2,10,7,9,2,7,6,0],
+  'vomero18':      [3,9,6,8,3,7,7,0],
+  'hyperion-max3': [5,8,6,8,5,7,7,0],
+  'mach7':         [5,8,9,9,5,7,9,0],
+  'nb1080v15':     [3,10,9,9,3,7,7,0],
+  'vomero-plus':   [2,10,7,8,2,7,6,0],
+  'glycerin23':    [2,9,7,9,2,7,7,0],
+  'kayano32':      [2,9,5,9,2,9,5,0],
+  'nimbus28':      [2,9,7,9,2,7,7,0],
+  'deviate-nitro4':[5,7,9,9,5,6,9,0],
+  'cloudrunner3':  [4,7,6,8,4,6,7,0],
+  'hyperboost-edge':[6,6,7,8,6,5,7,0],
+  'wave-sky7':     [2,9,7,9,2,7,6,0],
+  'adrenaline22':  [3,8,7,9,3,9,7,0],
+  'cloudeclipse2': [2,9,6,8,2,7,6,0],
+  'glycerin-flex': [2,7,7,8,2,6,7,0],
+  'pegasus41':     [3,7,9,9,3,6,8,0],
+  'supernova3':    [3,7,9,9,3,6,8,0],
+  'gaviota6':      [2,8,5,8,2,9,5,0],
+  'neozen2':       [3,7,9,9,3,6,7,0],
+  'clifton10':     [2,10,9,9,2,7,7,0],
+  'react-miler3':  [2,8,6,8,2,8,6,0],
+  'gel-excite10':  [2,8,9,9,2,6,7,0],
+};
+
+// Weights from answers → [speed, comfort, value, durability, propulsion, stability, versatility, china]
+function getWeightsFromAnswers(ans) {
+  let w = [5,5,5,5,5,5,5,0]; // base
+
+  // goal
+  if(ans.goal==='pb')       { w[0]+=4; w[4]+=3; w[1]-=2; }
+  if(ans.goal==='finish')   { w[1]+=3; w[3]+=2; }
+  if(ans.goal==='train')    { w[6]+=4; w[3]+=3; w[2]+=2; }
+  if(ans.goal==='daily')    { w[1]+=3; w[3]+=3; w[2]+=3; }
+
+  // dist
+  if(ans.dist==='5k10k')    { w[0]+=4; w[4]+=3; w[3]-=2; }
+  if(ans.dist==='half')     { w[0]+=2; w[4]+=2; }
+  if(ans.dist==='marathon') { w[1]+=2; w[3]+=2; }
+  if(ans.dist==='ultra')    { w[1]+=3; w[3]+=4; w[5]+=2; }
+
+  // level
+  if(ans.level==='beginner'){ w[1]+=4; w[2]+=4; w[5]+=2; w[0]-=2; }
+  if(ans.level==='hobby')   { w[1]+=2; w[2]+=2; }
+  if(ans.level==='competitive'){w[0]+=3; w[4]+=2; }
+  if(ans.level==='elite')   { w[0]+=4; w[4]+=4; w[1]-=2; }
+
+  // budget
+  if(ans.budget==='low')    { w[2]+=6; }
+  if(ans.budget==='mid')    { w[2]+=3; }
+  if(ans.budget==='high')   { w[0]+=2; }
+  if(ans.budget==='ultra_price'){w[0]+=3; w[4]+=2; w[2]-=3; }
+
+  // feel
+  if(ans.feel==='firm')     { w[0]+=3; w[4]+=2; w[1]-=2; }
+  if(ans.feel==='plush')    { w[1]+=4; w[4]-=2; }
+  if(ans.feel==='propulsive'){w[4]+=4; w[0]+=2; }
+  if(ans.feel==='balanced') { w[6]+=3; }
+
+  // injury
+  if(ans.injury==='knee')   { w[1]+=3; w[5]+=2; }
+  if(ans.injury==='plantar'){ w[1]+=3; w[5]+=3; }
+  if(ans.injury==='overpron'){w[5]+=5; }
+  if(ans.injury==='none')   { /* no change */ }
+
+  // brand
+  if(ans.brand==='china')   { w[7]+=8; w[2]+=3; }
+  if(ans.brand==='no_pref') { w[2]+=1; }
+  if(ans.brand==='west')    { w[7]-=5; }
+
+  // usage (volume → durability)
+  if(ans.usage==='low_vol') { w[3]+=1; }
+  if(ans.usage==='mid_vol') { w[3]+=2; }
+  if(ans.usage==='high_vol'){ w[3]+=4; }
+  if(ans.usage==='very_high'){w[3]+=6; w[2]+=2; }
+
+  // clamp to 0+
+  return w.map(x=>Math.max(0,x));
+}
+
+function scoreShoe(profile, weights) {
+  let s = 0, maxS = 0;
+  for(let i=0;i<profile.length;i++){ s+=profile[i]*weights[i]; maxS+=10*weights[i]; }
+  return maxS>0 ? Math.round((s/maxS)*100) : 0;
+}
+
+// Dimension labels for the bar chart
+const DIM_LABELS = ['Geschwindigkeit','Komfort','Preis-Leistung','Haltbarkeit','Propulsion','Stabilität','Vielseitigkeit','China-Bonus'];
+const DIM_COLORS = ['#e05c2a','#3a7fc1','#52c584','#c8991a','#8b1a1a','#7a5ca8','#2e7d52','#ff6b35'];
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let finderAnswers = {};
+let currentQ = 0;
+let currentResult = null;
+
+function openFinder() {
+  finderAnswers = {}; currentQ = 0; currentResult = null;
+  document.getElementById('finderResult').classList.remove('show');
+  document.getElementById('finderQuizBody').style.display='';
+  document.getElementById('finderFooter').style.display='';
+  document.getElementById('finderProgress').style.display='';
+  document.getElementById('finderHeaderTitle').textContent='🔍 Schuhfinder';
+  renderQuestion(0);
+  document.getElementById('finderOverlay').classList.add('open');
+}
+
+function closeFinder() {
+  document.getElementById('finderOverlay').classList.remove('open');
+}
+
+function handleOverlayClick(e) {
+  if(e.target===document.getElementById('finderOverlay')) closeFinder();
+}
+
+function restartFinder() {
+  openFinder();
+}
+
+function renderQuestion(idx) {
+  const q = QUESTIONS[idx];
+  currentQ = idx;
+
+  // progress
+  for(let i=0;i<QUESTIONS.length;i++){
+    const el=document.getElementById('ps'+i);
+    el.classList.remove('done','active');
+    if(i<idx) el.classList.add('done');
+    else if(i===idx) el.classList.add('active');
+  }
+  document.getElementById('progLabel').textContent=`Frage ${idx+1} von ${QUESTIONS.length}`;
+
+  document.getElementById('fQuestion').textContent=q.q;
+  document.getElementById('fSub').textContent=q.sub;
+
+  const container=document.getElementById('fOptions');
+  container.className='finder-options';
+  container.innerHTML=q.opts.map(o=>`
+    <div class="finder-opt${finderAnswers[q.id]===o.id?' selected':''}" onclick="selectOpt('${q.id}','${o.id}',this)">
+      <div class="finder-opt-icon">${o.icon}</div>
+      <div class="finder-opt-text">
+        <strong>${o.label}</strong>
+        <small>${o.desc}</small>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('btnBack').disabled = idx===0;
+  const hasAnswer = !!finderAnswers[q.id];
+  document.getElementById('btnNext').disabled = !hasAnswer;
+  document.getElementById('footerHint').textContent = hasAnswer ? '✓ Auswahl getroffen' : 'Wähle eine Option';
+}
+
+function selectOpt(qId, optId, el) {
+  finderAnswers[qId]=optId;
+  document.querySelectorAll('#fOptions .finder-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btnNext').disabled=false;
+  document.getElementById('footerHint').textContent='✓ Auswahl getroffen';
+}
+
+function goBack() {
+  if(currentQ>0) renderQuestion(currentQ-1);
+}
+
+function goNext() {
+  if(currentQ<QUESTIONS.length-1) {
+    renderQuestion(currentQ+1);
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const weights = getWeightsFromAnswers(finderAnswers);
+
+  // Score all shoes
+  const scored = Object.entries(SHOE_PROFILES)
+    .filter(([id])=>shoes[id])
+    .map(([id,prof])=>({id, score:scoreShoe(prof,weights), data:shoes[id], profile:prof}))
+    .sort((a,b)=>b.score-a.score);
+
+  const best = scored[0];
+  const alts = scored.slice(1,4);
+  currentResult = best.id;
+
+  // Hide quiz, show result
+  document.getElementById('finderQuizBody').style.display='none';
+  document.getElementById('finderFooter').style.display='none';
+  document.getElementById('finderProgress').style.display='none';
+  document.getElementById('finderHeaderTitle').textContent='🏆 Dein Ergebnis';
+
+  const result = document.getElementById('finderResult');
+  result.classList.add('show');
+
+  const d = best.data;
+  const TC2 = {SS:'#8b1a1a',S:'#c0392b',A:'#c8991a',B:'#2e7d52',C:'#2a5f8a',D:'#4a3a6a','?':'#3a3a4a'};
+  const tc = TC2[d.tier]||'#555';
+
+  // Tier badge
+  const badge = document.getElementById('rTierBadge');
+  badge.textContent = d.tier;
+  badge.style.background=tc+'22'; badge.style.borderColor=tc; badge.style.color=tc;
+
+  document.getElementById('rShoeName').textContent = d.name;
+  document.getElementById('rShoeBrand').textContent = d.brand;
+  document.getElementById('rShoeTitle').textContent = d.name;
+  document.getElementById('rSubtitle').textContent = d.brand + ' · ' + d.tier + '-Tier';
+  document.getElementById('rVerdict').textContent = d.desc;
+
+  // Tags
+  const tags=[];
+  if(d.use.race) tags.push({t:'⚡ Wettkampf',c:'#e05c2a'});
+  if(d.use.train) tags.push({t:'🏃 Training',c:'#3a7fc1'});
+  tags.push({t:'★'.repeat(Math.max(1,d.value))+' Value',c:'#52c584'});
+  document.getElementById('rTags').innerHTML=tags.map(t=>`<span class="result-tag" style="color:${t.c};border-color:${t.c}44;background:${t.c}18">${t.t}</span>`).join('');
+
+  // Animate match ring
+  const pct = best.score;
+  const circumference = 2*Math.PI*38;
+  const ring = document.getElementById('ringFill');
+  ring.style.strokeDasharray = circumference;
+  ring.style.strokeDashoffset = circumference;
+  ring.style.stroke = tc;
+  const pctEl = document.getElementById('rMatchPct');
+  pctEl.textContent = '0%';
+  setTimeout(()=>{
+    ring.style.strokeDashoffset = circumference*(1-pct/100);
+    let cur=0; const step=()=>{ cur=Math.min(cur+2,pct); pctEl.textContent=cur+'%'; if(cur<pct)requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  },100);
+
+  // Match bars – top 5 scoring dimensions
+  const dimScores = weights.map((w,i)=>({i,label:DIM_LABELS[i],color:DIM_COLORS[i],score:best.profile[i],weight:w,combined:best.profile[i]*w}));
+  const topDims = dimScores.filter(d=>d.weight>0&&d.label!=='China-Bonus'||d.score>5).sort((a,b)=>b.combined-a.combined).slice(0,5);
+  const maxCombined = Math.max(...topDims.map(d=>d.combined),1);
+  document.getElementById('matchBars').innerHTML = topDims.map(dim=>`
+    <div class="match-bar-row">
+      <div class="match-bar-label">${dim.label}</div>
+      <div class="match-bar-track">
+        <div class="match-bar-fill" style="background:${dim.color}" data-pct="${Math.round(dim.combined/maxCombined*100)}"></div>
+      </div>
+      <div class="match-bar-val" style="color:${dim.color}">${dim.score}/10</div>
+    </div>`).join('');
+  setTimeout(()=>{
+    document.querySelectorAll('.match-bar-fill').forEach(bar=>{
+      bar.style.width=bar.dataset.pct+'%';
+    });
+  },200);
+
+  // Alternatives
+  document.getElementById('altShoes').innerHTML = alts.map(alt=>{
+    const ad=alt.data; const atc=TC2[ad.tier]||'#555';
+    return `<div class="alt-shoe" onclick="closeFinder();setTimeout(()=>{const c=document.querySelector('[data-shoe=\'${alt.id}\']');if(c){c.click();c.scrollIntoView({behavior:'smooth',block:'center'})}},300)">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:${atc}"></div>
+      <div class="alt-shoe-match" style="color:${atc}">${alt.score}%</div>
+      <div class="alt-shoe-tier" style="color:${atc}">${ad.tier}-Tier</div>
+      <div class="alt-shoe-name">${ad.name}</div>
+      <div class="alt-shoe-brand">${ad.brand}</div>
+      <div class="alt-shoe-reason">${ad.raceNote&&ad.use.race?ad.raceNote.split('.')[0]:ad.trainNote.split('.')[0]}.</div>
+    </div>`;
+  }).join('');
+}
+
+function scrollToShoe(id) {
+  closeFinder();
+  setTimeout(()=>{
+    const card = document.querySelector(`[data-shoe="${id}"]`);
+    if(card){ card.click(); card.scrollIntoView({behavior:'smooth',block:'center'}); }
+  },300);
+}
+
+// Keyboard support
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('finderOverlay').classList.contains('open')) return;
+  if(e.key==='Escape') closeFinder();
+  if(e.key==='ArrowRight'||e.key==='Enter'){
+    const btn=document.getElementById('btnNext');
+    if(!btn.disabled) goNext();
+  }
+  if(e.key==='ArrowLeft'){
+    const btn=document.getElementById('btnBack');
+    if(!btn.disabled) goBack();
+  }
+});
+
 </script>
+
+<!-- ═══ SCHUHFINDER MODAL ════════════════════════════════════════════════════ -->
+<div class="finder-overlay" id="finderOverlay" onclick="handleOverlayClick(event)">
+  <div class="finder-modal" id="finderModal">
+
+    <!-- HEADER -->
+    <div class="finder-header">
+      <h2 id="finderHeaderTitle">🔍 Schuhfinder</h2>
+      <button class="finder-close" onclick="closeFinder()">✕</button>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="finder-progress" id="finderProgress">
+      <div class="prog-step" id="ps0"></div>
+      <div class="prog-step" id="ps1"></div>
+      <div class="prog-step" id="ps2"></div>
+      <div class="prog-step" id="ps3"></div>
+      <div class="prog-step" id="ps4"></div>
+      <div class="prog-step" id="ps5"></div>
+      <div class="prog-step" id="ps6"></div>
+      <div class="prog-step" id="ps7"></div>
+      <span class="prog-label" id="progLabel">Frage 1 von 8</span>
+    </div>
+
+    <!-- QUIZ BODY -->
+    <div class="finder-body" id="finderQuizBody">
+      <div class="finder-question" id="fQuestion"></div>
+      <div class="finder-sub" id="fSub"></div>
+      <div class="finder-options" id="fOptions"></div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="finder-result" id="finderResult">
+      <div class="result-hero">
+        <div class="result-hero-label">Dein perfekter Laufschuh</div>
+        <div class="result-main">
+          <div class="result-shoe-visual">
+            <div class="result-tier-badge" id="rTierBadge"></div>
+            <div class="result-shoe-name" id="rShoeName"></div>
+            <div class="result-shoe-brand" id="rShoeBrand"></div>
+          </div>
+          <div class="result-match-ring">
+            <svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" id="ringFill" cx="45" cy="45" r="38"/></svg>
+            <div class="result-match-pct"><span id="rMatchPct">0%</span><small>Match</small></div>
+          </div>
+          <div class="result-info">
+            <h3 id="rShoeTitle"></h3>
+            <div class="result-subtitle" id="rSubtitle"></div>
+            <div class="result-verdict" id="rVerdict"></div>
+            <div class="result-tags" id="rTags"></div>
+          </div>
+        </div>
+      </div>
+      <div class="result-bars">
+        <h4>Warum dieser Schuh passt</h4>
+        <div id="matchBars"></div>
+      </div>
+      <div class="result-alts">
+        <h4>Alternativen für dich</h4>
+        <div class="alt-shoes" id="altShoes"></div>
+      </div>
+      <div class="result-footer-btns">
+        <button class="finder-nav-btn primary" onclick="closeFinder()">✓ Zur Tier List</button>
+        <button class="finder-nav-btn" onclick="restartFinder()">↺ Neu starten</button>
+        <button class="finder-nav-btn" onclick="scrollToShoe(currentResult)" style="margin-left:auto;">In Liste anzeigen →</button>
+      </div>
+    </div>
+
+    <!-- NAV FOOTER (quiz only) -->
+    <div class="finder-footer" id="finderFooter">
+      <button class="finder-nav-btn" id="btnBack" onclick="goBack()">← Zurück</button>
+      <span style="font-size:11px;color:var(--text3)" id="footerHint">Wähle eine Option</span>
+      <button class="finder-nav-btn primary" id="btnNext" onclick="goNext()" disabled>Weiter →</button>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
+<!-- ═══════════════════════════════════════════════════════════════
+     SCHUHFINDER – Button im Header + Modal + Result Screen
+═══════════════════════════════════════════════════════════════ -->
