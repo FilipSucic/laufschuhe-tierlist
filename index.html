@@ -2702,6 +2702,114 @@ document.addEventListener('keydown', e=>{
   }
 });
 
+
+// ── DYNAMIC IMAGE LOADING FROM IDEALO ──────────────────────────────────────────
+const IDEALO_QUERIES = {
+  'evo3':'adidas+adizero+adios+pro+evo+3+laufschuh',
+  'evo3-w':'adidas+adizero+adios+pro+evo+3+laufschuh',
+  'evo2':'adidas+adizero+adios+pro+evo+2',
+  'adios-pro4':'adidas+adizero+adios+pro+4',
+  'adizero-sl2':'adidas+adizero+evo+sl',
+  'boston12':'adidas+adizero+boston+12',
+  'supernova3':'adidas+supernova+rise+2',
+  'hyperboost-edge':'adidas+hyperboost+edge',
+  'alphafly4-proto':'nike+alphafly+4',
+  'alphafly3':'nike+alphafly+3',
+  'vaporfly4':'nike+vaporfly+next+4',
+  'peg-plus':'nike+pegasus+plus',
+  'vomero18':'nike+vomero+18',
+  'vomero-plus':'nike+vomero+plus',
+  'pegasus41':'nike+pegasus+42',
+  'react-miler3':'nike+infinity+run+5',
+  'alphafly4-retail':'nike+alphafly+4',
+  'sky-tokyo':'asics+metaspeed+sky+tokyo',
+  'edge-tokyo':'asics+metaspeed+edge+tokyo',
+  'superblast3':'asics+superblast+3',
+  'novablast5':'asics+novablast+5',
+  'kayano32':'asics+gel+kayano+32',
+  'nimbus28':'asics+gel+nimbus+28',
+  'megablast':'asics+megablast',
+  'gel-excite10':'asics+gel+cumulus+27',
+  'fast-r3':'puma+fast+r+nitro+elite+3',
+  'deviate-elite4':'puma+deviate+nitro+elite+4',
+  'deviate3':'puma+deviate+nitro+elite+3',
+  'deviate-nitro4':'puma+deviate+nitro+4',
+  'endorphin-elite2':'saucony+endorphin+elite+2',
+  'endorphin-speed5':'saucony+endorphin+speed+5',
+  'endorphin-pro5':'saucony+endorphin+pro+5',
+  'endorphin-azura':'saucony+endorphin+azura',
+  'elite3':'saucony+endorphin+elite+3',
+  'cielo3':'hoka+cielo+x1+3',
+  'mach-x3':'hoka+mach+x+2',
+  'bondi9':'hoka+bondi+9',
+  'mach7':'hoka+mach+7',
+  'clifton10':'hoka+clifton+10',
+  'gaviota6':'hoka+gaviota+6',
+  'sc-elite-v4':'new+balance+fuelcell+sc+elite+v4',
+  'sc-trainer3':'new+balance+fuelcell+sc+trainer+v3',
+  'nb1080v15':'new+balance+fresh+foam+x+1080+v15',
+  'pw-elite':'new+balance+fuelcell+sc+elite+v4',
+  'on-lightspray':'on+running+cloudboom+strike+ls',
+  'cloudboom-strike':'on+running+cloudboom+strike',
+  'cloudrunner3':'on+running+cloudrunner+3',
+  'cloudeclipse2':'on+running+cloudmonster+2',
+  'hyperion-elite4':'brooks+hyperion+elite+4',
+  'hyperion-max3':'brooks+hyperion+max+3',
+  'glycerin23':'brooks+glycerin+23',
+  'glycerin-flex':'brooks+glycerin+flex',
+  'adrenaline22':'brooks+adrenaline+gts+24',
+  'hyperwarp-pure':'mizuno+wave+rebellion+pro+3',
+  'wave-sky7':'mizuno+wave+sky+8',
+  'neozen2':'mizuno+wave+rider+27',
+  'velociti-elite3':'under+armour+velociti+elite+3',
+  'feidian6-elite':'li+ning+feidian+6+elite',
+  'feidian5-ultra':'li+ning+feidian+5+ultra',
+  'feidian5-elite':'li+ning+feidian+5+elite',
+  'anta-c202-7':'anta+c202+7+laufschuh',
+  'anta-c202-6':'anta+c202+6+laufschuh',
+  'xtep-160x-6pro':'xtep+160x+pro+laufschuh',
+  'xtep-260x':'xtep+260x+laufschuh',
+  '361-flames4':'361+degrees+flame+laufschuh',
+};
+
+const imgCache = {};
+
+async function loadShoeImage(shoeId, imgEl) {
+  if(!imgEl) return;
+  if(imgCache[shoeId]) { imgEl.src = imgCache[shoeId]; return; }
+
+  const q = IDEALO_QUERIES[shoeId];
+  if(!q) return;
+
+  // Try allorigins CORS proxy to fetch Idealo og:image
+  const idealoUrl = `https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=${q}`;
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(idealoUrl)}`;
+
+  try {
+    const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(6000) });
+    const data = await res.json();
+    const html = data.contents || '';
+    // Extract og:image
+    const m = html.match(/og:image[^>]+content="([^"]+)"/);
+    if(m && m[1] && m[1].includes('cdn.idealo')) {
+      imgCache[shoeId] = m[1];
+      imgEl.src = m[1];
+      return;
+    }
+    // Try corsproxy.io as fallback
+    const proxy2 = `https://corsproxy.io/?${encodeURIComponent(idealoUrl)}`;
+    const res2 = await fetch(proxy2, { signal: AbortSignal.timeout(6000) });
+    const html2 = await res2.text();
+    const m2 = html2.match(/og:image[^>]+content="([^"]+)"/);
+    if(m2 && m2[1]) {
+      imgCache[shoeId] = m2[1];
+      imgEl.src = m2[1];
+    }
+  } catch(e) {
+    // Proxy failed – img stays hidden (onerror will show placeholder)
+  }
+}
+
 </script>
 
 <!-- ═══ SCHUHFINDER MODAL ════════════════════════════════════════════════════ -->
