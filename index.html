@@ -387,6 +387,44 @@ header {
   padding:16px 28px 22px; display:flex; gap:10px; border-top:1px solid var(--border);
 }
 
+
+/* Shoe image in detail panel */
+.d-shoe-img {
+  width:100%; aspect-ratio:1; object-fit:contain; border-radius:8px;
+  background:var(--bg3); display:block; margin-bottom:12px;
+  border:1px solid var(--border);
+}
+.d-shoe-img-wrap {
+  position:relative; overflow:hidden; border-radius:8px;
+  background:linear-gradient(135deg,#18181f,#111116);
+  border:1px solid var(--border); margin-bottom:12px;
+}
+.d-shoe-img-wrap img {
+  width:100%; aspect-ratio:1; object-fit:contain; display:block; padding:12px;
+}
+.d-img-placeholder {
+  width:100%; aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:48px; opacity:0.3;
+}
+.buy-btn {
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; padding:10px 16px; border-radius:6px;
+  background:linear-gradient(135deg,#c8991a,#a07a10);
+  color:#0a0a0c; font-family:'Barlow Condensed',sans-serif;
+  font-weight:800; font-size:13px; letter-spacing:0.08em;
+  text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
+  transition:all 0.15s; margin-bottom:12px;
+}
+.buy-btn:hover { background:linear-gradient(135deg,#e0b030,#c8991a); transform:translateY(-1px); }
+
+/* Shoe image in result screen */
+.result-shoe-img {
+  width:100%; max-width:160px; aspect-ratio:1;
+  object-fit:contain; border-radius:8px; padding:8px;
+  background:linear-gradient(135deg,#18181f,#111116);
+  border:1px solid var(--border); display:block; margin:0 auto 8px;
+}
+
 </style>
 </head>
 <body>
@@ -1176,6 +1214,8 @@ const VL = {5:'Ausgezeichnet',4:'Gut',3:'Mittel',2:'Schwach',1:'Sehr schlecht',0
 const shoes = {
   
   "feidian6-elite":{
+    buy:"https://www.shopnings.com/li-ning-feidian-6-elite/",
+    img:"https://www.shopnings.com/wp-content/uploads/feidian6elite.jpg",
     name:"Li Ning Feidian 6 Elite",brand:"Li Ning",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Li Nings neuestes Flaggschiff 2025. PEBA-basierter Super Boom Capsule-Schaum + T1000-Carbon-Platte. RTINGS.com: 'feels high-energy and propulsive'. Direkter Konkurrent zu Alphafly und Vaporfly – zu einem Bruchteil des Preises.",
@@ -1189,6 +1229,8 @@ const shoes = {
     desc:"Li Nings bisher bestes Wettkampfmodell und ein echter Augenöffner für westliche Läufer. Der Feidian 6 Elite bringt PEBA-Schaum der Weltklasse und eine T1000-Carbon-Platte zu einem Preis der Alphafly und Vaporfly alt aussehen lässt. In China ein Bestseller – im Westen noch ein Geheimtipp."
   },
   "feidian5-ultra":{
+    buy:"https://www.shopnings.com/li-ning-feidian-5-ultra/",
+    img:"https://www.shopnings.com/wp-content/uploads/feidian5ultra.jpg",
     name:"Li Ning Feidian 5 Ultra",brand:"Li Ning",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Das frühere Flaggschiff – SUPER BOOM-Schaum + T1000-Fullength-Carbon + Dual-Stage Assist Curves. Tadu Abate lief 2:06:28 Berlin 2022 – erster Top-3-Marathon mit einer chinesischen Marke.",
@@ -1202,6 +1244,8 @@ const shoes = {
     desc:"Das Modell das die Welt erstmals auf Li Ning aufmerksam gemacht hat. Tadu Abates 3. Platz in Berlin 2022 war ein historischer Moment für chinesische Sportmarken. Technisch mit Alphafly vergleichbar – zu hälbigem Preis."
   },
   "anta-c202-7":{
+    buy:"https://anta.com/products/mens-anta-c202-7",
+    img:"https://anta.com/cdn/shop/files/c202-7.jpg?width=600",
     name:"Anta C202 7",brand:"Anta",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:true},
     raceNote:"Antas neuester Super-Trainer gebaut mit Kenenisa Bekele. RTINGS.com bewertet ihn als eine der besten Optionen für 'faster training, uptempo long runs, and race day'. Sehr vielseitig – race und train.",
@@ -1215,6 +1259,8 @@ const shoes = {
     desc:"Anta hat mit Kenenisa Bekele – dem Mann der jahrelang den Marathon-Weltrekord hielt – einen Schuh entwickelt der genau das widerspiegelt: schnell, vielseitig, langlebig. Der C202 7 überzeugt RTINGS, Believe in the Run und WeeViews gleichermaßen. Und das zu chinesischen Preisen."
   },
   "xtep-160x-6pro":{
+    buy:"https://www.shopnings.com/xtep-160x-6-0-pro/",
+    img:"https://www.shopnings.com/wp-content/uploads/xtep160x6pro.jpg",
     name:"Xtep 160X 6.0 PRO",brand:"Xtep",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Xteps Race-Day-Flaggschiff. XTEP ACE-Schaum + Shot-Molded Foam + GT700 Gold Carbon Plate. Beweis: 95 Athleten weltweit, 451 Marathonsiege mit der 160X-Serie.",
@@ -1228,6 +1274,8 @@ const shoes = {
     desc:"Xtep ist in China das was Nike im Westen ist – und die Zahlen sprechen für sich: 95 Athleten, 451 Marathonsiege mit der 160X-Serie. Der 6.0 PRO ist die neueste Evolution mit verbessertem ACE-Schaum und Gold-Carbon-Platte. Weltklasse zu demokratischem Preis."
   },
   "feidian5-elite":{
+    buy:"https://www.shopnings.com/li-ning-feidian-5-elite-racing-running-shoes/",
+    img:"https://www.shopnings.com/wp-content/uploads/feidian5elite.jpg",
     name:"Li Ning Feidian 5 Elite",brand:"Li Ning",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:true},
     raceNote:"Die zugänglichere Elite-Variante des Feidian 5. Leichter Super LightFoam + T1000 Carbon – gute B-Tier-Performance für den Preis.",
@@ -1241,6 +1289,8 @@ const shoes = {
     desc:"Der Feidian 5 Elite ist der Einstieg in Li Nings Carbon-Welt. Günstiger als die Ultra-Modelle, trotzdem mit T1000-Carbon und reaktivem LightFoam. Perfekt für alle die chinesische Qualität zu fairem Preis wollen."
   },
   "anta-c202-6":{
+    buy:"https://anta.com/products/mens-anta-c202-6",
+    img:"https://anta.com/cdn/shop/files/c202-6.jpg?width=600",
     name:"Anta C202 6",brand:"Anta",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:true},
     raceNote:"Vorgänger des C202 7 – noch sehr stark. NITROEDGE-Schaum + Carbon. Sehr gute B-Tier-Performance.",
@@ -1254,6 +1304,8 @@ const shoes = {
     desc:"Der C202 6 ist Antas bewährtestes Modell und immer noch erhältlich. NITROEDGE-Schaum + Carbon zu unter 150€ – eines der günstigsten ernsthaften Carbon-Angebote weltweit. Ideal für Einsteiger in den Carbon-Racer-Markt."
   },
   "361-flames4":{
+    buy:"https://www.shopnings.com/361-flame-4/",
+    img:"https://www.shopnings.com/wp-content/uploads/361flame4.jpg",
     name:"361° Flame 4.0",brand:"361",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:false},
     raceNote:"361°s Flaggschiff-Racer. QU!KFOAM X-Schaum + Carbon-Platte – technisch beeindruckend, kaum bekannt im Westen. Im asiatischen Marathonsport sehr beliebt.",
@@ -1267,6 +1319,8 @@ const shoes = {
     desc:"361° ist außerhalb Chinas kaum bekannt – aber das US-Olympiateam läuft in ihrer Ausrüstung. Der Flame 4.0 ist ihr schnellster Wettkampfracer: Carbon + QU!KFOAM X zu einem Preis der jeden anderen A-Tier-Racer alt aussehen lässt. Der beste Geheimtipp dieser Liste."
   },
   "xtep-260x":{
+    buy:"https://www.shopnings.com/xtep-260x/",
+    img:"https://www.shopnings.com/wp-content/uploads/xtep260x.jpg",
     name:"Xtep 260X 2.0",brand:"Xtep",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:true},
     raceNote:"Xteps Super-Trainer – für Training und leichtere Rennen. Streamlined Carbon Plate + bewährter Xtep-Schaum.",
@@ -1280,6 +1334,8 @@ const shoes = {
     desc:"Wo der 160X für den Wettkampftag ist, ist der 260X für das Training. Xteps Super-Trainer bietet Carbon-Feel für alle schnellen Einheiten ohne den Race-Day-Schuh zu opfern. Zu ~100-140€ das günstigste Carbon-Training-Angebot auf dieser Liste."
   },
 "evo3":{
+    buy:"https://www.adidas.de/adizero-adios-pro-evo-3",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/adizero-adios-pro-evo-3-shoes.jpg",
     name:"Adizero Adios Pro Evo 3",brand:"Adidas",tier:"SS",tierColor:"#8b1a1a",
     use:{race:true,train:false},
     raceNote:"Das schnellste Wettkampfwerkzeug der Welt. Nur für Rennen – zu kurze Lebensdauer und zu teuer fürs Training.",
@@ -1291,6 +1347,8 @@ const shoes = {
     desc:"Der revolutionärste Laufschuh aller Zeiten. Beim London Marathon 2026 liefen Sawe, Kejelcha und Assefa alle drei zu Weltrekorden. Nur 97g – erster sub-100g Marathon-Superschuh mit neuem ENERGYRIM-Karbonsystem. Für Amateure kaum empfehlenswert."
   },
   "alphafly4-proto":{
+    buy:"https://www.nike.com/de/t/alphafly-4",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/alphafly3-main.jpg",
     name:"Alphafly 4 (Prototype)",brand:"Nike",tier:"SS",tierColor:"#8b1a1a",
     use:{race:true,train:false},
     raceNote:"Bereits für zwei Weltrekorde verantwortlich (HM 57:20 + Marathon 2:00:28). Retail-Release Q3 2026 erwartet.",
@@ -1302,6 +1360,8 @@ const shoes = {
     desc:"Kiplimo schrieb '57:20 WR' auf die Sohlen. Derselbe Schuh (Nike Dev 164) half ihm 7 Wochen später zu 2:00:28 in London – schneller als Kiptums alter Marathon-Weltrekord. Consumer-Release Q3 2026 erwartet."
   },
   "evo2":{
+    buy:"https://www.adidas.de/adizero-adios-pro-evo-2",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/IF1671_9/adizero-adios-pro-evo-2.jpg",
     name:"Adizero Adios Pro Evo 2",brand:"Adidas",tier:"S",tierColor:"#c0392b",
     use:{race:true,train:false},
     raceNote:"6 Marathon Major Siege 2025. Für Eliteläufer die erste Wahl – aber nur mit Sponsoring oder sehr gezieltem Wettkampfeinsatz.",
@@ -1313,6 +1373,8 @@ const shoes = {
     desc:"Podiumsdominator der Marathon Majors 2025. Adidas gewann mit Pro Evo 1 & 2 mehr Major-Podien als jede andere Marke. Wer ihn bekommt, bekommt eines der schnellsten je legal verkauften Schuhe – aber für Amateure kaum zu empfehlen."
   },
   "fast-r3":{
+    buy:"https://de.puma.com/de/de/pd/fast-r-nitro-elite-3",
+    img:"https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/309583/01/sv01/fglob/fast-r-nitro-elite-3.jpg",
     name:"Fast-R Nitro Elite 3",brand:"Puma",tier:"S",tierColor:"#c0392b",
     use:{race:true,train:false},
     raceNote:"Laut Studie 3,15–3,62% effizienter als der Alphafly 3. Klare Empfehlung für Vorfuß-/Mittelfußläufer im Wettkampf.",
@@ -1324,6 +1386,8 @@ const shoes = {
     desc:"Laut unabhängigen Labortests 3,15–3,62% effizienter als der Alphafly 3. Absolute Empfehlung für starke Vorfußläufer im Wettkampf. Fersenläufer sind hier falsch. Outsole verschleißt schneller als bei der Konkurrenz."
   },
   "sky-tokyo":{
+    buy:"https://www.asics.com/de/de-de/metaspeed-sky-tokyo",
+    img:"https://images.asics.com/is/image/asics/1013A082_400_SR_RT_GLB?$zoom$",
     name:"Metaspeed Sky Tokyo",brand:"Asics",tier:"S",tierColor:"#c0392b",
     use:{race:true,train:false},
     raceNote:"S-Tier Performance für ~270€ – bestes Preis-Wettkampf-Verhältnis in der Elite-Klasse. Beste Outsole-Traktion der Kategorie verlängert die Lebensdauer.",
@@ -1335,6 +1399,8 @@ const shoes = {
     desc:"Massiv verbessert gegenüber Sky Paris: Energierückgabe 73,2% → 78,5%. Neue FF Leap + FF Turbo+ Dual-Foam-Kombination, 13g leichter. Beste Outsole-Traktion in der Klasse. Gleiches Geld wie der Edge Tokyo, aber eine Tier-Stufe höher – klarer Preis-Leistungs-Gewinner zwischen den beiden."
   },
   "alphafly3":{
+    buy:"https://www.nike.com/de/t/alphafly-3-road-racing-shoes",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/u_126ab356-5b9a-4fc1-9fc1-7714e6ed9005,c_scale,fl_relative,w_1.0/alphafly3.png",
     name:"Alphafly 3",brand:"Nike",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Exzellenter Marathon-Wettkampfschuh. Seit dem Alphafly-4-Teaser im Handel günstiger – gutes Zeitfenster für einen Kauf.",
@@ -1346,6 +1412,8 @@ const shoes = {
     desc:"Der Schuh, der die Sub-2h-Ära einläutete. Weich, komfortabel, doppeltes Air-Zoom-System. Seit Evo-3 und AF4-Teaser im Handel günstiger – aktuell oft für ~200€ erhältlich. Immer noch eine der besten Marathon-Optionen."
   },
   "vaporfly4":{
+    buy:"https://www.nike.com/de/t/vaporfly-next-4-road-racing-shoes",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/vaporfly-next-4.png",
     name:"Vaporfly Next% 4",brand:"Nike",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Bester Nike-Racer für 5K bis Halbmarathon. RunRepeat kürte ihn zum besten Overall-Racer 2026. Doctors of Running: Top-Empfehlung für HM.",
@@ -1357,6 +1425,8 @@ const shoes = {
     desc:"Leichtester Vaporfly je. Fester und direkter als der Alphafly 3 – für 5K bis Halbmarathon ideal. RunRepeat wählt ihn als besten Overall-Racer 2026. Doctors of Running empfehlen ihn explizit für den Halbmarathon."
   },
   "edge-tokyo":{
+    buy:"https://www.asics.com/de/de-de/metaspeed-edge-tokyo",
+    img:"https://images.asics.com/is/image/asics/1013A083_960_SR_RT_GLB?$zoom$",
     name:"Metaspeed Edge Tokyo",brand:"Asics",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Exzellenter Wettkampfschuh für Kadenzläufer. Leichtester Asics-Racer – ideal für HM und Marathon wenn du Kadenz statt Schrittlänge erhöhst.",
@@ -1368,6 +1438,8 @@ const shoes = {
     desc:"Für Kadenzläufer, die mehr Schritte pro Minute statt längerer Schritte laufen. Leichtester Asics-Racer. Tiefer sitzende Platte als Sky Tokyo, direkteres Feedback. Gleicher Preis wie der Sky Tokyo – der Sky Tokyo bietet für die meisten Läufer jedoch mehr Performance fürs Geld."
   },
   "adios-pro4":{
+    buy:"https://www.adidas.de/adizero-adios-pro-4-laufschuhe",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/IF1663_9/adizero-adios-pro-4.jpg",
     name:"Adizero Adios Pro 4",brand:"Adidas",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Zugänglichster Adidas-Wettkampfracer. Continental-Outsole macht ihn zum haltbarsten Top-Wettkampfschuh – bestes Kosten-pro-Rennen-Verhältnis.",
@@ -1379,6 +1451,8 @@ const shoes = {
     desc:"Zugänglichster Adidas-Racer. Energy Rods 2.0 statt klassischer Platte. Continental-Gummi macht ihn zum haltbarsten Top-Wettkampfschuh. Bestes Kosten-pro-Rennen-Verhältnis. Sowohl für Marathon als auch Halbmarathon sehr gut."
   },
   "endorphin-elite2":{
+    buy:"https://www.saucony.com/de/endorphin-elite-2",
+    img:"https://www.saucony.com/dw/image/v2/AABF_PRD/on/demandware.static/-/Sites-saucony-master-catalog/default/endorphin-elite-2-main.jpg?sw=600",
     name:"Endorphin Elite 2",brand:"Saucony",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Marathon Handbook: 'Meistunterschätzter Wettkampfschuh 2025'. Sehr gute Dämpfung für HM und Marathon. Oft besser als teurere Alternativen.",
@@ -1390,6 +1464,8 @@ const shoes = {
     desc:"Marathon Handbook: meistunterschätzter Wettkampfschuh 2025. PWRRUN HG Foam + Glasfaser-Karbonplatte. Sehr gute Dämpfung für HM und Marathon. Bestes Preis-Leistungs-Verhältnis im echten Elite-Wettkampfsegment."
   },
   "on-lightspray":{
+    buy:"https://www.on-running.com/de-de/products/cloudboom-strike-ls",
+    img:"https://images.on-running.com/is/image/On/3MD10370553-LATERAL?$product$",
     name:"LightSpray Prototype",brand:"On Running",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Hellen Obiri lief damit ihre Karrierebestzeit 2:15:53. Consumer-Modell mit LightSpray-Technologie in Entwicklung.",
@@ -1401,6 +1477,8 @@ const shoes = {
     desc:"Roboter spritzt das Oberteil in 3 Minuten ohne Nähte auf den Leisten – keine Schnürung. Hellen Obiri lief damit in London ihre Karrierebestzeit. On hat eine Robot Farm mit 32 Maschinen eröffnet, die 30× mehr produziert – Consumer-Release rückt näher."
   },
   "superblast3":{
+    buy:"https://www.asics.com/de/de-de/superblast-3",
+    img:"https://images.asics.com/is/image/asics/1013A127_400_SR_RT_GLB?$zoom$",
     name:"Superblast 3",brand:"Asics",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:true},
     raceNote:"Ohne Karbonplatte trotzdem sehr schnell durch FF Blast Turbo+. Für Halbmarathon gut geeignet, etwas eingeschränkt im Marathon-Wettkampf.",
@@ -1412,6 +1490,8 @@ const shoes = {
     desc:"Outside Magazine kürte ihn im März 2026 zum besten Allround-Laufschuh. Ohne Karbonplatte, aber explosiv durch FF Blast Turbo+. Ideal für Training und lockere Wettkämpfe. Exzellente Preis-Leistung."
   },
   "deviate3":{
+    buy:"https://de.puma.com/de/de/pd/deviate-nitro-elite-3",
+    img:"https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/309454/01/sv01/fglob/deviate-nitro-elite-3.jpg",
     name:"Deviate Nitro Elite 3",brand:"Puma",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:false},
     raceNote:"Günstigster Karbonschuh auf echtem Top-Niveau. RunRepeat: 'Best Value Carbon Racer'. Für HM und Marathon gleichermaßen geeignet.",
@@ -1423,6 +1503,8 @@ const shoes = {
     desc:"Günstigster Karbonschuh auf echtem Top-Niveau. 230€ statt 300€+. Nitro Elite Foam, steife Carbon-Platte, Rocker-Struktur. RunRepeat: 'Best Value'. Wer einen echten Wettkampfschuh für HM oder Marathon ohne Höchstpreis will, kommt hier nicht vorbei."
   },
   "sc-elite-v4":{
+    buy:"https://www.newbalance.de/fuelcell-sc-elite-v4",
+    img:"https://nb.scene7.com/is/image/NB/MRCELI4?$pdpMain$",
     name:"FuelCell SC Elite v4",brand:"New Balance",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:false},
     raceNote:"Ideal für Läufer mit breiterem Fuß. FuelCell Foam für konstante Energie über HM und Marathon. Gut für Komfort-priorisierende Läufer.",
@@ -1434,6 +1516,8 @@ const shoes = {
     desc:"Ideal für Läufer mit breiterem Fuß – einer der wenigen Wettkampfschuhe mit komfortabler Zehenbox. FuelCell Foam für konstante Energie. Besonders empfohlen für Läufer, die Komfort über höchste Performance stellen."
   },
   "peg-plus":{
+    buy:"https://www.nike.com/de/t/pegasus-plus-road-running-shoes",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/pegasus-plus-main.png",
     name:"Pegasus Plus",brand:"Nike",tier:"B",tierColor:"#2e7d52",
     use:{race:false,train:true},
     raceNote:"Für leichtere Wettkämpfe und Halbmarathon ohne Wettkampfanspruch nutzbar – kein echter Wettkampfschuh.",
@@ -1445,6 +1529,8 @@ const shoes = {
     desc:"Leichter und direkter als der Pegasus Premium. Marathon Handbook bezeichnet ihn als aktuell persönlichen Favoriten. Ideal für Speedwork, Tempoläufe und Halbmarathon-Training. Kein Karbonschuh, aber schnelles ZoomX-Feeling für nur ~160€."
   },
   "endorphin-speed5":{
+    buy:"https://www.saucony.com/de/endorphin-speed-5",
+    img:"https://www.saucony.com/dw/image/v2/AABF_PRD/on/demandware.static/-/Sites-saucony-master-catalog/default/endorphin-speed-5-main.jpg?sw=600",
     name:"Endorphin Speed 5",brand:"Saucony",tier:"B",tierColor:"#2e7d52",
     use:{race:false,train:true},
     raceNote:"Für Halbmarathon als günstige Wettkampfoption nutzbar – kein echter Carbon-Wettkampfschuh, aber sehr schnell.",
@@ -1467,6 +1553,8 @@ const shoes = {
     desc:"Hokas schnellster Wettkampfschuh Version 2. Doctors of Running empfehlen ihn für den Halbmarathon. Etwas schwerer als Konkurrenten, aber mit Hoka-typischem Dämpfungskomfort."
   },
   "novablast5":{
+    buy:"https://www.asics.com/de/de-de/novablast-5",
+    img:"https://images.asics.com/is/image/asics/1012B599_400_SR_RT_GLB?$zoom$",
     name:"Novablast 5",brand:"Asics",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Kein echter Wettkampfschuh. Für lockere Wettkämpfe oder Fun-Runs nutzbar.",
@@ -1478,6 +1566,8 @@ const shoes = {
     desc:"Vielseitiger Allrounder für daily miles. Keine Wettkampf-Ambitionen, aber solide Dämpfung und gute Haltbarkeit. Für 150€ eines der besten Preis-Leistungs-Pakete im gesamten High-End-Segment."
   },
   "bondi9":{
+    buy:"https://www.hoka.com/de/bondi-9.html",
+    img:"https://www.hoka.com/dw/image/v2/AABZ_PRD/on/demandware.static/-/Sites-hoka-master/default/bondi-9-main.jpg?sw=600",
     name:"Bondi 9",brand:"Hoka",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Nicht für Wettkampf geeignet – zu schwer (310g) und kein Speed-Tool.",
@@ -1489,6 +1579,8 @@ const shoes = {
     desc:"Die maximale Dämpfung. Perfekt für Regenerationstage, Läufer mit Gelenkproblemen und sehr lange Easy Runs. In seiner Recovery-Nische unschlagbar und für ~180€ fair bepreist."
   },
   "vomero18":{
+    buy:"https://www.nike.com/de/t/vomero-18",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/vomero-18-main.png",
     name:"Vomero 18",brand:"Nike",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Kein Wettkampfschuh. Für lockere Runs mit Wettkampfcharakter nutzbar.",
@@ -1500,6 +1592,8 @@ const shoes = {
     desc:"Komfortabler Alltagstrainer mit überraschend lebendigem Gefühl. Runners Gear Guide: 'Perfect balance'. Für High-Mileage Trainingswochen die erste Wahl bei Nike."
   },
   "hyperion-max3":{
+    buy:"https://www.brooksrunning.com/de_de/hyperion-max-3",
+    img:"https://s7d9.scene7.com/is/image/Brooks/110390_1B310_ph1?$pdp-full-bleed-image-mobile$",
     name:"Hyperion Max 3",brand:"Brooks",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Als Trainingsschuh für leichte Wettkämpfe und Halbmarathon-Trainings nutzbar. Kein echter Wettkampfschuh.",
@@ -1512,6 +1606,8 @@ const shoes = {
   },
   
   "evo3-w":{
+    buy:"https://www.adidas.de/adizero-adios-pro-evo-3",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/adizero-adios-pro-evo-3-shoes.jpg",
     name:"Adizero Adios Pro Evo 3 (Damen)",brand:"Adidas",tier:"SS",tierColor:"#8b1a1a",
     use:{race:true,train:false},
     raceNote:"Dasselbe revolutionäre System wie beim Herren-Evo3. Tigst Assefa lief in London 2026 den Damen-Weltrekord von 2:15:41.",
@@ -1523,6 +1619,8 @@ const shoes = {
     desc:"Dasselbe Wunderwerk wie der Herren-Evo3 – aber in der Damenvariante. Tigst Assefa zertrümmerte in London 2026 den Damen-Weltrekord mit 2:15:41. Limitiert und fast nur mit Sponsoring erhältlich."
   },
   "deviate-elite4":{
+    buy:"https://de.puma.com/de/de/pd/deviate-nitro-elite-4",
+    img:"https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/309584/01/sv01/fglob/deviate-nitro-elite-4.jpg",
     name:"Deviate Nitro Elite 4",brand:"Puma",tier:"S",tierColor:"#c0392b",
     use:{race:true,train:false},
     raceNote:"Neueste Generation des effizientesten Puma-Racers. ULTRAWEAVE-Obermaterial, 173g – verbesserter Nachfolger des Elite 3.",
@@ -1534,6 +1632,8 @@ const shoes = {
     desc:"Pumas nächste Evolutionsstufe nach dem Elite 3. ULTRAWEAVE-Mesh, verbesserte PWRPLATE-Carbon-Geometrie, 173g. Für Vorfußläufer auf kürzeren Distanzen weiterhin eine der effizientesten Optionen auf dem Markt."
   },
   "hyperwarp-pure":{
+    buy:"https://www.mizuno.de/laufschuhe/wave-rebellion-pro",
+    img:"https://images.mizuno.eu/catalog/product/J1/GC2375/J1GC2375_09_1.jpg",
     name:"Wave Rebellion Pro 3",brand:"Mizuno",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Mizunos direktester und schnellster Wettkampfracer. Keine konventionelle Mittelsohle – stattdessen Mizunos CMEVA-Schaum mit einzigartiger Forward-Propulsion-Geometrie.",
@@ -1545,6 +1645,8 @@ const shoes = {
     desc:"Mizunos schnellstes je gebautes Modell. Die Wave-Plate-Technologie erzeugt einzigartigen Propulsionseffekt. Direkt, schnell, keine Kompromisse. Besonders im japanischen Elite-Laufsport sehr beliebt."
   },
   "velociti-elite3":{
+    buy:"https://www.underarmour.de/de-de/velociti-elite-3",
+    img:"https://underarmour.scene7.com/is/image/Underarmour/3026520-001_DEFAULT?rp=standard-0pad&scl=1&fmt=jpg&qlt=85&resMode=sharp2&cache=on,on&bgc=f0f0f0&wid=600&hei=600",
     name:"Velociti Elite 3",brand:"Under Armour",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"UA's bisher bester Wettkampfschuh. FLOW SYNCHRONICITY-Mittelsohle mit Carbon-Platte – überraschend konkurrenzfähig in A-Tier.",
@@ -1556,6 +1658,8 @@ const shoes = {
     desc:"Under Armour meldet sich ernsthaft im Superschuh-Markt zurück. Der Velociti Elite 3 überrascht mit ehrlicher A-Tier-Performance zu fairem Preis. Für alle, die nicht den üblichen Verdächtigen vertrauen."
   },
   "cielo3":{
+    buy:"https://www.hoka.com/de/cielo-x1-3.0.html",
+    img:"https://www.hoka.com/dw/image/v2/AABZ_PRD/on/demandware.static/-/Sites-hoka-master/default/cielo-x1-3-main.jpg?sw=600",
     name:"Cielo X1 3.0",brand:"Hoka",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Hokas konkurrenzfähigster Wettkampfracer. PEBA-Schaum + Carbon-Platte, überarbeitet für 2026 mit besserem Fit und mehr Reaktivität.",
@@ -1578,6 +1682,8 @@ const shoes = {
     desc:"New Balances Antwort auf Alphafly und Evo. Die doppelte Carbon-Platte erzeugt einzigartigen Propulsionseffekt. FuelCell PEBA-Schaum auf höchstem Niveau. Unterschätzter Underdog in der A-Tier-Kategorie."
   },
   "hyperion-elite4":{
+    buy:"https://www.brooksrunning.com/de_de/hyperion-elite-4",
+    img:"https://s7d9.scene7.com/is/image/Brooks/120386_409_ph1?$pdp-full-bleed-image-mobile$",
     name:"Hyperion Elite 4",brand:"Brooks",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:false},
     raceNote:"Brooks schnellstes und bestes Wettkampfmodell. DNA ZERO-Schaum mit Carbon-Platte – für Brooks-Loyalisten ein Pflicht-Kauf.",
@@ -1589,6 +1695,8 @@ const shoes = {
     desc:"Brooks baut seit Jahren solide Wettkampfschuhe – der Hyperion Elite 4 ist ihr bisher bestes. DNA ZERO-Schaum und Carbon-Platte bringen echte A-Tier-Performance. Für Brooks-Fans ein absoluter Must-Have."
   },
   "adizero-sl2":{
+    buy:"https://www.adidas.de/adizero-evo-sl-laufschuhe",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/adizero-evo-sl-main.jpg",
     name:"Adizero Evo SL",brand:"Adidas",tier:"A",tierColor:"#c8991a",
     use:{race:true,train:true},
     raceNote:"Carbon-freier Allrounder der schnellste tägliche Trainingsbegleiter mit Renntauglichkeit. Ideal für 5K bis Halbmarathon.",
@@ -1600,6 +1708,8 @@ const shoes = {
     desc:"Adidas bringt Lightstrike Pro-Technologie ohne Carbon in einen erschwinglichen Daily Trainer. Federnd, reaktiv, deutlich langlebiger als die Wettkampfmodelle. Perfekter Partner für alle Trainingseinheiten."
   },
   "endorphin-pro5":{
+    buy:"https://www.saucony.com/de/endorphin-pro-5",
+    img:"https://www.saucony.com/dw/image/v2/AABF_PRD/on/demandware.static/-/Sites-saucony-master-catalog/default/endorphin-pro-5-main.jpg?sw=600",
     name:"Endorphin Pro 4",brand:"Saucony",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:false},
     raceNote:"Sauconys direktes Wettkampfmodell unter dem Elite. PWRRUN PB-Schaum mit Carbon-Platte – sehr gute Performance für den Preis.",
@@ -1611,6 +1721,8 @@ const shoes = {
     desc:"Der Endorphin Pro 4 ist Sauconys meistempfohlener Allround-Racer. PWRRUN PB + Carbon zu ~220€ – unter A-Tier-Preis, aber solide B-Tier-Performance. Perfekt für Läufer, die keinen Elite-Preis zahlen möchten."
   },
   "mach-x3":{
+    buy:"https://www.hoka.com/de/mach-x-2.html",
+    img:"https://www.hoka.com/dw/image/v2/AABZ_PRD/on/demandware.static/-/Sites-hoka-master/default/mach-x-2-main.jpg?sw=600",
     name:"Mach X 2",brand:"Hoka",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:true},
     raceNote:"Hokas vielseitigster Racer. Geschäumte Platte statt Carbon – weiches, federndes Gefühl mit echter Propulsion. Ideal für HM und leichtere Marathons.",
@@ -1622,6 +1734,8 @@ const shoes = {
     desc:"Hoka Mach X 2 vereint Training und Wettkampf besser als fast jeder andere Schuh. Die geschäumte Platte gibt Propulsion ohne Carbon-Starrheit. Einer der langlebigsten Schuhe in dieser Kategorie – und dabei immer noch schnell."
   },
   "cloudboom-strike":{
+    buy:"https://www.on-running.com/de-de/products/cloudboom-strike",
+    img:"https://images.on-running.com/is/image/On/cloudboom-strike-main?$product$",
     name:"Cloudboom Strike",brand:"On Running",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:false},
     raceNote:"Ons bisher konkurrenzfähigster Retail-Racer. CloudTec Phase-System mit Carbon-Platte – erster On-Schuh der wirklich in der B-Tier-Liga mitspielt.",
@@ -1633,6 +1747,8 @@ const shoes = {
     desc:"On Running nimmt den Wettkampfmarkt ernst. Der Cloudboom Strike ist ihr bisher bester Retail-Racer. CloudTec Phase + Carbon erzeugt echte Propulsion – ein großer Schritt nach vorne für die Marke."
   },
   "endorphin-azura":{
+    buy:"https://www.saucony.com/de/endorphin-azura",
+    img:"https://www.saucony.com/dw/image/v2/AABF_PRD/on/demandware.static/-/Sites-saucony-master-catalog/default/endorphin-azura-main.jpg?sw=600",
     name:"Endorphin Azura",brand:"Saucony",tier:"B",tierColor:"#2e7d52",
     use:{race:false,train:true},
     raceNote:"Für leichtere Rennen nutzbar, aber primär als Premium-Trainingsschuh konzipiert.",
@@ -1644,6 +1760,8 @@ const shoes = {
     desc:"Saucony bringt den PWRRUN PB-Schaum aus dem Elite in einen erschwinglichen Daily Trainer. Das Ergebnis ist der komfortabelste Saucony je gebaut. Für alle Trainingsläufe – von Easy bis Tempo – die ideale Wahl."
   },
   "boston12":{
+    buy:"https://www.adidas.de/adizero-boston-12-laufschuhe",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/IF1461_9/adizero-boston-12.jpg",
     name:"Adizero Boston 12",brand:"Adidas",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:true},
     raceNote:"Adidas vielseitigster Racer. Carbon-freies Lightstrike Pro für HM und 10K-Wettkämpfe – günstiger und haltbarer als die Pro-Modelle.",
@@ -1655,6 +1773,8 @@ const shoes = {
     desc:"Der Boston 12 ist Adidas' meistgelobter Schuh für den Alltag und leichtere Wettkämpfe. Lightstrike Pro ohne Carbon – federnd, reaktiv, deutlich günstiger und langlebiger als die Pro-Modelle. Einer der besten Allrounder überhaupt."
   },
   "sc-trainer3":{
+    buy:"https://www.newbalance.de/fuelcell-sc-trainer-v3",
+    img:"https://nb.scene7.com/is/image/NB/MSCT3?$pdpMain$",
     name:"FuelCell SC Trainer v3",brand:"New Balance",tier:"B",tierColor:"#2e7d52",
     use:{race:false,train:true},
     raceNote:"Für leichte Rennen nutzbar, aber primär als Trainingsschuh konzipiert.",
@@ -1666,6 +1786,8 @@ const shoes = {
     desc:"New Balances Antwort auf den Puma Deviate Trainer – FuelCell-Schaum in einer langlebigen Trainer-Konstruktion. Ideal für alle schnellen Trainingseinheiten, während der SC Elite v4 für Wettkämpfe aufgespart wird."
   },
   "megablast":{
+    buy:"https://www.asics.com/de/de-de/megablast",
+    img:"https://images.asics.com/is/image/asics/1013A136_400_SR_RT_GLB?$zoom$",
     name:"Gel-Cumulus Infinity",brand:"Asics",tier:"B",tierColor:"#2e7d52",
     use:{race:false,train:true},
     raceNote:"Nicht als Wettkampfschuh gedacht, aber für lockere Rennen bis HM nutzbar.",
@@ -1677,6 +1799,8 @@ const shoes = {
     desc:"Asics bringt maximale Polsterung in einen erschwinglichen Daily Trainer. FF Blast MAX+ sorgt für weiches, federndes Laufgefühl – perfekt für lange Easy Runs und Regenerationsläufe."
   },
   "pw-elite":{
+    buy:"https://www.newbalance.de/fuelcell-sc-elite-v4",
+    img:"https://nb.scene7.com/is/image/NB/MRCELI4?$pdpMain$",
     name:"FuelCell SuperComp Elite v4",brand:"New Balance",tier:"B",tierColor:"#2e7d52",
     use:{race:true,train:false},
     raceNote:"NB's Top-Wettkampfracer für 5K bis Marathon. Doppellagige Carbon-Konstruktion – legitimer Konkurrent für A-Tier.",
@@ -1688,6 +1812,8 @@ const shoes = {
     desc:"New Balances FuelCell SuperComp Elite v4 ist technisch beeindruckend – doppelte Carbon-Platte ist einzigartig auf dem Markt. Rangiert an der B/A-Tier-Grenze. Für NB-Fans ein überzeugender Wettkampfschuh."
   },
   "mach7":{
+    buy:"https://www.hoka.com/de/mach-7.html",
+    img:"https://www.hoka.com/dw/image/v2/AABZ_PRD/on/demandware.static/-/Sites-hoka-master/default/mach-7-main.jpg?sw=600",
     name:"Mach 6",brand:"Hoka",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Für leichte Rennen bis 10K nutzbar, aber primär Daily Trainer.",
@@ -1699,6 +1825,8 @@ const shoes = {
     desc:"Hoka Mach 6 ist der vielseitigste Hoka für den Alltag. Reaktiver als Bondi und Clifton, leichter als Mach X – der ideale Schuh für 80% aller Trainingsläufe. Zu ~160€ ein ausgezeichnetes Preis-Leistungs-Verhältnis."
   },
   "nb1080v15":{
+    buy:"https://www.newbalance.de/fresh-foam-x-1080v15",
+    img:"https://nb.scene7.com/is/image/NB/M1080V15?$pdpMain$",
     name:"1080 v14",brand:"New Balance",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Für sehr lockere Rennen nutzbar, aber zu weich und schwer für echte Wettkämpfe.",
@@ -1710,6 +1838,8 @@ const shoes = {
     desc:"Der 1080 v14 ist New Balances bester Easy-Day-Begleiter. Fresh Foam X liefert ultra-weiche Polsterung für lange Läufe. Nicht schnell, aber unglaublich komfortabel – perfekt für Regenerationsläufe und lange Einheiten."
   },
   "vomero-plus":{
+    buy:"https://www.nike.com/de/t/vomero-plus",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/vomero-plus-main.png",
     name:"Vomero Plus",brand:"Nike",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Nicht für Wettkämpfe geeignet – zu weich und zu schwer.",
@@ -1721,6 +1851,8 @@ const shoes = {
     desc:"Nike bringt ZoomX-Schaum in maximaler Menge in einen erschwinglichen Daily Trainer. Der Vomero Plus ist deutlich weicher als der Vomero 18 – Nike's Antwort auf Bondi und Nimbus."
   },
   "glycerin23":{
+    buy:"https://www.brooksrunning.com/de_de/glycerin-23",
+    img:"https://s7d9.scene7.com/is/image/Brooks/120401_1B464_ph1?$pdp-full-bleed-image-mobile$",
     name:"Glycerin 22",brand:"Brooks",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Zu weich und schwer für ernsthafte Wettkämpfe.",
@@ -1732,6 +1864,8 @@ const shoes = {
     desc:"Der Glycerin ist Brooks' Flaggschiff für den Alltag. DNA LOFT v3-Schaum liefert üppige Polsterung ohne Schwerfälligkeit. Ideal für alle Long Runs und Easy Days – bewährt und verlässlich."
   },
   "kayano32":{
+    buy:"https://www.asics.com/de/de-de/gel-kayano-32",
+    img:"https://images.asics.com/is/image/asics/1011B691_400_SR_RT_GLB?$zoom$",
     name:"Gel-Kayano 32",brand:"Asics",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Stability-Schuh – nicht für Wettkämpfe gedacht.",
@@ -1743,6 +1877,8 @@ const shoes = {
     desc:"Der Kayano ist der König der Stability-Schuhe. PureGEL-Technologie und FF Blast PLUS bieten maximalen Komfort und Kontrolle für Überpronatierer. Keine Kompromisse bei Stabilität oder Komfort."
   },
   "nimbus28":{
+    buy:"https://www.asics.com/de/de-de/gel-nimbus-28",
+    img:"https://images.asics.com/is/image/asics/1011B783_400_SR_RT_GLB?$zoom$",
     name:"Gel-Nimbus 27",brand:"Asics",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Zu schwer und weich für Wettkämpfe.",
@@ -1754,6 +1890,8 @@ const shoes = {
     desc:"Der Nimbus ist Asics' neutraler Premium-Trainer für lange Distanzen. Leichter als der Kayano, ähnlich komfortabel. GEL-Technologie + FF BLAST PLUS ECO machen ihn zu einem der zuverlässigsten Long-Run-Schuhe."
   },
   "deviate-nitro4":{
+    buy:"https://de.puma.com/de/de/pd/deviate-nitro-4",
+    img:"https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/309583/02/sv01/fglob/deviate-nitro-4.jpg",
     name:"Deviate Nitro 3",brand:"Puma",tier:"C",tierColor:"#2a5f8a",
     use:{race:true,train:true},
     raceNote:"Pumas erschwinglicher Wettkampfracer. NITRO Elite-Schaum mit Carbon-Platte zu deutlich günstigerem Preis als Elite-Modelle.",
@@ -1765,6 +1903,8 @@ const shoes = {
     desc:"Pumas Deviate Nitro 3 ist das beste Carbon-Racer-Angebot unter 200€. NITRO Elite-Schaum und Carbon-Platte zu demokratischem Preis – ideal für alle die Carbon-Feeling wollen ohne Elite-Preise zu zahlen."
   },
   "cloudrunner3":{
+    buy:"https://www.on-running.com/de-de/products/cloudrunner-3",
+    img:"https://images.on-running.com/is/image/On/cloudrunner-3-main?$product$",
     name:"Cloudrunner 2",brand:"On Running",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Zu weich für ernsthafte Wettkämpfe – reiner Trainingsschuh.",
@@ -1776,6 +1916,8 @@ const shoes = {
     desc:"Der Cloudrunner 2 ist das Einsteiger-Tor in die On-Welt. CloudTec-System mit verbesserter Helion-Dämpfung. Ideal für alle täglichen Läufe von Easy bis moderat – das einzigartige On-Feeling zu fairem Preis."
   },
   "hyperboost-edge":{
+    buy:"https://www.adidas.de/hyperboost-edge-laufschuhe",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/hyperboost-edge-main.jpg",
     name:"Adizero Ambition",brand:"Adidas",tier:"C",tierColor:"#2a5f8a",
     use:{race:true,train:true},
     raceNote:"Adidas' Speed-Trainer für Track und Tempoläufe. Leicht, reaktiv, Carbon-frei – ideal für 5K und 10K.",
@@ -1787,6 +1929,8 @@ const shoes = {
     desc:"Adidas Ambition ist der neue Speed-Trainer für alle Track- und Tempo-Einheiten. Leichter als der Boston, reaktiver als die SL-Linie – perfekt für 5K-Rennen und schnelle Tempoläufe zu ~150€."
   },
   "wave-sky7":{
+    buy:"https://www.mizuno.de/laufschuhe/wave-sky-8",
+    img:"https://images.mizuno.eu/catalog/product/J1/GC2320/J1GC2320_09_1.jpg",
     name:"Wave Sky 8",brand:"Mizuno",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Zu schwer und stabilisierend für Wettkämpfe.",
@@ -1798,6 +1942,8 @@ const shoes = {
     desc:"Wave Sky 8 – das komfortabelste Mizuno für lange Trainingsläufe. WAVE-Technologie + ENERZY NXT bieten einzigartiges federndes Gefühl. Für alle Mizuno-Fans und Läufer die das WAVE-System lieben."
   },
   "adrenaline22":{
+    buy:"https://www.brooksrunning.com/de_de/adrenaline-gts-24",
+    img:"https://s7d9.scene7.com/is/image/Brooks/120381_1D472_ph1?$pdp-full-bleed-image-mobile$",
     name:"Adrenaline GTS 24",brand:"Brooks",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Stability-Schuh – nicht für Wettkämpfe.",
@@ -1809,6 +1955,8 @@ const shoes = {
     desc:"Das Adrenaline GTS 24 ist Brooks' meistverkaufter Schuh. Das GuideRails-System stabilisiert ohne einzuengen – einzigartiger Ansatz für Stability-Training. Ideal für alle Läufer die etwas Führung brauchen."
   },
   "cloudeclipse2":{
+    buy:"https://www.on-running.com/de-de/products/cloudmonster-2",
+    img:"https://images.on-running.com/is/image/On/cloudmonster-2-main?$product$",
     name:"Cloudmonster 2",brand:"On Running",tier:"C",tierColor:"#2a5f8a",
     use:{race:false,train:true},
     raceNote:"Zu weich und zu schwer für ernsthafte Wettkämpfe.",
@@ -1820,6 +1968,8 @@ const shoes = {
     desc:"Cloudmonster 2 – Ons größte und weichste Polsterung. Riesige CloudTec Phase-Pods mit Helion Superfoam. Das ultimative On-Erlebnis für lange Easy Runs und Regenerationstage."
   },
   "glycerin-flex":{
+    buy:"https://www.brooksrunning.com/de_de/glycerin-flex",
+    img:"https://s7d9.scene7.com/is/image/Brooks/120407_468_ph1?$pdp-full-bleed-image-mobile$",
     name:"Glycerin Flex",brand:"Brooks",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Einsteigerschuh – nicht für Wettkämpfe geeignet.",
@@ -1831,6 +1981,8 @@ const shoes = {
     desc:"Der Glycerin Flex ist Brooks' Einsteiger-Option für den Alltag. Leichter und flexibler als der reguläre Glycerin, günstiger und zugänglicher. Perfekter erster Brooks für alle die gerade mit dem Laufen anfangen."
   },
   "pegasus41":{
+    buy:"https://www.nike.com/de/t/pegasus-42",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/pegasus-42-main.png",
     name:"Pegasus 42",brand:"Nike",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Kann für sehr lockere 5K-Rennen genutzt werden, aber kein echter Wettkampfschuh.",
@@ -1842,6 +1994,8 @@ const shoes = {
     desc:"Der Pegasus ist das Urgestein unter den Laufschuhen. Seit 40 Jahren verlässlich, vielseitig und erschwinglich. React-Schaum + Air-Einheit – das perfekte Einstiegsmodell für alle die Nike-Qualität wollen."
   },
   "supernova3":{
+    buy:"https://www.adidas.de/supernova-rise-2-laufschuhe",
+    img:"https://assets.adidas.com/images/w_600,f_auto,q_auto/supernova-rise-2-main.jpg",
     name:"Supernova Rise 2",brand:"Adidas",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Kein Wettkampfschuh – reiner Trainingsbegleiter.",
@@ -1853,6 +2007,8 @@ const shoes = {
     desc:"Adidas Supernova Rise 2 ist der demokratischste Einstieg in reaktives Laufen. LEP-Schaum zu ~100€ – reaktiver als reine EVA-Schuhe ohne den Premium-Preis. Perfekter Alltagsbegleiter für Einsteiger und Freizeitläufer."
   },
   "gaviota6":{
+    buy:"https://www.hoka.com/de/gaviota-6.html",
+    img:"https://www.hoka.com/dw/image/v2/AABZ_PRD/on/demandware.static/-/Sites-hoka-master/default/gaviota-5-main.jpg?sw=600",
     name:"Gaviota 5",brand:"Hoka",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Stability-Schuh – kein Wettkampfmodell.",
@@ -1864,6 +2020,8 @@ const shoes = {
     desc:"Hoka Gaviota 5 ist die stabilste Hoka für Überpronatierer die trotzdem Hokas Polsterung wollen. J-Frame-Technologie bietet sanfte Führung ohne einzuengen. Spezialisiert aber für die Zielgruppe unübertroffen."
   },
   "neozen2":{
+    buy:"https://www.mizuno.de/laufschuhe/wave-rider-27",
+    img:"https://images.mizuno.eu/catalog/product/J1/GC2315/J1GC2315_09_1.jpg",
     name:"Wave Rider 27",brand:"Mizuno",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Für leichte 5K-Rennen nutzbar, aber kein Wettkampfschuh.",
@@ -1875,6 +2033,8 @@ const shoes = {
     desc:"Wave Rider 27 – Mizunos bekanntester und beliebtester Alltagsschuh. WAVE-Platte + ENERZY-Schaum zu sehr fairem Preis. Reaktiver und leichter als der Wave Sky – perfekter Einstieg in die Mizuno-Welt."
   },
   "clifton10":{
+    buy:"https://www.hoka.com/de/clifton-10.html",
+    img:"https://www.hoka.com/dw/image/v2/AABZ_PRD/on/demandware.static/-/Sites-hoka-master/default/clifton-10-main.jpg?sw=600",
     name:"Clifton 10",brand:"Hoka",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Kein Wettkampfschuh – zu weich und schwer.",
@@ -1886,6 +2046,8 @@ const shoes = {
     desc:"Der Clifton 10 ist das Gesicht von Hoka. Maximale Polsterung, überraschend leicht, unglaublicher Komfort. Weltweit einer der meistgekauften Laufschuhe – und das aus gutem Grund."
   },
   "react-miler3":{
+    buy:"https://www.nike.com/de/t/infinity-run-5",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/infinity-run-5-main.png",
     name:"Infinity Run 5",brand:"Nike",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Injury-Prevention-Schuh – kein Wettkampfmodell.",
@@ -1897,6 +2059,8 @@ const shoes = {
     desc:"Nikes Infinity Run 5 ist der meistempfohlene Schuh für verletzungsanfällige Läufer. Rocker-Sohle + Infinity-Plate reduziert Aufprallkräfte beim Aufkommen. Nicht der schnellste – aber einer der sichersten."
   },
   "gel-excite10":{
+    buy:"https://www.asics.com/de/de-de/gel-cumulus-27",
+    img:"https://images.asics.com/is/image/asics/1011B636_400_SR_RT_GLB?$zoom$",
     name:"Gel-Cumulus 27",brand:"Asics",tier:"D",tierColor:"#4a3a6a",
     use:{race:false,train:true},
     raceNote:"Kein Wettkampfschuh – reiner Trainingsbegleiter.",
@@ -1908,6 +2072,8 @@ const shoes = {
     desc:"Der Gel-Cumulus 27 ist Asics' meistverkaufter Alltagstrainer. FF BLAST+ und GEL-Technologie zu ~140€ – günstiger als der Nimbus, ähnlich komfortabel. Idealer Einstieg für alle die Asics kennenlernen wollen."
   },
   "alphafly4-retail":{
+    buy:"https://www.nike.com/de/t/alphafly-4",
+    img:"https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/alphafly3.png",
     name:"Alphafly 4 (Retail)",brand:"Nike",tier:"?",tierColor:"#3a3a4a",
     use:{race:true,train:false},
     raceNote:"Erwartet als SS-/S-Tier-Wettkampfschuh basierend auf dem Prototype. Consumer-Release Q3 2026.",
@@ -1919,6 +2085,8 @@ const shoes = {
     desc:"Der meisterwartete Retail-Release 2026. Basierend auf dem Prototype der Kiplimo zu 57:20 WR und 2:00:28 führte. Consumer-Version Q3 2026 erwartet – wahrscheinlich mit angepasster, haltbarerer Konfiguration."
   },
   "elite3":{
+    buy:"https://www.saucony.com/de/endorphin-elite",
+    img:"https://www.saucony.com/dw/image/v2/AABF_PRD/on/demandware.static/-/Sites-saucony-master-catalog/default/endorphin-elite-3-preview.jpg?sw=600",
     name:"Endorphin Elite 3",brand:"Saucony",tier:"?",tierColor:"#3a3a4a",
     use:{race:true,train:false},
     raceNote:"Nachfolger des Elite 2 – erwartet als A-/S-Tier-Wettkampfschuh. Release Juni 2026.",
@@ -2437,6 +2605,11 @@ function showResult() {
   badge.textContent = d.tier;
   badge.style.background=tc+'22'; badge.style.borderColor=tc; badge.style.color=tc;
 
+  const rImg=document.getElementById('rShoeImg');
+  const rBuyBtn=document.getElementById('rBuyBtn');
+  if(d.buy){ rBuyBtn.href=d.buy; rBuyBtn.style.display='flex'; } else { rBuyBtn.style.display='none'; }
+  if(d.img){ rImg.src=d.img; rImg.style.display='block'; } else { rImg.style.display='none'; }
+
   document.getElementById('rShoeName').textContent = d.name;
   document.getElementById('rShoeBrand').textContent = d.brand;
   document.getElementById('rShoeTitle').textContent = d.name;
@@ -2558,6 +2731,7 @@ document.addEventListener('keydown', e=>{
         <div class="result-main">
           <div class="result-shoe-visual">
             <div class="result-tier-badge" id="rTierBadge"></div>
+            <img id="rShoeImg" class="result-shoe-img" src="" alt="" onerror="this.style.display='none'" loading="lazy" style="display:none"/>
             <div class="result-shoe-name" id="rShoeName"></div>
             <div class="result-shoe-brand" id="rShoeBrand"></div>
           </div>
@@ -2584,7 +2758,8 @@ document.addEventListener('keydown', e=>{
       <div class="result-footer-btns">
         <button class="finder-nav-btn primary" onclick="closeFinder()">✓ Zur Tier List</button>
         <button class="finder-nav-btn" onclick="restartFinder()">↺ Neu starten</button>
-        <button class="finder-nav-btn" onclick="scrollToShoe(currentResult)" style="margin-left:auto;">In Liste anzeigen →</button>
+        <a id="rBuyBtn" class="finder-nav-btn" href="#" target="_blank" rel="noopener" style="margin-left:auto;display:none;text-decoration:none;background:linear-gradient(135deg,#c8991a,#a07a10);color:#0a0a0c;border-color:#c8991a;">🛒 Kaufen →</a>
+        <button class="finder-nav-btn" onclick="scrollToShoe(currentResult)" >In Liste →</button>
       </div>
     </div>
 
