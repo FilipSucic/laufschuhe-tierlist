@@ -3050,15 +3050,18 @@ function runComparison() {
   document.getElementById('h2hResults').classList.add('show');
   document.getElementById('h2hTitle').textContent = '⚡ Vergleichsergebnis';
 
-  const tcA = TC2[dA.tier] || '#555', tcB = TC2[dB.tier] || '#555';
+  // Always use distinct colors regardless of tier – cyan for A, orange for B
+  const tcA = '#38bdf8', tcB = '#fb923c';
 
   // Header
+  const tierColorA = TC2[dA.tier] || '#555', tierColorB = TC2[dB.tier] || '#555';
+
   document.getElementById('h2hRTierA').textContent = dA.tier;
-  document.getElementById('h2hRTierA').style.cssText = `background:${tcA}22;color:${tcA};border:1px solid ${tcA}44;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:900;`;
+  document.getElementById('h2hRTierA').style.cssText = `background:${tierColorA}22;color:${tierColorA};border:1px solid ${tierColorA}44;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:900;`;
   document.getElementById('h2hRNameA').textContent = dA.name;
   document.getElementById('h2hRBrandA').textContent = dA.brand;
   document.getElementById('h2hRTierB').textContent = dB.tier;
-  document.getElementById('h2hRTierB').style.cssText = `background:${tcB}22;color:${tcB};border:1px solid ${tcB}44;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:900;`;
+  document.getElementById('h2hRTierB').style.cssText = `background:${tierColorB}22;color:${tierColorB};border:1px solid ${tierColorB}44;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:900;`;
   document.getElementById('h2hRNameB').textContent = dB.name;
   document.getElementById('h2hRBrandB').textContent = dB.brand;
 
