@@ -427,6 +427,221 @@ header {
 
 
 
+
+/* ═══ HEAD-TO-HEAD ════════════════════════════════════════════════════════════ */
+.h2h-trigger-btn {
+  width:100%; margin-top:8px; padding:10px; border-radius:6px;
+  background:linear-gradient(135deg,#2a5f8a22,#2e7d5222);
+  border:1px solid #2a5f8a55; color:#5ba3e0;
+  font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+  cursor:pointer; transition:all 0.15s;
+}
+.h2h-trigger-btn:hover { background:linear-gradient(135deg,#2a5f8a33,#2e7d5233); border-color:#2a5f8a88; }
+
+.h2h-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity 0.3s;
+  backdrop-filter:blur(8px);
+}
+.h2h-overlay.open { opacity:1; pointer-events:all; }
+
+.h2h-modal {
+  background:var(--bg2); border:1px solid var(--border2); border-radius:14px;
+  width:900px; max-width:96vw; max-height:92vh; overflow:hidden;
+  display:flex; flex-direction:column;
+  transform:translateY(30px) scale(0.96); transition:transform 0.3s;
+  box-shadow:0 40px 100px rgba(0,0,0,0.8);
+}
+.h2h-overlay.open .h2h-modal { transform:none; }
+
+.h2h-header {
+  padding:18px 24px 14px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.h2h-header h2 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px;
+  text-transform:uppercase; letter-spacing:0.05em; color:var(--accent);
+}
+.h2h-close {
+  background:none; border:1px solid var(--border2); color:var(--text2);
+  border-radius:4px; width:28px; height:28px; cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.15s;
+}
+.h2h-close:hover { color:var(--text); background:var(--bg3); }
+
+/* Shoe selector */
+.h2h-selector {
+  padding:20px 24px; display:flex; gap:16px; align-items:flex-start; flex:1; overflow-y:auto;
+}
+.h2h-slot {
+  flex:1; background:var(--bg3); border:2px dashed var(--border2); border-radius:10px;
+  padding:14px; min-height:120px; display:flex; flex-direction:column; gap:10px;
+}
+.h2h-slot.filled { border-style:solid; border-color:var(--accent); }
+.h2h-slot-label {
+  font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--text3); font-weight:600;
+}
+.h2h-slot-shoe {
+  display:flex; align-items:center; gap:10px;
+}
+.h2h-slot-tier {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:16px;
+  padding:4px 8px; border-radius:4px;
+}
+.h2h-slot-name { font-weight:700; font-size:14px; }
+.h2h-slot-brand { font-size:11px; color:var(--text2); margin-top:1px; }
+.h2h-slot-clear {
+  margin-left:auto; background:none; border:1px solid var(--border2); color:var(--text3);
+  border-radius:4px; width:22px; height:22px; cursor:pointer; font-size:11px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.h2h-slot-clear:hover { color:var(--text); border-color:var(--border2); }
+.h2h-vs {
+  flex-shrink:0; display:flex; align-items:center; padding-top:40px;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px;
+  color:var(--text3);
+}
+
+/* Search in selector */
+.h2h-search-wrap { display:flex; flex-direction:column; gap:6px; }
+.h2h-search {
+  background:var(--bg); border:1px solid var(--border2); border-radius:6px;
+  padding:7px 10px; color:var(--text); font-size:12px; width:100%;
+  font-family:'Barlow',sans-serif; outline:none;
+}
+.h2h-search:focus { border-color:var(--accent); }
+.h2h-search-results {
+  display:flex; flex-direction:column; gap:4px; max-height:200px; overflow-y:auto;
+}
+.h2h-result-item {
+  padding:7px 10px; border-radius:5px; cursor:pointer; display:flex;
+  align-items:center; gap:8px; background:var(--bg3); border:1px solid var(--border);
+  transition:all 0.12s;
+}
+.h2h-result-item:hover { border-color:var(--accent); background:#1e1e28; }
+.h2h-result-tier {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:11px;
+  padding:2px 5px; border-radius:3px; flex-shrink:0;
+}
+.h2h-result-name { font-size:12px; font-weight:600; }
+.h2h-result-brand { font-size:10px; color:var(--text2); margin-left:auto; flex-shrink:0; }
+
+/* Compare button */
+.h2h-compare-btn {
+  display:block; width:calc(100% - 48px); margin:0 24px 20px;
+  padding:12px; border-radius:8px;
+  background:linear-gradient(135deg,#c8991a,#a07a10);
+  color:#0a0a0c; font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:14px; letter-spacing:0.1em; text-transform:uppercase;
+  border:none; cursor:pointer; transition:all 0.15s;
+}
+.h2h-compare-btn:hover { background:linear-gradient(135deg,#e0b030,#c8991a); }
+.h2h-compare-btn:disabled { opacity:0.3; pointer-events:none; }
+
+/* ── RESULTS ── */
+.h2h-results { display:none; flex-direction:column; overflow-y:auto; }
+.h2h-results.show { display:flex; }
+
+.h2h-results-header {
+  padding:16px 24px 12px; border-bottom:1px solid var(--border);
+  display:grid; grid-template-columns:1fr 120px 1fr; gap:12px; align-items:center;
+}
+.h2h-shoe-header { display:flex; flex-direction:column; gap:3px; }
+.h2h-shoe-header.right { align-items:flex-end; text-align:right; }
+.h2h-shoe-tier-badge {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:12px;
+  padding:3px 8px; border-radius:4px; display:inline-block;
+}
+.h2h-shoe-hname {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:18px;
+  text-transform:uppercase; line-height:1.1;
+}
+.h2h-shoe-hbrand { font-size:11px; color:var(--text2); }
+.h2h-vs-center {
+  text-align:center; font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:22px; color:var(--text3);
+}
+
+/* Radar chart */
+.h2h-radar-wrap {
+  padding:16px 24px; display:flex; justify-content:center;
+  border-bottom:1px solid var(--border);
+}
+
+/* Spec comparison rows */
+.h2h-specs-section { padding:12px 24px 0; }
+.h2h-specs-section h4 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px;
+  letter-spacing:0.12em; text-transform:uppercase; color:var(--text3);
+  margin-bottom:10px;
+}
+.h2h-spec-row {
+  display:grid; grid-template-columns:1fr 100px 1fr;
+  gap:8px; align-items:center; margin-bottom:8px;
+}
+.h2h-spec-val {
+  font-size:13px; font-weight:600; padding:6px 10px;
+  background:var(--bg3); border-radius:5px; border:1px solid var(--border);
+  transition:all 0.2s;
+}
+.h2h-spec-val.winner { border-color:#2e7d5288; background:#2e7d5215; color:#52c584; }
+.h2h-spec-val.right { text-align:right; }
+.h2h-spec-label {
+  text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--text3); font-weight:600;
+}
+
+/* Bar comparison */
+.h2h-bar-section { padding:16px 24px; border-top:1px solid var(--border); }
+.h2h-bar-section h4 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px;
+  letter-spacing:0.12em; text-transform:uppercase; color:var(--text3);
+  margin-bottom:12px;
+}
+.h2h-bar-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.h2h-bar-label { font-size:11px; color:var(--text2); width:100px; flex-shrink:0; text-align:right; }
+.h2h-bar-track { flex:1; height:8px; background:var(--border2); border-radius:4px; overflow:visible; position:relative; }
+.h2h-bar-a { height:8px; border-radius:4px 0 0 4px; position:absolute; right:50%; transition:width 0.8s cubic-bezier(.22,1,.36,1); }
+.h2h-bar-b { height:8px; border-radius:0 4px 4px 0; position:absolute; left:50%; transition:width 0.8s cubic-bezier(.22,1,.36,1); }
+.h2h-bar-center { position:absolute; left:50%; top:-2px; width:2px; height:12px; background:var(--border2); transform:translateX(-50%); }
+.h2h-bar-vals { display:flex; justify-content:space-between; font-size:10px; color:var(--text3); width:50px; flex-shrink:0; }
+
+/* Verdict */
+.h2h-verdict { padding:16px 24px; border-top:1px solid var(--border); }
+.h2h-verdict h4 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px;
+  letter-spacing:0.12em; text-transform:uppercase; color:var(--text3);
+  margin-bottom:10px;
+}
+.h2h-verdict-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.h2h-verdict-card {
+  background:var(--bg3); border-radius:8px; padding:12px;
+  border:1px solid var(--border);
+}
+.h2h-verdict-card h5 { font-size:11px; color:var(--text2); margin-bottom:5px; font-weight:600; }
+.h2h-verdict-card p { font-size:12px; color:var(--text); line-height:1.5; }
+.h2h-winner-banner {
+  padding:16px 24px; border-top:1px solid var(--border); text-align:center;
+}
+.h2h-winner-text {
+  display:inline-block; padding:10px 24px; border-radius:8px;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:16px;
+  text-transform:uppercase; letter-spacing:0.05em;
+  background:linear-gradient(135deg,var(--accent),#a07a10); color:#0a0a0c;
+}
+.h2h-back-btn {
+  display:block; width:100%; padding:10px; margin-top:16px; margin-bottom:16px;
+  background:var(--bg3); border:1px solid var(--border2); border-radius:6px;
+  color:var(--text2); font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  font-size:12px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer;
+  transition:all 0.15s; margin-left:24px; margin-right:24px;
+  width:calc(100% - 48px);
+}
+.h2h-back-btn:hover { color:var(--text); border-color:var(--border2); }
+
 </style>
 </head>
 <body>
@@ -467,6 +682,7 @@ header {
       <div style="display:flex;gap:6px;align-items:center;">
         <button class="toggle-btn" id="val-toggle" onclick="toggleValue()">💰 Preis-Leistung hervorheben</button>
         <button class="toggle-btn" id="finder-btn" onclick="openFinder()" style="background:linear-gradient(135deg,#c8991a22,#8b1a1a22);border-color:#c8991a55;color:var(--accent);">🔍 Schuhfinder</button>
+        <button class="toggle-btn" onclick="openH2HSelector()" style="background:linear-gradient(135deg,#2a5f8a22,#2e7d5222);border-color:#2a5f8a55;color:#5ba3e0;">⚡ Vergleich</button>
       </div>
     </div>
   </div>
@@ -1186,6 +1402,9 @@ header {
     <a class="buy-btn" id="d-buy-btn" href="#" target="_blank" rel="noopener" style="display:none;margin-top:4px">
       🛒 Jetzt kaufen
     </a>
+    <button class="h2h-trigger-btn" id="d-h2h-btn" onclick="openH2H()" style="display:none">
+      ⚡ Head-to-Head Vergleich
+    </button>
   </div>
 </div>
 </div><!-- end main -->
@@ -2196,6 +2415,7 @@ const TC={SS:'#8b1a1a',S:'#c0392b',A:'#c8991a',B:'#2e7d52',C:'#2a5f8a','?':'#3a3
 function closeDetail(){
   document.getElementById('detail-content').classList.remove('visible');
   document.getElementById('detail-empty').style.display='';
+  updateH2HBtn(false);
 }
 function showDetail(card,data){
   if(activeCard) activeCard.classList.remove('active');
@@ -2261,6 +2481,7 @@ function showDetail(card,data){
   if(data.buy){ buyBtn.href=data.buy; buyBtn.style.display='flex'; }
   else { buyBtn.style.display='none'; }
   document.querySelector('.detail-panel').scrollTop=0;
+  updateH2HBtn(true);
 }
 
 document.querySelectorAll('.shoe-card').forEach(card=>{
@@ -2703,6 +2924,346 @@ document.addEventListener('keydown', e=>{
 });
 
 
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// HEAD-TO-HEAD
+// ═══════════════════════════════════════════════════════════════════════════════
+
+let h2hShoeA = null, h2hShoeB = null;
+
+const H2H_DIMS = ['Geschwindigkeit','Komfort','Preis-Leistung','Haltbarkeit','Propulsion','Stabilität','Vielseitigkeit'];
+const H2H_DIM_COLORS = ['#e05c2a','#3a7fc1','#52c584','#c8991a','#8b1a1a','#7a5ca8','#2e7d52'];
+const TC2 = {SS:'#8b1a1a',S:'#c0392b',A:'#c8991a',B:'#2e7d52',C:'#2a5f8a',D:'#4a3a6a','?':'#3a3a4a'};
+
+function getProfile(id) {
+  const p = SHOE_PROFILES[id];
+  if (!p) return [5,5,5,5,5,5,5];
+  return p.slice(0, 7);
+}
+
+function openH2H() {
+  // Pre-fill slot A with currently active shoe
+  if (activeCard && shoes[activeCard.dataset.shoe]) {
+    const id = activeCard.dataset.shoe;
+    selectShoeForSlot('A', id);
+  }
+  document.getElementById('h2hOverlay').classList.add('open');
+  // Focus search B
+  setTimeout(() => {
+    const inp = h2hShoeA ? document.getElementById('h2hSearchB') : document.getElementById('h2hSearchA');
+    if (inp) { inp.focus(); searchShoes(h2hShoeA ? 'B' : 'A', ''); }
+  }, 150);
+}
+
+function openH2HSelector() {
+  document.getElementById('h2hOverlay').classList.add('open');
+  setTimeout(() => { searchShoes('A', ''); document.getElementById('h2hSearchA').focus(); }, 150);
+}
+
+function closeH2H() {
+  document.getElementById('h2hOverlay').classList.remove('open');
+}
+
+function handleH2HOverlay(e) {
+  if (e.target === document.getElementById('h2hOverlay')) closeH2H();
+}
+
+function searchShoes(slot, query) {
+  const q = query.toLowerCase().trim();
+  const results = Object.entries(shoes)
+    .filter(([id, d]) => {
+      if (!d || !d.name) return false;
+      if (slot === 'A' && h2hShoeB && id === h2hShoeB) return false;
+      if (slot === 'B' && h2hShoeA && id === h2hShoeA) return false;
+      if (!q) return true;
+      return d.name.toLowerCase().includes(q) || (d.brand||'').toLowerCase().includes(q);
+    })
+    .slice(0, 12);
+
+  const container = document.getElementById(`h2hResults${slot}`);
+  const tc = TC2;
+  container.innerHTML = results.map(([id, d]) => `
+    <div class="h2h-result-item" onclick="selectShoeForSlot('${slot}','${id}')">
+      <span class="h2h-result-tier" style="background:${tc[d.tier]||'#555'}22;color:${tc[d.tier]||'#555'};border:1px solid ${tc[d.tier]||'#555'}44">${d.tier}</span>
+      <span class="h2h-result-name">${d.name}</span>
+      <span class="h2h-result-brand">${d.brand}</span>
+    </div>`).join('');
+}
+
+function selectShoeForSlot(slot, id) {
+  const d = shoes[id];
+  if (!d) return;
+  const tc = TC2[d.tier] || '#555';
+
+  if (slot === 'A') {
+    h2hShoeA = id;
+    document.getElementById('h2hSlotATier').textContent = d.tier;
+    document.getElementById('h2hSlotATier').style.cssText = `background:${tc}22;color:${tc};border:1px solid ${tc}44;border-radius:4px;padding:3px 8px;font-size:13px;`;
+    document.getElementById('h2hSlotAName').textContent = d.name;
+    document.getElementById('h2hSlotABrand').textContent = d.brand;
+    document.getElementById('h2hSlotAFilled').style.display = '';
+    document.getElementById('h2hSlotASearch').style.display = 'none';
+    document.getElementById('h2hSlotA').classList.add('filled');
+  } else {
+    h2hShoeB = id;
+    document.getElementById('h2hSlotBTier').textContent = d.tier;
+    document.getElementById('h2hSlotBTier').style.cssText = `background:${tc}22;color:${tc};border:1px solid ${tc}44;border-radius:4px;padding:3px 8px;font-size:13px;`;
+    document.getElementById('h2hSlotBName').textContent = d.name;
+    document.getElementById('h2hSlotBBrand').textContent = d.brand;
+    document.getElementById('h2hSlotBFilled').style.display = '';
+    document.getElementById('h2hSlotBSearch').style.display = 'none';
+    document.getElementById('h2hSlotB').classList.add('filled');
+  }
+  document.getElementById('h2hCompareBtn').disabled = !(h2hShoeA && h2hShoeB);
+}
+
+function clearSlot(slot) {
+  if (slot === 'A') {
+    h2hShoeA = null;
+    document.getElementById('h2hSlotAFilled').style.display = 'none';
+    document.getElementById('h2hSlotASearch').style.display = '';
+    document.getElementById('h2hSlotA').classList.remove('filled');
+    document.getElementById('h2hSearchA').value = '';
+    searchShoes('A', '');
+  } else {
+    h2hShoeB = null;
+    document.getElementById('h2hSlotBFilled').style.display = 'none';
+    document.getElementById('h2hSlotBSearch').style.display = '';
+    document.getElementById('h2hSlotB').classList.remove('filled');
+    document.getElementById('h2hSearchB').value = '';
+    searchShoes('B', '');
+  }
+  document.getElementById('h2hCompareBtn').disabled = true;
+}
+
+function backToSelector() {
+  document.getElementById('h2hResults').classList.remove('show');
+  document.getElementById('h2hSelectorScreen').style.display = 'flex';
+  document.getElementById('h2hTitle').textContent = '⚡ Schuh Vergleich';
+}
+
+function runComparison() {
+  const dA = shoes[h2hShoeA], dB = shoes[h2hShoeB];
+  if (!dA || !dB) return;
+
+  document.getElementById('h2hSelectorScreen').style.display = 'none';
+  document.getElementById('h2hResults').classList.add('show');
+  document.getElementById('h2hTitle').textContent = '⚡ Vergleichsergebnis';
+
+  const tcA = TC2[dA.tier] || '#555', tcB = TC2[dB.tier] || '#555';
+
+  // Header
+  document.getElementById('h2hRTierA').textContent = dA.tier;
+  document.getElementById('h2hRTierA').style.cssText = `background:${tcA}22;color:${tcA};border:1px solid ${tcA}44;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:900;`;
+  document.getElementById('h2hRNameA').textContent = dA.name;
+  document.getElementById('h2hRBrandA').textContent = dA.brand;
+  document.getElementById('h2hRTierB').textContent = dB.tier;
+  document.getElementById('h2hRTierB').style.cssText = `background:${tcB}22;color:${tcB};border:1px solid ${tcB}44;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:900;`;
+  document.getElementById('h2hRNameB').textContent = dB.name;
+  document.getElementById('h2hRBrandB').textContent = dB.brand;
+
+  const profA = getProfile(h2hShoeA);
+  const profB = getProfile(h2hShoeB);
+
+  // ── Radar Chart ──────────────────────────────────────────────────────────────
+  drawRadar(profA, profB, tcA, tcB);
+
+  // ── Bar comparison ───────────────────────────────────────────────────────────
+  const barsEl = document.getElementById('h2hBars');
+  barsEl.innerHTML = '';
+  H2H_DIMS.forEach((dim, i) => {
+    const va = profA[i], vb = profB[i];
+    const pA = (va / 10) * 50, pB = (vb / 10) * 50;
+    const row = document.createElement('div');
+    row.className = 'h2h-bar-row';
+    row.innerHTML = `
+      <div class="h2h-bar-label" style="color:${H2H_DIM_COLORS[i]}">${dim}</div>
+      <div class="h2h-bar-track" style="position:relative;height:8px;background:var(--border2);border-radius:4px;">
+        <div class="h2h-bar-center"></div>
+        <div class="h2h-bar-a" style="background:${tcA};width:0%;right:50%;"></div>
+        <div class="h2h-bar-b" style="background:${tcB};width:0%;left:50%;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;width:52px;font-size:10px;color:var(--text3);">
+        <span style="color:${tcA};font-weight:700">${va}</span>
+        <span style="color:${tcB};font-weight:700">${vb}</span>
+      </div>`;
+    barsEl.appendChild(row);
+    setTimeout(() => {
+      row.querySelector('.h2h-bar-a').style.width = pA + '%';
+      row.querySelector('.h2h-bar-b').style.width = pB + '%';
+    }, 100 + i * 60);
+  });
+
+  // ── Spec rows ────────────────────────────────────────────────────────────────
+  const specCont = document.getElementById('h2hSpecRows');
+  specCont.innerHTML = '';
+  const specsA = {}, specsB = {};
+  (dA.specs || []).forEach(s => specsA[s.label] = s.value);
+  (dB.specs || []).forEach(s => specsB[s.label] = s.value);
+  const allLabels = [...new Set([...(dA.specs||[]).map(s=>s.label), ...(dB.specs||[]).map(s=>s.label)])];
+  const weightWins = (a, b) => {
+    const numA = parseFloat(a), numB = parseFloat(b);
+    if (!isNaN(numA) && !isNaN(numB)) return numA < numB ? 'A' : numA > numB ? 'B' : '';
+    return '';
+  };
+  const tierRank = {'SS':7,'S':6,'A':5,'B':4,'C':3,'D':2,'?':0};
+  allLabels.forEach(label => {
+    const vA = specsA[label] || '—', vB = specsB[label] || '—';
+    let winA = '', winB = '';
+    if (label === 'Gewicht') { const w = weightWins(vA, vB); winA = w==='A'; winB = w==='B'; }
+    const row = document.createElement('div');
+    row.className = 'h2h-spec-row';
+    row.innerHTML = `
+      <div class="h2h-spec-val${winA?' winner':''}">${vA}</div>
+      <div class="h2h-spec-label">${label}</div>
+      <div class="h2h-spec-val right${winB?' winner':''}">${vB}</div>`;
+    specCont.appendChild(row);
+  });
+
+  // ── Verdict ───────────────────────────────────────────────────────────────────
+  document.getElementById('h2hVerdictNameA').textContent = dA.name;
+  document.getElementById('h2hVerdictA').textContent = (dA.use.race ? dA.raceNote : dA.trainNote) || dA.desc.slice(0, 120) + '…';
+  document.getElementById('h2hVerdictNameB').textContent = dB.name;
+  document.getElementById('h2hVerdictB').textContent = (dB.use.race ? dB.raceNote : dB.trainNote) || dB.desc.slice(0, 120) + '…';
+
+  // ── Winner ─────────────────────────────────────────────────────────────────── 
+  const totalA = profA.reduce((s, v) => s + v, 0);
+  const totalB = profB.reduce((s, v) => s + v, 0);
+  const tierDiff = (tierRank[dA.tier] || 0) - (tierRank[dB.tier] || 0);
+  const winEl = document.getElementById('h2hWinner');
+  if (Math.abs(totalA - totalB) < 5 && tierDiff === 0) {
+    winEl.textContent = '🤝 Gleichstand – kommt auf deinen Laufstil an';
+    winEl.style.background = 'linear-gradient(135deg,#2a5f8a,#2e7d52)';
+    winEl.style.color = 'white';
+  } else {
+    const winner = totalA > totalB || tierDiff > 0 ? dA : dB;
+    const tc = TC2[winner.tier] || '#c8991a';
+    winEl.textContent = `🏆 ${winner.name} gewinnt diesen Vergleich`;
+    winEl.style.background = `linear-gradient(135deg,${tc},${tc}88)`;
+    winEl.style.color = '#fff';
+  }
+}
+
+function drawRadar(profA, profB, colorA, colorB) {
+  const svg = document.getElementById('h2hRadar');
+  svg.innerHTML = '';
+  const cx = 190, cy = 145, r = 100;
+  const n = 7;
+  const labels = H2H_DIMS;
+
+  function point(i, val) {
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    const dist = (val / 10) * r;
+    return [cx + dist * Math.cos(angle), cy + dist * Math.sin(angle)];
+  }
+
+  function labelPoint(i) {
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    const dist = r + 22;
+    return [cx + dist * Math.cos(angle), cy + dist * Math.sin(angle)];
+  }
+
+  const ns = 'http://www.w3.org/2000/svg';
+
+  // Grid rings
+  [2,4,6,8,10].forEach(v => {
+    const pts = Array.from({length: n}, (_, i) => point(i, v).join(',')).join(' ');
+    const poly = document.createElementNS(ns, 'polygon');
+    poly.setAttribute('points', pts);
+    poly.setAttribute('fill', 'none');
+    poly.setAttribute('stroke', 'rgba(255,255,255,0.06)');
+    poly.setAttribute('stroke-width', '1');
+    svg.appendChild(poly);
+  });
+
+  // Axes
+  for (let i = 0; i < n; i++) {
+    const [x, y] = point(i, 10);
+    const line = document.createElementNS(ns, 'line');
+    line.setAttribute('x1', cx); line.setAttribute('y1', cy);
+    line.setAttribute('x2', x); line.setAttribute('y2', y);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.08)');
+    line.setAttribute('stroke-width', '1');
+    svg.appendChild(line);
+  }
+
+  // Data polygon A
+  const ptsA = Array.from({length: n}, (_, i) => point(i, profA[i]).join(',')).join(' ');
+  const polyA = document.createElementNS(ns, 'polygon');
+  polyA.setAttribute('points', ptsA);
+  polyA.setAttribute('fill', colorA + '33');
+  polyA.setAttribute('stroke', colorA);
+  polyA.setAttribute('stroke-width', '2');
+  svg.appendChild(polyA);
+
+  // Data polygon B
+  const ptsB = Array.from({length: n}, (_, i) => point(i, profB[i]).join(',')).join(' ');
+  const polyB = document.createElementNS(ns, 'polygon');
+  polyB.setAttribute('points', ptsB);
+  polyB.setAttribute('fill', colorB + '33');
+  polyB.setAttribute('stroke', colorB);
+  polyB.setAttribute('stroke-width', '2');
+  svg.appendChild(polyB);
+
+  // Dots A
+  for (let i = 0; i < n; i++) {
+    const [x, y] = point(i, profA[i]);
+    const dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('r', '3');
+    dot.setAttribute('fill', colorA);
+    svg.appendChild(dot);
+  }
+
+  // Dots B
+  for (let i = 0; i < n; i++) {
+    const [x, y] = point(i, profB[i]);
+    const dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('r', '3');
+    dot.setAttribute('fill', colorB);
+    svg.appendChild(dot);
+  }
+
+  // Labels
+  labels.forEach((label, i) => {
+    const [lx, ly] = labelPoint(i);
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    const text = document.createElementNS(ns, 'text');
+    text.setAttribute('x', lx);
+    text.setAttribute('y', ly + 4);
+    text.setAttribute('text-anchor', Math.cos(angle) < -0.3 ? 'end' : Math.cos(angle) > 0.3 ? 'start' : 'middle');
+    text.setAttribute('font-size', '9.5');
+    text.setAttribute('font-family', 'Barlow Condensed, Arial, sans-serif');
+    text.setAttribute('font-weight', '700');
+    text.setAttribute('letter-spacing', '0.05em');
+    text.setAttribute('fill', 'rgba(255,255,255,0.5)');
+    text.textContent = label.toUpperCase();
+    svg.appendChild(text);
+  });
+
+  // Legend
+  [[colorA, shoes[h2hShoeA]?.name?.split(' ').slice(0,2).join(' ')],
+   [colorB, shoes[h2hShoeB]?.name?.split(' ').slice(0,2).join(' ')]].forEach(([c, name], i) => {
+    const g = document.createElementNS(ns, 'g');
+    const rect = document.createElementNS(ns, 'rect');
+    rect.setAttribute('x', 10 + i * 180); rect.setAttribute('y', 260);
+    rect.setAttribute('width', 10); rect.setAttribute('height', 4);
+    rect.setAttribute('rx', '2'); rect.setAttribute('fill', c);
+    const text = document.createElementNS(ns, 'text');
+    text.setAttribute('x', 25 + i * 180); text.setAttribute('y', 265);
+    text.setAttribute('font-size', '10'); text.setAttribute('fill', 'rgba(255,255,255,0.6)');
+    text.setAttribute('font-family', 'Barlow, Arial, sans-serif');
+    text.textContent = name || '';
+    g.appendChild(rect); g.appendChild(text);
+    svg.appendChild(g);
+  });
+}
+
+// Wire H2H button in showDetail
+function updateH2HBtn(show) {
+  const btn = document.getElementById('d-h2h-btn');
+  if (btn) btn.style.display = show ? '' : 'none';
+}
+
 </script>
 
 <!-- ═══ SCHUHFINDER MODAL ════════════════════════════════════════════════════ -->
@@ -2779,6 +3340,124 @@ document.addEventListener('keydown', e=>{
       <button class="finder-nav-btn" id="btnBack" onclick="goBack()">← Zurück</button>
       <span style="font-size:11px;color:var(--text3)" id="footerHint">Wähle eine Option</span>
       <button class="finder-nav-btn primary" id="btnNext" onclick="goNext()" disabled>Weiter →</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ HEAD-TO-HEAD MODAL ════════════════════════════════════════════════════ -->
+<div class="h2h-overlay" id="h2hOverlay" onclick="handleH2HOverlay(event)">
+  <div class="h2h-modal" id="h2hModal">
+
+    <!-- HEADER -->
+    <div class="h2h-header">
+      <h2 id="h2hTitle">⚡ Schuh Vergleich</h2>
+      <button class="h2h-close" onclick="closeH2H()">✕</button>
+    </div>
+
+    <!-- SELECTOR SCREEN -->
+    <div id="h2hSelectorScreen" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="h2h-selector">
+        <!-- Slot A -->
+        <div class="h2h-slot" id="h2hSlotA">
+          <div class="h2h-slot-label">Schuh A</div>
+          <div id="h2hSlotAFilled" style="display:none">
+            <div class="h2h-slot-shoe">
+              <span class="h2h-slot-tier" id="h2hSlotATier"></span>
+              <div>
+                <div class="h2h-slot-name" id="h2hSlotAName"></div>
+                <div class="h2h-slot-brand" id="h2hSlotABrand"></div>
+              </div>
+              <button class="h2h-slot-clear" onclick="clearSlot('A')">✕</button>
+            </div>
+          </div>
+          <div id="h2hSlotASearch" class="h2h-search-wrap">
+            <input class="h2h-search" id="h2hSearchA" placeholder="Schuh suchen…" oninput="searchShoes('A',this.value)"/>
+            <div class="h2h-search-results" id="h2hResultsA"></div>
+          </div>
+        </div>
+
+        <div class="h2h-vs">VS</div>
+
+        <!-- Slot B -->
+        <div class="h2h-slot" id="h2hSlotB">
+          <div class="h2h-slot-label">Schuh B</div>
+          <div id="h2hSlotBFilled" style="display:none">
+            <div class="h2h-slot-shoe">
+              <span class="h2h-slot-tier" id="h2hSlotBTier"></span>
+              <div>
+                <div class="h2h-slot-name" id="h2hSlotBName"></div>
+                <div class="h2h-slot-brand" id="h2hSlotBBrand"></div>
+              </div>
+              <button class="h2h-slot-clear" onclick="clearSlot('B')">✕</button>
+            </div>
+          </div>
+          <div id="h2hSlotBSearch" class="h2h-search-wrap">
+            <input class="h2h-search" id="h2hSearchB" placeholder="Schuh suchen…" oninput="searchShoes('B',this.value)"/>
+            <div class="h2h-search-results" id="h2hResultsB"></div>
+          </div>
+        </div>
+      </div>
+      <button class="h2h-compare-btn" id="h2hCompareBtn" onclick="runComparison()" disabled>
+        Vergleich starten →
+      </button>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div class="h2h-results" id="h2hResults">
+      <div class="h2h-results-header">
+        <div class="h2h-shoe-header">
+          <span class="h2h-shoe-tier-badge" id="h2hRTierA"></span>
+          <div class="h2h-shoe-hname" id="h2hRNameA"></div>
+          <div class="h2h-shoe-hbrand" id="h2hRBrandA"></div>
+        </div>
+        <div class="h2h-vs-center">VS</div>
+        <div class="h2h-shoe-header right">
+          <span class="h2h-shoe-tier-badge" id="h2hRTierB"></span>
+          <div class="h2h-shoe-hname" id="h2hRNameB"></div>
+          <div class="h2h-shoe-hbrand" id="h2hRBrandB"></div>
+        </div>
+      </div>
+
+      <!-- Radar -->
+      <div class="h2h-radar-wrap">
+        <svg id="h2hRadar" width="380" height="280" viewBox="0 0 380 280"></svg>
+      </div>
+
+      <!-- Bar comparison -->
+      <div class="h2h-bar-section">
+        <h4>Profil Vergleich</h4>
+        <div id="h2hBars"></div>
+      </div>
+
+      <!-- Spec comparison -->
+      <div class="h2h-specs-section">
+        <h4>Technische Daten</h4>
+        <div id="h2hSpecRows"></div>
+      </div>
+
+      <!-- Verdict -->
+      <div class="h2h-verdict">
+        <h4>Fazit</h4>
+        <div class="h2h-verdict-grid">
+          <div class="h2h-verdict-card">
+            <h5 id="h2hVerdictNameA"></h5>
+            <p id="h2hVerdictA"></p>
+          </div>
+          <div class="h2h-verdict-card">
+            <h5 id="h2hVerdictNameB"></h5>
+            <p id="h2hVerdictB"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Winner -->
+      <div class="h2h-winner-banner">
+        <div class="h2h-winner-text" id="h2hWinner"></div>
+      </div>
+
+      <button class="h2h-back-btn" onclick="backToSelector()">← Anderen Vergleich</button>
     </div>
 
   </div>
