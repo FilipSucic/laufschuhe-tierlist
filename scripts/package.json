@@ -1,1 +1,9 @@
-test
+{
+  "name": "shoe-image-fetcher",
+  "version": "1.0.0",
+  "description": "Fetches real product images for running shoes",
+  "main": "fetch-images.js",
+  "scripts": {
+    "fetch": "node fetch-images.js"
+  }
+}
