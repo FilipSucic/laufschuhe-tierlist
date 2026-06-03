@@ -2257,6 +2257,9 @@ function showDetail(card,data){
       <div class="athlete-result">${a.result}<small>${a.note}</small></div>
     </div>`).join('');
   document.getElementById('d-desc').textContent=data.desc;
+  const buyBtn=document.getElementById('d-buy-btn');
+  if(data.buy){ buyBtn.href=data.buy; buyBtn.style.display='flex'; }
+  else { buyBtn.style.display='none'; }
   document.querySelector('.detail-panel').scrollTop=0;
 }
 
